@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jezreel Dave Leybag - Job Applications Command Center</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-page: #0b0f17;
+            --bg-card: #111827;
+            --bg-card-hover: #1f2937;
+            --border: #1e293b;
+            --border-highlight: #38bdf8;
+            --primary: #0284c7;
+            --primary-light: #38bdf8;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-green: #10b981;
+            --accent-green-bg: rgba(16, 185, 129, 0.12);
+            --accent-yellow: #f59e0b;
+            --accent-yellow-bg: rgba(245, 158, 11, 0.12);
+            --accent-purple: #a855f7;
+            --accent-purple-bg: rgba(168, 85, 247, 0.15);
+            --accent-pink: #ec4899;
+            --accent-pink-bg: rgba(236, 72, 153, 0.12);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            line-height: 1.5;
+            padding: 28px 20px;
+        }
+
+        .container {
+            max-width: 1240px;
+            margin: 0 auto;
+        }
+
+        /* HEADER */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .header-title h1 {
+            font-size: 26px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .header-title p {
+            font-size: 13.5px;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        .live-badge {
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--accent-green);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            font-size: 11px;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 9999px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .pulse-dot {
+            width: 7px;
+            height: 7px;
+            background: var(--accent-green);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+        }
+
+        /* METRIC CARDS */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 14px;
+            margin-bottom: 28px;
+        }
+
+        .metric-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px 18px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .metric-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--primary);
+        }
+
+        .metric-card.purple::before { background: var(--accent-purple); }
+        .metric-card.green::before { background: var(--accent-green); }
+        .metric-card.pink::before { background: var(--accent-pink); }
+        .metric-card.yellow::before { background: var(--accent-yellow); }
+
+        .metric-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            font-weight: 700;
+        }
+
+        .metric-value {
+            font-size: 26px;
+            font-weight: 800;
+            font-family: 'JetBrains Mono', monospace;
+            margin: 4px 0 2px 0;
+        }
+
+        .metric-sub {
+            font-size: 11.5px;
+            color: var(--text-muted);
+        }
+
+        /* PIPELINE SECTION */
+        .section-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .pipeline-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(520px, 1fr));
+            gap: 20px;
+            margin-bottom: 36px;
+        }
+
+        .app-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 22px;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .app-card.featured {
+            border-color: rgba(168, 85, 247, 0.4);
+            box-shadow: 0 10px 30px -10px rgba(168, 85, 247, 0.15);
+            background: linear-gradient(180deg, #131b2e 0%, #111827 100%);
+        }
+
+        .app-card:hover {
+            border-color: rgba(56, 189, 248, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 24px -10px rgba(0,0,0,0.5);
+        }
+
+        .card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+            gap: 12px;
+        }
+
+        .role-title {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--text-main);
+            letter-spacing: -0.3px;
+        }
+
+        .company-name {
+            font-size: 13.5px;
+            font-weight: 600;
+            color: var(--primary-light);
+            margin-top: 2px;
+        }
+
+        .status-badge {
+            padding: 4px 11px;
+            border-radius: 9999px;
+            font-size: 11px;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .status-offer {
+            background: var(--accent-purple-bg);
+            color: #d8b4fe;
+            border: 1px solid rgba(168, 85, 247, 0.4);
+        }
+
+        .status-applied {
+            background: var(--accent-green-bg);
+            color: var(--accent-green);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .status-ready {
+            background: var(--accent-pink-bg);
+            color: #f472b6;
+            border: 1px solid rgba(236, 72, 153, 0.3);
+        }
+
+        .status-review {
+            background: var(--accent-yellow-bg);
+            color: var(--accent-yellow);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+        }
+
+        .intel-callout {
+            background: rgba(168, 85, 247, 0.08);
+            border-left: 3px solid #a855f7;
+            padding: 8px 12px;
+            border-radius: 0 6px 6px 0;
+            font-size: 12px;
+            color: #e9d5ff;
+            margin-bottom: 14px;
+            line-height: 1.4;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            background: #0f172a;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 12px 14px;
+            margin-bottom: 14px;
+            font-size: 12px;
+        }
+
+        .meta-item strong {
+            color: var(--text-muted);
+            font-size: 10.5px;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 2px;
+            letter-spacing: 0.3px;
+        }
+
+        .meta-item span {
+            color: var(--text-main);
+            font-weight: 600;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11.5px;
+        }
+
+        .timeline-steps {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 16px;
+        }
+
+        .step-pill {
+            flex: 1;
+            padding: 6px 6px;
+            border-radius: 6px;
+            background: #1e293b;
+            font-size: 10.5px;
+            text-align: center;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+        .step-pill.active {
+            background: rgba(168, 85, 247, 0.2);
+            color: #d8b4fe;
+            border: 1px solid #a855f7;
+        }
+
+        .step-pill.done {
+            background: var(--accent-green-bg);
+            color: var(--accent-green);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .card-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            border-top: 1px solid var(--border);
+            padding-top: 14px;
+        }
+
+        .btn {
+            font-size: 11.5px;
+            font-weight: 700;
+            padding: 6px 12px;
+            border-radius: 6px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            border: none;
+        }
+
+        .btn-purple { background: #7c3aed; color: white; }
+        .btn-purple:hover { background: #6d28d9; }
+        .btn-pink { background: #db2777; color: white; }
+        .btn-pink:hover { background: #be185d; }
+        .btn-primary { background: var(--primary); color: white; }
+        .btn-primary:hover { background: #0284c7ee; }
+        .btn-secondary { background: #1e293b; color: #e2e8f0; border: 1px solid #334155; }
+        .btn-secondary:hover { background: #334155; }
+        .btn-ghost { background: transparent; color: var(--primary-light); border: 1px solid transparent; }
+        .btn-ghost:hover { background: rgba(56, 189, 248, 0.1); }
+
+        @media (max-width: 640px) {
+            .pipeline-cards { grid-template-columns: 1fr; }
+            .meta-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    
+    <!-- HEADER -->
+    <header class="header">
+        <div class="header-title">
+            <h1>
+                <span>🚀 Job Applications Command Center</span>
+                <span class="live-badge"><span class="pulse-dot"></span> Active Tracking</span>
+            </h1>
+            <p>Real-time status, milestone alerts, and tailored assets for Jezreel Dave Leybag</p>
+        </div>
+        <div>
+            <span style="font-size: 12px; color: var(--text-muted); font-family: 'JetBrains Mono', monospace;">
+                Updated: Oct 7, 2026
+            </span>
+        </div>
+    </header>
+
+    <!-- METRICS OVERVIEW -->
+    <div class="metrics-grid">
+        <div class="metric-card purple">
+            <div class="metric-label">Immediate Offer Probe</div>
+            <div class="metric-value">1</div>
+            <div class="metric-sub">Fastsigns International (Russell Jonas)</div>
+        </div>
+        <div class="metric-card green">
+            <div class="metric-label">Active Submissions</div>
+            <div class="metric-value">6</div>
+            <div class="metric-sub">MultiplyMii (2), Fresh Prints (3), OrcaVX</div>
+        </div>
+        <div class="metric-card pink">
+            <div class="metric-label">Latest Role Ready</div>
+            <div class="metric-value" style="font-size: 20px; color: #f472b6;">E-comm Designer</div>
+            <div class="metric-sub">Canada TCG Client (MultiplyMii)</div>
+        </div>
+        <div class="metric-card yellow">
+            <div class="metric-label">Next Action Trigger</div>
+            <div class="metric-value" style="font-size: 18px; color: var(--accent-yellow); padding-top: 6px;">Oct 8–9, 2026</div>
+            <div class="metric-sub">Alena (Somewhere.com) Check-in</div>
+        </div>
+    </div>
+
+    <!-- PIPELINE SECTION -->
+    <div class="section-title">
+        <span>Active Applications Pipeline</span>
+        <span style="font-size: 13px; color: var(--text-muted); font-weight: 500;">7 Total Tracked Opportunities</span>
+    </div>
+
+    <div class="pipeline-cards">
+        
+        <!-- CARD 1: FASTSIGNS INTERNATIONAL (TOP PRIORITY) -->
+        <div class="app-card featured">
+            <div class="card-top">
+                <div>
+                    <div class="role-title">Signage Estimator &amp; Vendor Sourcing Specialist</div>
+                    <div class="company-name">Fastsigns International • Connecticut Center (Russell Jonas)</div>
+                </div>
+                <span class="status-badge status-offer">Stage 4: Offer Probe</span>
+            </div>
+
+            <div class="intel-callout">
+                ⭐ <strong>Insider Intel (Alena Govender, Somewhere.com):</strong><br>
+                <em>"You were the ONLY candidate that got through to interviewing... I'm going to email Russell and probe him for an immediate offer today."</em>
+            </div>
+
+            <div class="meta-grid">
+                <div class="meta-item">
+                    <strong>Client / Stakeholders</strong>
+                    <span>Russell Jonas (Owner) • Alena (Agency)</span>
+                </div>
+                <div class="meta-item">
+                    <strong>Schedule / Shop Model</strong>
+                    <span>US EST • CoreBridge Estimating</span>
+                </div>
+                <div class="meta-item">
+                    <strong>Interview Date</strong>
+                    <span>Oct 6, 2026 (40 min Call)</span>
+                </div>
+                <div class="meta-item">
+                    <strong>Target Salary</strong>
+                    <span>$1,200 – $1,500+ USD / mo</span>
+                </div>
+            </div>
+
+            <div class="card-actions">
+                <a href="https://fathom.video/share/SWzCDzR5AUDa6z2sP8T7goQeMkj5mTs2?tab=summary&timestamp=2306.0&utm_campaign=postmeetingsummary&utm_content=summary_item&utm_medium=email" target="_blank" class="btn btn-purple">
+                    ▶ Fathom Recording &amp; Notes ↗
+                </a>
+                <a href="fastsigns-signage-estimator/FASTSIGNS_INTERVIEW_AND_OFFER_TRACKER.md" target="_blank" class="btn btn-secondary">
+                    📋 Strategy &amp; Debrief Doc
+                </a>
+                <a href="fastsigns-signage-estimator/Jezreel_Dave_Resume_Signage_Estimator.pdf" target="_blank" class="btn btn-secondary">
+                    📄 Estimator Resume PDF
+                </a>
+                <a href="https://signquote-studio.vercel.app/" target="_blank" class="btn btn-ghost" style="color: var(--accent-green);">
+                    ⚡ SignQuote Studio ↗
+                </a>
+            </div>
+        </div>
+
+        <!-- CARD 2: NEW! MULTIPLYMII E-COMMERCE GRAPHIC DESIGNER -->
+        <div class="app-card" style="border-color: rgba(236, 72, 153, 0.4);">
+            <div class="card-top">
+                <div>
+                    <div class="role-title">E-commerce Graphic Designer</div>
+                    <div class="company-name">MultiplyMii • Canada TCG &amp; Hobby Retailer</div>
+                </div>
+                <span class="status-badge status-ready">Ready to Submit</span>
+            </div>
+
+            <div class="meta-grid">
+                <div class="meta-item">
+                    <strong>Client Profile</strong>
+                    <span>Canada TCG (Pokémon, MTG, One Piece)</span>
+                </div>
+                <div class="meta-item">
+                    <strong>Schedule</strong>
+                    <span>5:00 AM PHT Start (Canada ET Overlap)</span>
+                </div>
+                <div class="meta-item">
+                    <strong>Target Salary</strong>
+                    <span>₱55,000 – ₱60,000 PHP / mo</span>
+                </div>
+                <div class="meta-item">
+                    <strong>Key Tools</strong>
+                    <span>Shopify, Photoshop, Premiere, CapCut</span>
+                </div>
+            </div>
+
+            <div class="card-actions">
+                <a href="multiplymii-ecommerce-graphic-designer/Jezreel_Dave_Leybag_Ecommerce_Graphic_Designer.pdf" target="_blank" class="btn btn-pink">
+                    📄 View Tailored PDF
+                </a>
+                <a href="multiplymii-ecommerce-graphic-designer/APPLICATION_PITCH_AND_COVER_NOTE.md" target="_blank" class="btn btn-secondary">
+                    📋 Pitch &amp; Screening Q&amp;A
+                </a>
+                <a href="multiplymii-ecommerce-graphic-designer/INTERVIEW_AND_PRACTICAL_TEST_PLAYBOOK.md" target="_blank" class="btn btn-secondary">
+                    🎯 Interview &amp; Test Playbook
+                </a>
+                <a href="../index.html#work" target="_blank" class="btn btn-secondary" style="border-color: #f79223; color: #f79223;">
+                    🃏 View TCG Portfolio Live ↗
+                </a>
+                <a href="https://jobs.ashbyhq.com/multiplymii/d87c8790-2e7c-4544-8bd1-1a163a6c5f2a" target="_blank" class="btn btn-ghost">
+                    🔗 Ashby Application Link ↗
+                </a>
+            </div>
+        </div>
+
+        <!-- CARD 3: MULTIPLYMII SIGNAGE -->
+        <div class="app-card">
+            <div class="card-top">
+                <div>
+                    <div class="role-title">Signage Project Coordinator</div>
+                    <div class="company-name">MultiplyMii • US Exterior Signage Client</div>
+                </div>
+                <span class="status-badge status-applied">Applied • Screening</span>
+            </div>
+
+            <div class="meta-grid">
+                <div class="meta-item">
+                    <strong>Date Applied</strong>
+                    <span>Oct 7, 2026</span>
+                </div>
+                <div class="meta-item">
+                    <strong>Schedule / Shift</strong>
+                    <span>8:00 AM – 5:00 PM CST</span>
+                </div>
+                <div class="meta-item">
+                    <strong>Salary Expectation</strong>
+                    <span>₱70,000 PHP / mo (₱65k–₱75k)</span>
+                </div>
+                <div class="meta-item">
+                    <strong>Follow-up Window</strong>
+                    <span>Oct 14, 2026</span>
+                </div>
+            </div>
+
+            <div class="card-actions">
+                <a href="multiplymii-signage-project-coordinator/Jezreel_Dave_Leybag_Signage_Project_Coordinator.pdf" target="_blank" class="btn btn-primary">
+                    📄 Tailored PDF Resume
+                </a>
+                <a href="multiplymii-signage-project-coordinator/APPLICATION_PITCH_AND_COVER_NOTE.md" target="_blank" class="btn btn-secondary">
+                    📋 Interview Cheat Sheet
+                </a>
+                <a href="https://jobs.ashbyhq.com/multiplymii/a75ca0d3-d5e4-4bc8-a3f9-585d89b2e0b9" target="_blank" class="btn btn-ghost">
+                    🔗 Ashby Link ↗
+                </a>
+            </div>
+        </div>
+
+        <!-- CARD 4: FRESH PRINTS PRODUCTION PROJECT COORDINATOR -->
+        <div class="app-card">
+            <div class="card-top">
+                <div>
+                    <div class="role-title">Production Project Coordinator</div>
+                    <div class="company-name">Fresh Prints / Frontier • TVP NYC Branded Merch</div>
+                </div>
+                <span class="status-badge status-review">Offsite Review</span>
+            </div>
+
+            <div class="meta-grid">
+                <div class="meta-item">
+                    <strong>Platform</strong>
+                    <span>Wellfound / Frontier Offsite</span>
+                </div>
+                <div class="meta-item">
+                    <strong>Schedule</strong>
+                    <span>US Shift Hours</span>
+                </div>
+                <div class="meta-item">
+                    <strong>Focus</strong>
+                    <span>Merch Orders, Mfrs, Delivery</span>
+                </div>
+                <div class="meta-item">
+                    <strong>Follow-up Window</strong>
+                    <span>Oct 13, 2026</span>
+                </div>
+            </div>
+
+            <div class="card-actions">
+                <a href="fresh-prints-operations-associate/Jezreel_Dave_Leybag_Operations_Specialist.pdf" target="_blank" class="btn btn-primary">
+                    📄 Operations PDF
+                </a>
+                <a href="fresh-prints-operations-associate/interview_master_cheat_sheet.html" target="_blank" class="btn btn-secondary">
+                    💡 Master Cheat Sheet
+                </a>
+            </div>
+        </div>
+
+        <!-- CARD 5: FRESH PRINTS OPERATIONS ASSOCIATE (DATA ENTRY) -->
+        <div class="app-card">
+            <div class="card-top">
+                <div>
+                    <div class="role-title">Operations Associate - Data Entry</div>
+                    <div class="company-name">Fresh Prints / Frontier • Thumbtack (6-mo Contract)</div>
+                </div>
+                <span class="status-badge status-review">Offsite Review</span>
+            </div>
+
+            <div class="meta-grid">
+                <div class="meta-item">
+                    <strong>Platform</strong>
+                    <span>Wellfound / Frontier Offsite</span>
+                </div>
+                <div class="meta-item">
+                    <strong>Compensation</strong>
+                    <span>$700 – $750 USD / mo</span>
+                </div>
+                <div class="meta-item">
+                    <strong>Focus</strong>
+                    <span>CRM, Spreadsheets, QA</span>
+                </div>
+                <div class="meta-item">
+                    <strong>Follow-up Window</strong>
+                    <span>Oct 13, 2026</span>
+                </div>
+            </div>
+
+            <div class="card-actions">
+                <a href="fresh-prints-operations-associate/Jezreel_Dave_Leybag_Operations_Specialist.pdf" target="_blank" class="btn btn-primary">
+                    📄 Operations PDF
+                </a>
+            </div>
+        </div>
+
+        <!-- CARD 6: FRESH PRINTS INSTRUCTIONAL DESIGNER -->
+        <div class="app-card">
+            <div class="card-top">
+                <div>
+                    <div class="role-title">Instructional Designer</div>
+                    <div class="company-name">Fresh Prints / Frontier • Bundle</div>
+                </div>
+                <span class="status-badge status-review">Offsite Review</span>
+            </div>
+
+            <div class="meta-grid">
+                <div class="meta-item">
+                    <strong>Platform</strong>
+                    <span>Wellfound / Frontier Offsite</span>
+                </div>
+                <div class="meta-item">
+                    <strong>Compensation</strong>
+                    <span>Up to $1,000 USD / mo</span>
+                </div>
+                <div class="meta-item">
+                    <strong>Focus</strong>
+                    <span>Training Collateral, Slidedecks</span>
+                </div>
+                <div class="meta-item">
+                    <strong>Portfolio</strong>
+                    <span>Google Drive Portfolio</span>
+                </div>
+            </div>
+
+            <div class="card-actions">
+                <a href="https://drive.google.com/drive/folders/1_cBN8MPPfaPkyvYzinhUuSuz0kexx1tx" target="_blank" class="btn btn-secondary">
+                    📁 View Drive Portfolio ↗
+                </a>
+            </div>
+        </div>
+
+        <!-- CARD 7: ORCAVX MEDIA OPERATIONS MANAGER -->
+        <div class="app-card">
+            <div class="card-top">
+                <div>
+                    <div class="role-title">Operations Manager</div>
+                    <div class="company-name">OrcaVX Media</div>
+                </div>
+                <span class="status-badge" style="background: rgba(249, 115, 22, 0.15); color: #fb923c; border: 1px solid rgba(249, 115, 22, 0.3);">Pending Review</span>
+            </div>
+
+            <div class="meta-grid">
+                <div class="meta-item">
+                    <strong>Platform</strong>
+                    <span>Wellfound (Applied Oct 7)</span>
+                </div>
+                <div class="meta-item">
+                    <strong>Status</strong>
+                    <span>Pending Recruiter Review</span>
+                </div>
+                <div class="meta-item">
+                    <strong>Domain</strong>
+                    <span>Media Operations &amp; Delivery</span>
+                </div>
+                <div class="meta-item">
+                    <strong>Follow-up Window</strong>
+                    <span>Oct 14, 2026</span>
+                </div>
+            </div>
+
+            <div class="card-actions">
+                <a href="fresh-prints-operations-associate/Jezreel_Dave_Leybag_Operations_Specialist.pdf" target="_blank" class="btn btn-secondary">
+                    📄 Operations Resume
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FASTSIGNS Teleprompter - Jezreel Dave</title>
+  <style>
+    :root {
+      --bg: #070B12;
+      --card-bg: #0F1726;
+      --card-inner: #0A101C;
+      --text: #F8FAFC;
+      --text-dim: #CBD5E1;
+      --muted: #8492A6;
+      --accent: #F59E0B;
+      --accent-light: #FEF3C7;
+      --green: #10B981;
+      --red: #EF4444;
+      --blue: #38BDF8;
+      --border: #1C283E;
+      --border-light: #253552;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    
+    /* TIGHT COLUMN OPTIMIZED FOR NARROW DESKTOP WINDOW / ZERO LATERAL EYE MOVEMENT */
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.42;
+      padding: 10px 10px 80px 10px;
+      max-width: 440px; /* STRICT NARROW COLUMN */
+      margin: 0 auto;
+    }
+
+    /* HEADER */
+    .top-header {
+      padding: 6px 4px 10px 4px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 12px;
+    }
+    .header-title {
+      font-size: 17px;
+      font-weight: 800;
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+    }
+    .status-badge {
+      font-size: 10px;
+      background: rgba(16, 185, 129, 0.18);
+      color: #6EE7B7;
+      padding: 2px 7px;
+      border-radius: 4px;
+      font-weight: 700;
+      border: 1px solid rgba(16, 185, 129, 0.4);
+    }
+    .header-sub {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 3px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* SEARCH INPUT */
+    .search-wrap {
+      margin-top: 8px;
+      position: relative;
+    }
+    .search-input {
+      width: 100%;
+      background: #0E1524;
+      border: 1px solid var(--border-light);
+      border-radius: 6px;
+      padding: 6px 10px;
+      color: #FFFFFF;
+      font-size: 12.5px;
+      outline: none;
+      transition: all 0.2s;
+    }
+    .search-input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.2);
+    }
+
+    /* CARDS */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 14px;
+      margin-bottom: 12px;
+      scroll-margin-top: 14px;
+      transition: box-shadow 0.25s, border-color 0.25s;
+    }
+    .card-title {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--accent);
+      font-weight: 800;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* QUESTION TELEPROMPTER BOXES */
+    .q-box {
+      background: var(--card-bg);
+      border-left: 3.5px solid var(--accent);
+      border-radius: 0 8px 8px 0;
+      padding: 12px 14px;
+      margin-bottom: 12px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+      border-top: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      scroll-margin-top: 14px;
+      transition: all 0.25s;
+    }
+    .q-box.spotlight {
+      border-left: 3.5px solid #10B981;
+      background: #0C1A2B;
+      border-top-color: var(--border-light);
+      border-right-color: var(--border-light);
+      border-bottom-color: var(--border-light);
+    }
+    .q-box.highlight-pulse {
+      box-shadow: 0 0 0 3px #F59E0B, 0 4px 16px rgba(245, 158, 11, 0.4);
+      transform: translateY(-2px);
+    }
+    .q-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 4px;
+    }
+    .q-num {
+      color: var(--accent);
+      font-weight: 800;
+      font-size: 10.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .q-num.green { color: #34D399; }
+    .kbd-tag {
+      font-size: 9.5px;
+      background: #070D18;
+      color: #64748B;
+      padding: 1px 5px;
+      border-radius: 3px;
+      border: 1px solid #1B263B;
+      font-family: monospace;
+    }
+    .q-text {
+      font-size: 14px;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin-bottom: 8px;
+      line-height: 1.35;
+    }
+    
+    .a-list { list-style: none; }
+    .a-list li {
+      font-size: 13px;
+      color: var(--text-dim);
+      margin-bottom: 6px;
+      position: relative;
+      padding-left: 14px;
+      line-height: 1.4;
+    }
+    .a-list li:last-child { margin-bottom: 0; }
+    .a-list li::before {
+      content: "•";
+      position: absolute;
+      left: 2px;
+      color: var(--accent);
+      font-weight: bold;
+      font-size: 14px;
+    }
+    .q-box.spotlight .a-list li::before { color: #34D399; }
+    
+    strong { color: #FDE047; font-weight: 700; }
+    .formula {
+      font-family: monospace;
+      background: #04070F;
+      padding: 5px 8px;
+      border-radius: 5px;
+      font-size: 13px;
+      color: #34D399;
+      display: inline-block;
+      margin: 3px 0;
+      border: 1px solid #152238;
+    }
+
+    /* RELATED TOPICS TAGS */
+    .related-tags {
+      margin-top: 8px;
+      padding-top: 6px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      display: flex;
+      gap: 5px;
+      flex-wrap: wrap;
+      align-items: center;
+      font-size: 10.5px;
+    }
+    .related-label { color: #64748B; font-size: 10px; }
+    .tag-link {
+      background: #080E1A;
+      color: #38BDF8;
+      border: 1px solid #19263A;
+      padding: 1px 6px;
+      border-radius: 3px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: 0.15s;
+    }
+    .tag-link:hover {
+      background: #142236;
+      border-color: #38BDF8;
+      color: #FFFFFF;
+    }
+
+    /* SECTION HEADER */
+    .section-title {
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin: 16px 0 8px 0;
+      color: #94A3B8;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .section-title.green { color: #34D399; }
+
+    /* SHIELD STYLING */
+    .shield-item {
+      background: #08101E;
+      padding: 9px 11px;
+      border-radius: 6px;
+      margin-bottom: 8px;
+      border: 1px solid var(--border);
+      transition: all 0.2s;
+    }
+    .shield-item:hover {
+      border-color: var(--border-light);
+      background: #0A1426;
+    }
+    .shield-header {
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 3px;
+    }
+    .shield-text {
+      font-size: 12.5px;
+      color: #E2E8F0;
+      font-style: italic;
+      line-height: 1.38;
+    }
+
+    /* FLOATING BOTTOM QUICK-JUMP DOCK */
+    .bottom-dock {
+      position: fixed;
+      bottom: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: calc(100% - 20px);
+      max-width: 440px;
+      background: rgba(11, 17, 28, 0.95);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--border-light);
+      border-radius: 10px;
+      padding: 6px 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 3px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+      z-index: 200;
+      overflow-x: auto;
+    }
+    .dock-btn {
+      flex: 1;
+      min-width: 24px;
+      height: 28px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #131E31;
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      color: #CBD5E1;
+      font-size: 11px;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.15s;
+      user-select: none;
+    }
+    .dock-btn:hover { background: #223452; color: #FFFFFF; border-color: #38BDF8; }
+    .dock-btn.red { background: rgba(239, 68, 68, 0.25); color: #FCA5A5; border-color: rgba(239, 68, 68, 0.4); }
+    .dock-btn.green { background: rgba(16, 185, 129, 0.22); color: #6EE7B7; border-color: rgba(16, 185, 129, 0.4); }
+    .dock-btn.amber { background: rgba(245, 158, 11, 0.22); color: #FCD34D; border-color: rgba(245, 158, 11, 0.4); }
+    .dock-sep { width: 1px; height: 18px; background: #1C2B42; margin: 0 2px; }
+  </style>
+</head>
+<body>
+
+  <!-- TOP HEADER -->
+  <div class="top-header">
+    <div class="header-title">
+      <span>🎯 FASTSIGNS Teleprompter</span>
+      <span class="status-badge">9:00 PM TONIGHT</span>
+    </div>
+    <div class="header-sub">
+      <span>Candidate: Jezreel Dave</span>
+      <span>Tap 1-9 or Dock to Jump</span>
+    </div>
+
+    <!-- QUICK SEARCH -->
+    <div class="search-wrap">
+      <input 
+        type="text" 
+        id="quickSearch" 
+        class="search-input" 
+        placeholder="🔍 Type keyword (acrylic, freight, rush)..."
+        autocomplete="off"
+      />
+    </div>
+  </div>
+
+  <!-- 3 CRITICAL PILLAR CARDS -->
+  
+  <!-- 1. SALARY DEFLECTION -->
+  <div id="salary-card" class="card" style="border-left: 3.5px solid var(--red);">
+    <div class="card-title" style="color: #F87171;">
+      <span>🚨 1. SALARY DEFLECTION (DO NOT DISCUSS)</span>
+      <span class="kbd-tag">Key: S</span>
+    </div>
+    <p style="font-size: 11px; color: var(--muted); margin-bottom: 5px;">If the owner asks about salary/compensation:</p>
+    <div style="background: #060A13; padding: 7px 9px; border-radius: 5px; font-size: 12px; color: #FCA5A5; font-style: italic; border: 1px solid rgba(239, 68, 68, 0.3);">
+      "Somewhere handles all my compensation and contracting details directly, so I’m happy to let them coordinate that with you. My main focus today is making sure I'm the right operational fit for your shop!"
+    </div>
+  </div>
+
+  <!-- 2. THE 50% MARGIN RULE -->
+  <div id="margin-card" class="card" style="border-left: 3.5px solid var(--green);">
+    <div class="card-title" style="color: var(--green);">
+      <span>💰 2. 50% MARGIN FORMULA</span>
+      <span class="kbd-tag">Key: M</span>
+    </div>
+    <div class="formula">Price = Total COGS / 0.50 (or COGS × 2)</div>
+    <p style="font-size: 11.5px; color: #CBD5E1; margin-top: 4px;">
+      <strong>Owner Reality:</strong> Propelled Brands takes ~8% off gross revenue. A 50% markup gives only 33% margin. Must divide by 0.50!
+    </p>
+  </div>
+
+  <!-- 3. THE TWO GEMINIS -->
+  <div id="gemini-card" class="card" style="border-left: 3.5px solid var(--blue);">
+    <div class="card-title" style="color: var(--blue);">
+      <span>🤖 vs 🏭 3. THE TWO "GEMINIS"</span>
+      <span class="kbd-tag">Key: G</span>
+    </div>
+    <p style="font-size: 11.5px; color: #E2E8F0; margin-bottom: 3px;">
+      <strong>Google Gemini (AI):</strong> RFP takeoff, extracting BOM, drafting RFQs.
+    </p>
+    <p style="font-size: 11.5px; color: #E2E8F0;">
+      <strong>Gemini Sign Products (Vendor):</strong> #1 U.S. factory for dimensional letters, metal & plaques (Lifetime Guarantee).
+    </p>
+  </div>
+
+  <!-- SECTION: ALENA'S TOP 3 PRIORITY QUESTIONS -->
+  <div class="section-title green">🌟 Top 3 Priority Questions (Recruiter Briefing)</div>
+
+  <!-- QUESTION 1 -->
+  <div id="q1" class="q-box spotlight" data-keywords="corebridge process estimate steps material yield machine run time labor rates margin formula signquote studio">
+    <div class="q-header-row">
+      <span class="q-num green">P1 • CoreBridge Estimating Process</span>
+      <span class="kbd-tag">Key: 1</span>
+    </div>
+    <div class="q-text">"Can you walk us through your step-by-step process for building a custom sign estimate in CoreBridge?"</div>
+    <ul class="a-list">
+      <li><strong>1. Spec & Blueprint Intake:</strong> Inspect architectural drawings, elevation callouts, mounting surfaces, and UL-48 specs.</li>
+      <li><strong>2. Material Yields & Scrap:</strong> Calculate sheet yields (Max-Metal ACM, Acrylic). Never price 100% sheet utilization; apply a <strong>15–25% nesting scrap factor</strong>.</li>
+      <li><strong>3. Machine & Labor Time:</strong> Flatbed UV / Latex print time, CNC cutting table hours, and shop assembly labor ($65–$95/hr).</li>
+      <li><strong>4. Margin Protection:</strong> Combine materials + labor + freight into total COGS, then apply: <code>Price = COGS / 0.50</code>.</li>
+      <li><em>Flex:</em> Built <strong>SignQuote Studio</strong> modeling this exact assembly logic.</li>
+    </ul>
+    <div class="related-tags">
+      <span class="related-label">Related:</span>
+      <a href="#q5" class="tag-link" onclick="pulseCard('q5')">Q5 Yields</a>
+      <a href="#q15" class="tag-link" onclick="pulseCard('q15')">Q15 CoreBridge</a>
+      <a href="#margin-card" class="tag-link" onclick="pulseCard('margin-card')">50% Margin</a>
+    </div>
+  </div>
+
+  <!-- QUESTION 2 -->
+  <div id="q2" class="q-box spotlight" data-keywords="vendor margin wholesale direct sign dsw gemini howard value engineering standardized rfq negotiate">
+    <div class="q-header-row">
+      <span class="q-num green">P2 • Wholesale Margin Compression</span>
+      <span class="kbd-tag">Key: 2</span>
+    </div>
+    <div class="q-text">"How do you handle wholesale vendors whose initial quotes cut too far into your target gross margins?"</div>
+    <ul class="a-list">
+      <li><strong>1. Cross-Compare:</strong> Check competing bids between partners like <strong>Direct Sign Wholesale (DSW)</strong>, <strong>Gemini</strong>, or <strong>Howard</strong>.</li>
+      <li><strong>2. Value-Engineering:</strong> Standardize return depths (5" to 3"), tweak aluminum gauge, or optimize face thickness to cut fabrication and freight weight.</li>
+      <li><strong>3. Standardized RFQ:</strong> Provide clean vector art, exact crating specs, and leverage our repeat shop order volume.</li>
+    </ul>
+    <div class="related-tags">
+      <span class="related-label">Related:</span>
+      <a href="#q11" class="tag-link" onclick="pulseCard('q11')">Q11 Build vs Buy</a>
+      <a href="#q12" class="tag-link" onclick="pulseCard('q12')">Q12 Freight COGS</a>
+      <a href="#vendor-network" class="tag-link" onclick="pulseCard('vendor-network')">Vendors</a>
+    </div>
+  </div>
+
+  <!-- QUESTION 3 -->
+  <div id="q3" class="q-box spotlight" data-keywords="gemini ai artificial intelligence prompts rfp extraction scraping vendor portal automation mit certified">
+    <div class="q-header-row">
+      <span class="q-num green">P3 • AI-Assisted Sourcing with Gemini</span>
+      <span class="kbd-tag">Key: 3</span>
+    </div>
+    <div class="q-text">"In what ways have you leveraged AI tools like Gemini to streamline research, vendor sourcing, or admin workflows?"</div>
+    <ul class="a-list">
+      <li><strong>Google & MIT Certified in Gemini AI:</strong> Practical, daily pre-production use.</li>
+      <li><strong>Messy RFP Spec Extraction:</strong> Ingest 30-page tender PDFs and site notes; extracts dimensions, substrates, illumination, and hardware into clean tables in 2 minutes.</li>
+      <li><strong>Vendor Catalog & RFQs:</strong> Compares spec sheets across suppliers and formats standardized RFQs with UL-48 callouts.</li>
+    </ul>
+    <div class="related-tags">
+      <span class="related-label">Related:</span>
+      <a href="#gemini-card" class="tag-link" onclick="pulseCard('gemini-card')">Two Geminis</a>
+      <a href="#q7" class="tag-link" onclick="pulseCard('q7')">Q7 Takeoff</a>
+    </div>
+  </div>
+
+  <!-- SECTION: CORE OPERATIONAL QUESTIONS -->
+  <div class="section-title">📋 Core Operational Questions</div>
+
+  <!-- Q4 -->
+  <div id="q4" class="q-box" data-keywords="elevator pitch tell me about yourself background experience operations remote client delivery">
+    <div class="q-header-row">
+      <span class="q-num">Q04 • Elevator Pitch</span>
+      <span class="kbd-tag">Key: 4</span>
+    </div>
+    <div class="q-text">"Tell us about yourself and walk us through your relevant experience."</div>
+    <ul class="a-list">
+      <li><strong>4+ years remote commercial delivery</strong> for North American and global accounts.</li>
+      <li>Co-manage operational business: <strong>purchasing, supplier negotiations, and defending 50% gross margins</strong>.</li>
+      <li>Built interactive estimating prototype (<strong>SignQuote Studio</strong>) modeling <strong>Gemini AI takeoff and CoreBridge pricing logic</strong>.</li>
+      <li>Focus: Serving as the <strong>operational backbone</strong> for sales reps to quote quickly and accurately.</li>
+    </ul>
+  </div>
+
+  <!-- Q5 -->
+  <div id="q5" class="q-box" data-keywords="material yield nesting scrap sheet roll vinyl 4x8 5x10 drop offcut">
+    <div class="q-header-row">
+      <span class="q-num">Q05 • Material Yields & Nesting</span>
+      <span class="kbd-tag">Key: 5</span>
+    </div>
+    <div class="q-text">"How do you calculate material yields, nesting, and scrap for sheet goods and roll vinyl?"</div>
+    <ul class="a-list">
+      <li><strong>Nesting Layouts:</strong> Nest shapes tightly on 4'x8' or 5'x10' sheets using vector cut software.</li>
+      <li><strong>Never Price Net Sq. Footage:</strong> If three 3'x3' panels consume an entire 4'x8' sheet, charge for the full sheet or apply a <strong>20–25% scrap factor</strong>.</li>
+      <li><strong>Roll Vinyl Offcut Rules:</strong> Account for lead-in/lead-out feed waste on 54" or 60" roll media.</li>
+    </ul>
+    <div class="related-tags">
+      <span class="related-label">Related:</span>
+      <a href="#q6" class="tag-link" onclick="pulseCard('q6')">Q6 Substrates</a>
+      <a href="#q1" class="tag-link" onclick="pulseCard('q1')">Q1 CoreBridge</a>
+    </div>
+  </div>
+
+  <!-- Q6 -->
+  <div id="q6" class="q-box" data-keywords="substrates materials acm max metal acrylic sintra pvc hdu cast calendered vinyl channel letters raceway">
+    <div class="q-header-row">
+      <span class="q-num">Q06 • Substrates & Construction</span>
+      <span class="kbd-tag">Key: 6</span>
+    </div>
+    <div class="q-text">"What sign substrates and fabrication methods are you familiar with?"</div>
+    <ul class="a-list">
+      <li><strong>ACM (Max-Metal / Dibond):</strong> Rigid exterior sign panels, backer plates, cabinet faces.</li>
+      <li><strong>Acrylic (Plexiglas):</strong> Translucent channel letter faces, push-through graphics, lobby standoffs.</li>
+      <li><strong>HDU & PVC (Sintra):</strong> CNC routed 3D dimensional letters and interior plaques.</li>
+      <li><strong>Cast vs. Calendered Vinyl:</strong> Cast (3M IJ180, Avery MPI 1105) for vehicle wraps; Calendered for flat short-term signs.</li>
+      <li><strong>Channel Letters:</strong> Front-lit acrylic, halo reverse-lit, aluminum returns on raceways with UL-48.</li>
+    </ul>
+  </div>
+
+  <!-- Q7 -->
+  <div id="q7" class="q-box" data-keywords="architectural drawings blueprints site survey takeoff elevation mounting electrical disconnect power ul-48">
+    <div class="q-header-row">
+      <span class="q-num">Q07 • Architectural Plan Takeoff</span>
+      <span class="kbd-tag">Key: 7</span>
+    </div>
+    <div class="q-text">"How do you interpret architectural drawings, blueprints, and site surveys for a takeoff?"</div>
+    <ul class="a-list">
+      <li><strong>Elevation Callouts:</strong> Measure height, width, letter stroke, and mounting surface conditions (brick, stucco, drywall).</li>
+      <li><strong>Electrical Verification:</strong> Check primary power disconnect locations, wire pathways, and transformer / power supply placement.</li>
+      <li><strong>Itemized Takeoff:</strong> Convert drawing notes into a structured bill of materials before quoting.</li>
+    </ul>
+  </div>
+
+  <!-- Q8 -->
+  <div id="q8" class="q-box" data-keywords="workflow lifecycle end to end inquiry quote proof deposit work order po handoff production">
+    <div class="q-header-row">
+      <span class="q-num">Q08 • End-to-End Workflow</span>
+      <span class="kbd-tag">Key: 8</span>
+    </div>
+    <div class="q-text">"How do you manage a job through the full sales-to-production pipeline?"</div>
+    <ul class="a-list">
+      <li><strong>Inquiry → CoreBridge Estimate:</strong> Rapid intake and spec verification within hours.</li>
+      <li><strong>Proof Sign-off & Deposit:</strong> Strict policy—production never starts without digital proof sign-off and <strong>50% deposit</strong>.</li>
+      <li><strong>Handoff:</strong> Split approved quotes into <strong>In-House Job Tickets</strong> (print/CNC) and <strong>Vendor POs</strong> (Grimco, Gemini, DSW).</li>
+    </ul>
+  </div>
+
+  <!-- Q9 -->
+  <div id="q9" class="q-box" data-keywords="digital customer proof verification dimensions pms color return depth mounting callout template">
+    <div class="q-header-row">
+      <span class="q-num">Q09 • Digital Customer Proofs</span>
+      <span class="kbd-tag">Key: 9</span>
+    </div>
+    <div class="q-text">"How do you review digital customer proofs before client approval and production release?"</div>
+    <ul class="a-list">
+      <li><strong>Cross-Check Callouts:</strong> Verify dimensions, PMS paint/vinyl colors, return depths, and mounting details against quote.</li>
+      <li><strong>Template Requirements:</strong> Ensure 1:1 paper installation mounting patterns are included for installers.</li>
+      <li><strong>Error Prevention:</strong> Catching a proof mistake saves the shop thousands in scrap and re-fabrication.</li>
+    </ul>
+  </div>
+
+  <!-- Q10 -->
+  <div id="q10" class="q-box" data-keywords="osr outside sales rep rush quote pressure missing specs ballpark checklist triage">
+    <div class="q-header-row">
+      <span class="q-num">Q10 • OSR Rush Quotes</span>
+      <span class="kbd-tag">Key: 0</span>
+    </div>
+    <div class="q-text">"How do you handle an Outside Sales Rep (OSR) demanding an urgent rush quote with missing specs?"</div>
+    <ul class="a-list">
+      <li>Never stall the rep, but <strong>never quote blind</strong>.</li>
+      <li>Send an immediate <strong>3-point checklist</strong> for the missing variables (wall substrate, height from grade, electrical disconnect).</li>
+      <li>Provide a <strong>provisional ballpark range</strong> with clearly stated assumptions so the rep keeps client momentum alive.</li>
+    </ul>
+  </div>
+
+  <!-- Q11 -->
+  <div id="q11" class="q-box" data-keywords="build vs buy fabricate in house outsource wholesale channel letters monument margin 65 70 50">
+    <div class="q-header-row">
+      <span class="q-num">Q11 • Build vs. Buy Strategy</span>
+    </div>
+    <div class="q-text">"How do you decide what we fabricate in-house vs. what we outsource to wholesale partners?"</div>
+    <ul class="a-list">
+      <li><strong>In-House (65%–75% Margin):</strong> Wide-format print, vinyl plotting, CNC routing on ACM/PVC/acrylic, banners, vehicle graphics, flatbed UV.</li>
+      <li><strong>Outsourced Wholesale (45%–50% Margin):</strong> UL-48 channel letters, complex raceways, cast bronze plaques (Gemini), stucco monuments (Peachtree). Protects shop capacity and secures vendor warranties.</li>
+    </ul>
+  </div>
+
+  <!-- Q12 -->
+  <div id="q12" class="q-box" data-keywords="freight crating accessorials liftgate delivery delays hidden costs cogs ltl">
+    <div class="q-header-row">
+      <span class="q-num">Q12 • Wholesale Freight & Delays</span>
+    </div>
+    <div class="q-text">"What are the most common hidden costs estimators forget in custom signage?"</div>
+    <ul class="a-list">
+      <li><strong>1. Wooden Crating Fees:</strong> ($150–$400 on large wholesale channel letters and monuments).</li>
+      <li><strong>2. LTL Freight Accessorials:</strong> <strong>Liftgate delivery</strong> ($75–$150) and construction site delivery surcharges.</li>
+      <li><strong>3. Sheet Nesting Scrap:</strong> Unused offcuts that can't be reused must be burdened to the job.</li>
+      <li><strong>4. Equipment Roll Fees:</strong> Bucket truck / boom lift rental and city sign permit costs.</li>
+    </ul>
+  </div>
+
+  <!-- Q13 -->
+  <div id="q13" class="q-box" data-keywords="general contractors gc commercial property managers architectural submittals finish samples">
+    <div class="q-header-row">
+      <span class="q-num">Q13 • Commercial Clients & GCs</span>
+    </div>
+    <div class="q-text">"Have you communicated with general contractors, commercial property managers, or corporate accounts?"</div>
+    <ul class="a-list">
+      <li>Yes, in commercial operations where <strong>deadlines, submittals, and strict engineering specs are non-negotiable</strong>.</li>
+      <li>Provide clear material finish samples, technical specifications, and coordinate install schedules with site readiness.</li>
+    </ul>
+  </div>
+
+  <!-- Q14 -->
+  <div id="q14" class="q-box" data-keywords="schedule est night shift hours setup internet fiber ups power reliability">
+    <div class="q-header-row">
+      <span class="q-num">Q14 • EST Schedule Readiness</span>
+    </div>
+    <div class="q-text">"Can you commit to a full-time U.S. Eastern Time (EST) schedule with zero interruption?"</div>
+    <ul class="a-list">
+      <li><strong>Yes, 100%.</strong> Full-time U.S. EST business hours without restriction.</li>
+      <li>Dedicated quiet office, <strong>300 Mbps fiber</strong>, LTE secondary failover, and <strong>dual UPS battery backups</strong>.</li>
+      <li>4+ years of international remote delivery experience across global time zones.</li>
+    </ul>
+  </div>
+
+  <!-- Q15 -->
+  <div id="q15" class="q-box" data-keywords="corebridge onboarding velocity learning curve adaptation signquote studio rate tables">
+    <div class="q-header-row">
+      <span class="q-num">Q15 • CoreBridge Onboarding</span>
+    </div>
+    <div class="q-text">"While you haven't operated our specific CoreBridge database yet, how fast will you get up to speed?"</div>
+    <ul class="a-list">
+      <li>Understand underlying database logic: rate tables, machine run-times, and assembly pricing.</li>
+      <li>Built <strong>SignQuote Studio</strong> modeling these exact calculations.</li>
+      <li>Master shop’s specific pricing catalog and standard operating templates within week one.</li>
+    </ul>
+  </div>
+
+  <!-- Q16 -->
+  <div id="q16" class="q-box" data-keywords="phone calls voice communication speaking clients wholesale vendors gcs technical clarification">
+    <div class="q-header-row">
+      <span class="q-num">Q16 • Voice Calls & Phone</span>
+      <span class="kbd-tag">Key: C</span>
+    </div>
+    <div class="q-text">"Are you comfortable speaking on voice calls with clients and wholesale vendors?"</div>
+    <ul class="a-list">
+      <li><strong>Yes, absolutely.</strong> 100% comfortable on voice and video calls in fluent professional English.</li>
+      <li><strong>Wholesale Vendors (Most Frequent):</strong> Daily calls with trade reps (Gemini, DSW, Grimco) to resolve drawing details, negotiate freight, and expedite rush deadlines.</li>
+      <li><strong>Internal Team:</strong> Quick Google Meet syncs with Outside Sales Reps (OSRs) and the in-house production manager.</li>
+      <li><strong>Commercial Clients & GCs (Technical Only):</strong> Clarifying site readiness, wall backing, power disconnects, and vector files (not cold-calling).</li>
+    </ul>
+    <div class="related-tags">
+      <span class="related-label">Related:</span>
+      <a href="#q2" class="tag-link" onclick="pulseCard('q2')">Q2 Vendors</a>
+      <a href="#q13" class="tag-link" onclick="pulseCard('q13')">Q13 General Contractors</a>
+    </div>
+  </div>
+
+  <!-- THE FASTSIGNS PREFERRED VENDOR NETWORK (MAGIC NAMES) -->
+  <div id="vendor-network" class="card" style="border-left: 3.5px solid var(--blue); margin-top: 14px;">
+    <div class="card-title" style="color: var(--blue);">
+      <span>🏆 Fastsigns Preferred Vendors</span>
+      <span class="kbd-tag">Key: V</span>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 8px;">
+      <div style="background: var(--card-inner); padding: 8px 10px; border-radius: 6px; border: 1px solid var(--border);">
+        <strong style="color: var(--blue); font-size: 12px; display: block;">Grimco</strong>
+        <span style="font-size: 11.5px; color: var(--text-dim);">FASTSIGNS Vendor of the Year. Daily truck delivery for ACM (Max-Metal), vinyl (3M, Avery), inks, LEDs.</span>
+      </div>
+      <div style="background: var(--card-inner); padding: 8px 10px; border-radius: 6px; border: 1px solid var(--border);">
+        <strong style="color: var(--blue); font-size: 12px; display: block;">Gemini Sign Products</strong>
+        <span style="font-size: 11.5px; color: var(--text-dim);">Gold standard for dimensional letters (acrylic, cast/metal) & plaques. Famous Lifetime Guarantee.</span>
+      </div>
+      <div style="background: var(--card-inner); padding: 8px 10px; border-radius: 6px; border: 1px solid var(--border);">
+        <strong style="color: var(--blue); font-size: 12px; display: block;">Direct Sign Wholesale (DSW)</strong>
+        <span style="font-size: 11.5px; color: var(--text-dim);">UL 48 illuminated channel letters, cloud cabinets, and custom raceways.</span>
+      </div>
+      <div style="background: var(--card-inner); padding: 8px 10px; border-radius: 6px; border: 1px solid var(--border);">
+        <strong style="color: var(--blue); font-size: 12px; display: block;">Peachtree City Foamcraft</strong>
+        <span style="font-size: 11.5px; color: var(--text-dim);">EPS foamcore monument signs with Poly-Armor stucco/brick finish.</span>
+      </div>
+      <div style="background: var(--card-inner); padding: 8px 10px; border-radius: 6px; border: 1px solid var(--border);">
+        <strong style="color: var(--blue); font-size: 12px; display: block;">Howard Industries</strong>
+        <span style="font-size: 11.5px; color: var(--text-dim);">Architectural frames, pylon signs, ADA tactile/Braille room signs.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- THE 7 SITUATIONAL PIVOT SHIELDS -->
+  <div id="pivot-card" class="card" style="border-left: 3.5px solid var(--green); margin-top: 14px; background: #0C1A2B;">
+    <div class="card-title" style="color: var(--green);">
+      <span>🛡️ 7 Situational Pivot Shields</span>
+      <span class="kbd-tag">Key: P</span>
+    </div>
+    <p style="font-size: 11px; color: var(--muted); margin-bottom: 8px;">
+      Estimator stance: You are not a welder; your job is <strong>spec verification, yield calculation & margin defense</strong>. Never apologize!
+    </p>
+
+    <!-- SHIELD 1: UNFAMILIAR SOFTWARE -->
+    <div class="shield-item" data-keywords="software cyrious control shopvox onyx rip flexi tools erp">
+      <div class="shield-header" style="color: #38BDF8;">
+        1. Unfamiliar Software (Cyrious, ShopVox, Onyx)
+      </div>
+      <p class="shield-text">
+        "While my primary focus has been CoreBridge's architecture, all sign ERPs follow the exact same underlying logic: rate tables, machine run-times, and square footage yields. Because I understand the database formula math, I adapt to new software interfaces within days."
+      </p>
+    </div>
+
+    <!-- SHIELD 2: PHYSICAL MACHINERY / HANDS-ON -->
+    <div class="shield-item" data-keywords="machinery cnc router hands on shop floor bucket truck welding bending">
+      <div class="shield-header" style="color: #F59E0B;">
+        2. Physical Machinery / Shop Floor Hands-On
+      </div>
+      <p class="shield-text">
+        "My expertise is on the <strong>digital pre-production and estimating desk</strong>. I calculate CNC cut-paths, sheet yields, machine run-times, and burdened labor hours so the in-house production crew has clean, profitable work orders ready to build without guessing."
+      </p>
+    </div>
+
+    <!-- SHIELD 3: OBSCURE / NICHE MATERIAL -->
+    <div class="shield-item" data-keywords="obscure niche material push through vacuum formed neon flex hdu density">
+      <div class="shield-header" style="color: #A855F7;">
+        3. Obscure Material / Specialty Build (Neon Flex, Push-Through)
+      </div>
+      <p class="shield-text">
+        "When a job calls for specialty fabrication like that, my priority is pulling the manufacturer technical data sheet to verify material thickness and scrap nesting. Then, I cross-reference pricing with our wholesale trade partners to guarantee our 50% gross margin is locked in before quoting."
+      </p>
+    </div>
+
+    <!-- SHIELD 4: PERMITS & CODE -->
+    <div class="shield-item" data-keywords="permits zoning city code wind load engineering pe stamp">
+      <div class="shield-header" style="color: #34D399;">
+        4. City Permits, Wind Loads & PE Stamps
+      </div>
+      <p class="shield-text">
+        "I treat permitting and structural engineering as essential line-item COGS that must never be missed. During takeoff, I check the site survey for square footage allowances and setbacks, and I factor local permit application fees and PE engineering stamps directly into the quote."
+      </p>
+    </div>
+
+    <!-- SHIELD 5: CUSTOMER SAYS TOO EXPENSIVE -->
+    <div class="shield-item" data-keywords="expensive competitor price resistance discount contractor lower quote">
+      <div class="shield-header" style="color: #F87171;">
+        5. "You're 20% More Expensive Than Competitors"
+      </div>
+      <p class="shield-text">
+        "I never discount blindly and destroy the shop’s margin. Instead, I offer <strong>value-engineering options</strong>: we look at standardizing return depths, adjusting non-structural gauge thicknesses, or tweaking fabrication methods to lower costs without compromising the visual design."
+      </p>
+    </div>
+
+    <!-- SHIELD 6: PROJECT DELAY / DAMAGE -->
+    <div class="shield-item" data-keywords="delay damaged freight vendor mistake wrong order crisis">
+      <div class="shield-header" style="color: #FBBF24;">
+        6. Project Delay / Damaged Wholesale Freight
+      </div>
+      <p class="shield-text">
+        "In operations, whenever a delay or discrepancy happens, I practice <strong>zero-delay communication</strong>. I inform the sales rep immediately with solutions—like arranging an expedited freight carrier or finding an alternative substrate—so the client's install deadline remains protected."
+      </p>
+    </div>
+
+    <!-- SHIELD 7: EMERGENCY / UNKNOWN WORD -->
+    <div class="shield-item" data-keywords="unknown word mystery acronym emergency don't know panic">
+      <div class="shield-header" style="color: #6EE7B7;">
+        7. Emergency Shield (Word / Acronym You Don't Know)
+      </div>
+      <p class="shield-text">
+        "Could you clarify how your shop classifies that specific component? In my workflow, once I have the technical callout and supplier spec sheet, I calculate the yield and labor burden to ensure it fits our 50% margin target."
+      </p>
+    </div>
+
+    <!-- 5-SEC UNIVERSAL SHORTCUT -->
+    <div style="background: rgba(16, 185, 129, 0.12); padding: 8px 10px; border-radius: 6px; border: 1px solid rgba(16, 185, 129, 0.3); margin-top: 8px;">
+      <div style="font-size: 10px; color: #34D399; font-weight: 800; text-transform: uppercase; margin-bottom: 2px;">
+        ⚡ 5-Sec Universal Shortcut:
+      </div>
+      <p style="font-size: 12px; color: #A7F3D0; font-weight: 600; line-height: 1.35;">
+        "My rule is always: verify engineering specs on the technical sheet, calculate the true material yield and labor burden, and defend our 50% margin so the shop never loses money on a custom build."
+      </p>
+    </div>
+  </div>
+
+  <!-- CLOSING QUESTIONS TO ASK THE OWNER -->
+  <div id="closing-card" class="card" style="border: 1px solid rgba(245, 158, 11, 0.4); margin-top: 14px;">
+    <div class="card-title">🎁 2 Closing Questions for YOU to Ask</div>
+    <p style="font-size: 12px; color: #FEF3C7; margin-bottom: 6px;">
+      1. <em>"What is your center's current volume split between in-house wide-format print vs. outsourced wholesale channel letter and monument packages?"</em>
+    </p>
+    <p style="font-size: 12px; color: #FEF3C7;">
+      2. <em>"What is the biggest quoting bottleneck your sales team is currently facing that you'd like your new estimator to solve right away?"</em>
+    </p>
+  </div>
+
+  <!-- FLOATING BOTTOM QUICK-JUMP DOCK (FIXED AT BOTTOM OF NARROW WINDOW) -->
+  <div class="bottom-dock">
+    <button class="dock-btn red" onclick="pulseCard('salary-card')" title="Salary Deflection [S]">S</button>
+    <button class="dock-btn green" onclick="pulseCard('margin-card')" title="50% Margin [M]">M</button>
+    <div class="dock-sep"></div>
+    <button class="dock-btn amber" onclick="pulseCard('q1')" title="Q1 CoreBridge">1</button>
+    <button class="dock-btn amber" onclick="pulseCard('q2')" title="Q2 Vendors">2</button>
+    <button class="dock-btn amber" onclick="pulseCard('q3')" title="Q3 Gemini AI">3</button>
+    <button class="dock-btn" onclick="pulseCard('q4')" title="Q4 Pitch">4</button>
+    <button class="dock-btn" onclick="pulseCard('q5')" title="Q5 Yields">5</button>
+    <button class="dock-btn" onclick="pulseCard('q6')" title="Q6 Substrates">6</button>
+    <button class="dock-btn" onclick="pulseCard('q7')" title="Q7 Takeoff">7</button>
+    <button class="dock-btn" onclick="pulseCard('q8')" title="Q8 Workflow">8</button>
+    <button class="dock-btn" onclick="pulseCard('q9')" title="Q9 Proofs">9</button>
+    <button class="dock-btn" onclick="pulseCard('q10')" title="Q10 Rush">0</button>
+    <button class="dock-btn" onclick="pulseCard('q16')" title="Q16 Voice Calls [C]">C</button>
+    <div class="dock-sep"></div>
+    <button class="dock-btn green" onclick="pulseCard('pivot-card')" title="Universal Pivot [P]">P</button>
+    <button class="dock-btn" onclick="pulseCard('vendor-network')" title="Vendor List [V]">V</button>
+  </div>
+
+  <!-- JAVASCRIPT FOR KEYBOARD SHORTCUTS & SEARCH -->
+  <script>
+    function pulseCard(id) {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        el.classList.remove('highlight-pulse');
+        void el.offsetWidth;
+        el.classList.add('highlight-pulse');
+        setTimeout(() => {
+          el.classList.remove('highlight-pulse');
+        }, 1600);
+      }
+    }
+
+    // Keyboard Shortcuts (Press 1-9, 0, C, P, S, M, G, V)
+    document.addEventListener('keydown', (e) => {
+      if (document.activeElement.tagName === 'INPUT') return;
+
+      const key = e.key.toUpperCase();
+      const keyMap = {
+        '1': 'q1',
+        '2': 'q2',
+        '3': 'q3',
+        '4': 'q4',
+        '5': 'q5',
+        '6': 'q6',
+        '7': 'q7',
+        '8': 'q8',
+        '9': 'q9',
+        '0': 'q10',
+        'C': 'q16',
+        'S': 'salary-card',
+        'M': 'margin-card',
+        'G': 'gemini-card',
+        'P': 'pivot-card',
+        'V': 'vendor-network'
+      };
+
+      if (keyMap[key]) {
+        e.preventDefault();
+        pulseCard(keyMap[key]);
+      }
+    });
+
+    // Real-Time Live Search Filter
+    const searchInput = document.getElementById('quickSearch');
+    const qBoxes = document.querySelectorAll('.q-box');
+
+    searchInput.addEventListener('input', (e) => {
+      const query = e.target.value.toLowerCase().trim();
+      if (!query) {
+        qBoxes.forEach(box => {
+          box.style.display = '';
+          box.classList.remove('highlight-pulse');
+        });
+        return;
+      }
+
+      let firstMatch = null;
+      qBoxes.forEach(box => {
+        const text = (box.innerText + ' ' + (box.dataset.keywords || '')).toLowerCase();
+        if (text.includes(query)) {
+          box.style.display = '';
+          if (!firstMatch) firstMatch = box;
+        } else {
+          box.style.display = 'none';
+        }
+      });
+
+      if (firstMatch) {
+        firstMatch.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  </script>
+
+</body>
+</html>

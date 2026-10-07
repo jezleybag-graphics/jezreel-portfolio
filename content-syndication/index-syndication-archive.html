@@ -1,0 +1,2673 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jezreel Dave Leybag — Social Media & Content Syndication Specialist</title>
+    <meta name="description" content="Operations-first Social Media & Content Syndication Specialist. Transforming core personal growth assets into 200+ monthly multi-platform publishing assets across YouTube, LinkedIn, Instagram, and X with 100% technical accuracy.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0284c7;
+            --primary-dark: #0369a1;
+            --primary-light: #e0f2fe;
+            --primary-glow: rgba(2, 132, 199, 0.15);
+            --slate-950: #020617;
+            --slate-900: #0f172a;
+            --slate-800: #1e293b;
+            --slate-700: #334155;
+            --slate-600: #475569;
+            --slate-400: #94a3b8;
+            --slate-200: #e2e8f0;
+            --slate-100: #f1f5f9;
+            --slate-50: #f8fafc;
+            --emerald-600: #059669;
+            --emerald-500: #10b981;
+            --emerald-50: #ecfdf5;
+            --amber-600: #d97706;
+            --amber-50: #fffbeb;
+            --purple-600: #7c3aed;
+            --purple-50: #f5f3ff;
+            --border: #e2e8f0;
+            --shadow-subtle: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, 0.03);
+            --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            --shadow-elevated: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--slate-50);
+            color: var(--slate-800);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* ACCESSIBILITY & FOCUS STYLES (VERCEL WEB INTERFACE GUIDELINES) */
+        :focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 2px;
+        }
+
+        .skip-link {
+            position: absolute;
+            top: -999px;
+            left: 16px;
+            z-index: 1000;
+            background: var(--slate-900);
+            color: #ffffff;
+            padding: 10px 18px;
+            font-size: 13px;
+            font-weight: 700;
+            border-radius: var(--radius-sm);
+            text-decoration: none;
+            box-shadow: var(--shadow-elevated);
+            transition: top 0.15s ease;
+        }
+
+        .skip-link:focus, .skip-link:focus-visible {
+            top: 16px;
+            outline: 2px solid var(--primary);
+            outline-offset: 2px;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+
+        /* ANCHOR SCROLL PADDING (PREVENTS STICKY HEADER OVERLAP) */
+        section[id], .section-header, [id] {
+            scroll-margin-top: 84px;
+        }
+
+        /* TYPOGRAPHY REFINEMENTS (PREVENTS WIDOWS & NUMBER JITTER) */
+        h1, h2, h3, h4, .section-header h2, .card-title {
+            text-wrap: balance;
+        }
+
+        .kpi-num, .sim-slider-val, table td, table th, .meta-strip, .stat-badge, .step-num, .slide-num {
+            font-variant-numeric: tabular-nums;
+        }
+
+        input[type=range]:focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 3px;
+        }
+
+        .tab-btn:focus-visible, .copy-btn:focus-visible, .btn-primary:focus-visible, .btn-secondary:focus-visible, .nav-cta:focus-visible, .nav-links a:focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 2px;
+        }
+
+        button, a, input[type=range], input[type=checkbox] {
+            cursor: pointer;
+        }
+
+        /* NAVIGATION / STICKY HEADER */
+        .top-nav {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .nav-inner {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--slate-900);
+            font-weight: 800;
+            font-size: 15px;
+            letter-spacing: -0.3px;
+        }
+
+        .nav-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            font-weight: 800;
+            box-shadow: 0 2px 4px var(--primary-glow);
+        }
+
+        .nav-links {
+            display: none;
+            align-items: center;
+            gap: 20px;
+            list-style: none;
+        }
+
+        @media (min-width: 860px) {
+            .nav-links {
+                display: flex;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 20px 14px;
+            }
+            .card {
+                padding: 18px 14px;
+            }
+            .status-pill {
+                font-size: 10.5px;
+                padding: 4px 10px;
+                max-width: 100%;
+                white-space: normal;
+                line-height: 1.35;
+                box-sizing: border-box;
+            }
+            h1 {
+                font-size: 24px !important;
+                line-height: 1.25 !important;
+            }
+            .hero::before, .footer-cta::before {
+                display: none !important;
+            }
+            .nav-inner {
+                padding: 10px 14px;
+            }
+            .nav-brand span {
+                display: none;
+            }
+            .nav-cta {
+                padding: 6px 12px;
+                font-size: 11.5px;
+                white-space: nowrap;
+                flex-shrink: 0;
+            }
+            .hero-actions .btn-primary, .hero-actions .btn-secondary {
+                width: 100%;
+                justify-content: center;
+            }
+            .meta-strip {
+                gap: 10px 14px;
+                font-size: 12.5px;
+                word-break: break-word;
+            }
+            .qc-list {
+                grid-template-columns: 1fr !important;
+            }
+            .protocol-grid {
+                grid-template-columns: 1fr !important;
+            }
+            .workflow-diagram {
+                grid-template-columns: 1fr !important;
+            }
+            .kpi-grid {
+                grid-template-columns: 1fr !important;
+            }
+            .prospecting-grid {
+                grid-template-columns: 1fr !important;
+            }
+            .code-container {
+                font-size: 10.5px;
+                padding: 12px 14px;
+                word-break: break-all;
+            }
+            .footer-cta {
+                padding: 36px 16px !important;
+            }
+            .footer-cta a {
+                width: 100%;
+                max-width: 100%;
+                font-size: 12px;
+                padding: 10px 14px !important;
+                justify-content: center;
+                word-break: break-all;
+            }
+        }
+
+        .prospecting-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--slate-600);
+            font-size: 13px;
+            font-weight: 600;
+            transition: color 0.15s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--primary);
+            color: white !important;
+            padding: 7px 16px;
+            border-radius: var(--radius-sm);
+            font-size: 12.5px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: background-color 0.15s ease, transform 0.15s ease;
+            box-shadow: 0 2px 4px var(--primary-glow);
+        }
+
+        .nav-cta:hover {
+            background: var(--primary-dark);
+            transform: translateY(-1px);
+        }
+
+        /* CONTAINER */
+        .container {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            background: white;
+            border-bottom: 1px solid var(--border);
+            padding: 56px 0 44px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 480px;
+            height: 480px;
+            background: radial-gradient(circle, rgba(2, 132, 199, 0.06) 0%, rgba(255, 255, 255, 0) 70%);
+            pointer-events: none;
+        }
+
+        .status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--primary-light);
+            color: var(--primary-dark);
+            font-size: 12px;
+            font-weight: 700;
+            padding: 5px 14px;
+            border-radius: 999px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(2, 132, 199, 0.2);
+        }
+
+        .pulsing-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--emerald-500);
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .pulsing-dot::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--emerald-500);
+            opacity: 0.5;
+            animation: pulse-ring 1.8s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+        }
+
+        @keyframes pulse-ring {
+            0% { transform: scale(0.8); opacity: 0.8; }
+            100% { transform: scale(2.4); opacity: 0; }
+        }
+
+        h1 {
+            font-size: clamp(28px, 4vw, 42px);
+            font-weight: 800;
+            color: var(--slate-900);
+            line-height: 1.18;
+            margin-bottom: 16px;
+            letter-spacing: -0.8px;
+        }
+
+        .subtitle {
+            font-size: clamp(16px, 1.8vw, 18px);
+            color: var(--slate-600);
+            max-width: 880px;
+            margin-bottom: 28px;
+            line-height: 1.6;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 32px;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--primary);
+            color: white;
+            font-weight: 700;
+            font-size: 14px;
+            padding: 12px 24px;
+            border-radius: var(--radius-sm);
+            text-decoration: none;
+            transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+            box-shadow: 0 4px 12px var(--primary-glow);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(2, 132, 199, 0.25);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--slate-100);
+            color: var(--slate-800);
+            font-weight: 700;
+            font-size: 14px;
+            padding: 12px 24px;
+            border-radius: var(--radius-sm);
+            text-decoration: none;
+            border: 1px solid var(--border);
+            transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+        }
+
+        .btn-secondary:hover {
+            background: var(--slate-200);
+            color: var(--slate-900);
+            transform: translateY(-2px);
+        }
+
+        .meta-strip {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px 24px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            font-size: 13.5px;
+            color: var(--slate-600);
+        }
+
+        .meta-strip strong {
+            color: var(--slate-900);
+        }
+
+        /* SECTION HEADERS */
+        .section-header {
+            margin: 52px 0 22px;
+        }
+
+        .section-header h2 {
+            font-size: clamp(20px, 2.5vw, 25px);
+            font-weight: 800;
+            color: var(--slate-900);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: -0.4px;
+        }
+
+        .section-header p {
+            font-size: 15px;
+            color: var(--slate-600);
+            margin-top: 6px;
+        }
+
+        /* CARDS */
+        .card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 28px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow-subtle);
+            max-width: 100%;
+            overflow: hidden;
+            transition: box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+
+        .card:hover {
+            box-shadow: var(--shadow-card);
+            border-color: #cbd5e1;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 16px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .card-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--slate-900);
+            letter-spacing: -0.2px;
+        }
+
+        .card-tag {
+            font-size: 11.5px;
+            font-weight: 700;
+            color: var(--primary-dark);
+            background: var(--primary-light);
+            padding: 4px 11px;
+            border-radius: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* BEFORE / AFTER TRANSFORMATION GRID (UI/UX PRO MAX PATTERN) */
+        .transformation-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        @media (min-width: 768px) {
+            .transformation-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .transform-box {
+            border-radius: var(--radius-md);
+            padding: 22px;
+            border: 1px solid var(--border);
+        }
+
+        .transform-box.before {
+            background: #fff5f5;
+            border-color: #fed7d7;
+        }
+
+        .transform-box.after {
+            background: #f0fdf4;
+            border-color: #bbf7d0;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.08);
+        }
+
+        .transform-title {
+            font-size: 13px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .transform-box.before .transform-title {
+            color: #dc2626;
+        }
+
+        .transform-box.after .transform-title {
+            color: var(--emerald-600);
+        }
+
+        .transform-list {
+            list-style: none;
+            font-size: 13px;
+            space-y: 8px;
+        }
+
+        .transform-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        .transform-icon {
+            flex-shrink: 0;
+            margin-top: 1px;
+            font-size: 13px;
+        }
+
+        .transform-text {
+            flex: 1;
+        }
+
+        .transform-box.before .transform-list li {
+            color: #7f1d1d;
+        }
+
+        .transform-box.after .transform-list li {
+            color: #14532d;
+        }
+
+        /* WORKFLOW DIAGRAM */
+        .workflow-diagram {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .workflow-step {
+            background: var(--slate-50);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 16px;
+            text-align: center;
+            position: relative;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .workflow-step:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-subtle);
+        }
+
+        .workflow-step.core {
+            border: 2px solid var(--primary);
+            background: #f0f9ff;
+        }
+
+        .workflow-step.seo {
+            border: 2px solid var(--emerald-600);
+            background: #ecfdf5;
+        }
+
+        .step-num {
+            font-size: 10.5px;
+            font-weight: 800;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+
+        .step-name {
+            font-size: 13.5px;
+            font-weight: 700;
+            color: var(--slate-900);
+            margin-bottom: 4px;
+        }
+
+        .step-desc {
+            font-size: 11.5px;
+            color: var(--slate-600);
+            line-height: 1.45;
+        }
+
+        /* PROTOCOL BOXES */
+        .protocol-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 14px;
+            margin-top: 16px;
+        }
+
+        .protocol-box {
+            background: var(--slate-50);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 18px;
+            font-size: 12.5px;
+            transition: background-color 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+
+        .protocol-box:hover {
+            background: white;
+            box-shadow: var(--shadow-subtle);
+        }
+
+        .protocol-step-badge {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10.5px;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+
+        /* INTERACTIVE SIMULATOR (ENHANCED UI) */
+        .sim-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 28px;
+        }
+
+        @media (min-width: 920px) {
+            .sim-grid {
+                grid-template-columns: 5fr 6fr;
+            }
+        }
+
+        .sim-slider-group {
+            margin-bottom: 20px;
+        }
+
+        .sim-slider-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .sim-slider-label {
+            font-size: 12.5px;
+            font-weight: 700;
+            color: var(--slate-700);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .sim-slider-val {
+            font-size: 13.5px;
+            font-weight: 800;
+            color: var(--primary);
+            background: var(--primary-light);
+            padding: 3px 10px;
+            border-radius: 6px;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        input[type=range] {
+            width: 100%;
+            height: 7px;
+            background: var(--slate-200);
+            border-radius: 4px;
+            outline: none;
+            accent-color: var(--primary);
+            cursor: pointer;
+        }
+
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+
+        .kpi-card {
+            background: var(--slate-50);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 18px;
+            text-align: left;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .kpi-card:hover {
+            transform: translateY(-2px);
+            background: white;
+            box-shadow: var(--shadow-subtle);
+        }
+
+        .kpi-num {
+            font-size: clamp(22px, 3vw, 28px);
+            font-weight: 800;
+            color: var(--slate-900);
+            line-height: 1.1;
+            margin-top: 6px;
+            letter-spacing: -0.5px;
+        }
+
+        .kpi-label {
+            font-size: 11.5px;
+            font-weight: 700;
+            color: var(--slate-600);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .kpi-sub {
+            font-size: 11px;
+            color: var(--slate-500);
+            margin-top: 6px;
+        }
+
+        /* INTERACTIVE SPECIMEN TABS (UI/UX PRO MAX POLISH) */
+        .tab-btn-group {
+            display: flex;
+            gap: 8px;
+            border-bottom: 2px solid var(--border);
+            margin-bottom: 20px;
+            overflow-x: auto;
+            max-width: 100%;
+            width: 100%;
+            padding-bottom: 2px;
+            -webkit-overflow-scrolling: touch;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: none;
+            padding: 10px 18px;
+            font-size: 13.5px;
+            font-weight: 700;
+            color: var(--slate-600);
+            border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+            position: relative;
+            transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+            white-space: nowrap;
+        }
+
+        .tab-btn:hover {
+            color: var(--slate-900);
+            background: var(--slate-100);
+        }
+
+        .tab-btn.active {
+            color: var(--primary);
+            background: white;
+            border-bottom: 2px solid var(--primary);
+            margin-bottom: -2px;
+        }
+
+        .tab-pane {
+            display: none;
+            animation: fadeIn 0.2s ease forwards;
+        }
+
+        .tab-pane.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(4px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* CAROUSEL TRACK */
+        .carousel-track {
+            display: flex;
+            gap: 12px;
+            overflow-x: auto;
+            max-width: 100%;
+            width: 100%;
+            padding-bottom: 14px;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .carousel-slide {
+            flex: 0 0 170px;
+            height: 215px;
+            background: var(--slate-900);
+            color: white;
+            border-radius: var(--radius-sm);
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            font-size: 11px;
+            box-shadow: var(--shadow-subtle);
+            border: 1px solid var(--slate-800);
+            transition: transform 0.2s ease;
+        }
+
+        .carousel-slide:hover {
+            transform: translateY(-3px);
+        }
+
+        .slide-num {
+            font-size: 10px;
+            font-weight: 700;
+            color: #38bdf8;
+            letter-spacing: 0.5px;
+        }
+
+        .slide-headline {
+            font-size: 12.5px;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .slide-body {
+            font-size: 10.5px;
+            color: #cbd5e1;
+            line-height: 1.4;
+        }
+
+        /* CODE BLOCK WITH 1-CLICK COPY BUTTON */
+        .code-container {
+            position: relative;
+            background: var(--slate-900);
+            color: #e2e8f0;
+            border-radius: var(--radius-sm);
+            padding: 16px 20px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11.5px;
+            line-height: 1.55;
+            margin-top: 14px;
+            overflow-x: auto;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #cbd5e1;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+            padding: 4px 10px;
+            font-size: 11px;
+            font-weight: 600;
+            transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+        }
+
+        .copy-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+
+        /* CHECKLIST */
+        .qc-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 12px;
+        }
+
+        .qc-item {
+            background: var(--slate-50);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 14px 16px;
+            font-size: 12.5px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            line-height: 1.45;
+            transition: background-color 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+        }
+
+        .qc-item:hover {
+            background: white;
+            box-shadow: var(--shadow-subtle);
+            border-color: #cbd5e1;
+        }
+
+        .qc-icon {
+            color: var(--emerald-600);
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        /* TABLE */
+        .table-responsive {
+            width: 100%;
+            max-width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12.5px;
+            text-align: left;
+        }
+
+        th {
+            background: var(--slate-100);
+            color: var(--slate-700);
+            font-weight: 700;
+            padding: 12px 14px;
+            border-bottom: 2px solid var(--border);
+            font-size: 11.5px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        td {
+            padding: 12px 14px;
+            border-bottom: 1px solid var(--border);
+            color: var(--slate-700);
+        }
+
+        tr:hover td {
+            background: rgba(248, 250, 252, 0.8);
+        }
+
+        .badge-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 3px 9px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .status-published {
+            background: var(--emerald-50);
+            color: var(--emerald-600);
+            border: 1px solid #a7f3d0;
+        }
+
+        .status-scheduled {
+            background: #dbeafe;
+            color: #1e40af;
+            border: 1px solid #bfdbfe;
+        }
+
+        .status-qc {
+            background: #fef3c7;
+            color: #92400e;
+            border: 1px solid #fde68a;
+        }
+
+        /* FOOTER CTA */
+        .footer-cta {
+            background: var(--slate-950);
+            color: white;
+            border-radius: var(--radius-lg);
+            padding: 48px 32px;
+            text-align: center;
+            margin-top: 56px;
+            box-shadow: var(--shadow-elevated);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-cta::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(2, 132, 199, 0.12) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .footer-cta h3 {
+            font-size: clamp(22px, 3vw, 28px);
+            font-weight: 800;
+            margin-bottom: 12px;
+            letter-spacing: -0.4px;
+        }
+
+        .footer-cta p {
+            color: var(--slate-400);
+            font-size: 15px;
+            max-width: 680px;
+            margin: 0 auto 28px;
+            line-height: 1.6;
+        }
+
+        /* PHOTO AVATAR & HERO AVATAR */
+        .nav-avatar-img {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--primary-light);
+            box-shadow: 0 2px 6px var(--primary-glow);
+            display: block;
+            flex-shrink: 0;
+        }
+
+        .meta-avatar-img {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            object-fit: cover;
+            vertical-align: middle;
+            margin-right: 6px;
+            border: 1.5px solid var(--primary);
+            flex-shrink: 0;
+            display: inline-block;
+        }
+
+        /* FLYWHEEL GRID (FORMAT CONVERSION) */
+        .flywheel-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin-top: 14px;
+        }
+
+        .flywheel-step {
+            background: var(--slate-50);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+        }
+
+        .flywheel-step:hover {
+            background: white;
+            box-shadow: var(--shadow-subtle);
+            transform: translateY(-2px);
+        }
+
+        .flywheel-step-badge {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            font-weight: 800;
+            padding: 3px 8px;
+            border-radius: 4px;
+            background: #e0f2fe;
+            color: #0369a1;
+            display: inline-block;
+            margin-bottom: 10px;
+            align-self: flex-start;
+        }
+
+        .flywheel-step-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--slate-900);
+            margin-bottom: 6px;
+        }
+
+        .flywheel-step-desc {
+            font-size: 12.5px;
+            color: var(--slate-600);
+            line-height: 1.5;
+            margin-bottom: 14px;
+            flex-grow: 1;
+        }
+
+        .flywheel-output-badge {
+            font-size: 11px;
+            font-weight: 700;
+            background: white;
+            border: 1px solid var(--border);
+            padding: 4px 8px;
+            border-radius: 4px;
+            color: var(--slate-700);
+        }
+
+        /* CADENCE ARCHITECTURE (200+ POSTS/MO) */
+        .cadence-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 14px;
+            margin-bottom: 16px;
+        }
+
+        .cadence-card {
+            background: var(--slate-50);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 16px;
+            font-size: 12.5px;
+            transition: background-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .cadence-card:hover {
+            background: white;
+            box-shadow: var(--shadow-subtle);
+        }
+
+        .cadence-platform {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 800;
+            color: var(--slate-900);
+            margin-bottom: 8px;
+            font-size: 13.5px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 6px;
+        }
+
+        .cadence-pill {
+            background: var(--primary-light);
+            color: var(--primary-dark);
+            font-size: 10.5px;
+            font-weight: 800;
+            padding: 2px 7px;
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .cadence-detail {
+            color: var(--slate-700);
+            margin-bottom: 4px;
+            font-size: 12px;
+        }
+
+        .cadence-spec {
+            font-size: 11px;
+            color: var(--slate-400);
+            margin-top: 8px;
+            padding-top: 6px;
+            border-top: 1px dashed var(--border);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .cadence-summary-bar {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-radius: var(--radius-sm);
+            padding: 12px 18px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 10px;
+            font-size: 13px;
+            color: #166534;
+        }
+
+        /* DAM & ASSET LIBRARY */
+        .dam-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 14px;
+        }
+
+        @media (min-width: 768px) {
+            .dam-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .dam-box {
+            background: var(--slate-900);
+            color: #e2e8f0;
+            border-radius: var(--radius-sm);
+            padding: 16px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11.5px;
+            line-height: 1.6;
+            overflow-x: auto;
+        }
+
+        .dam-label {
+            font-size: 11px;
+            font-weight: 800;
+            color: #38bdf8;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+            border-bottom: 1px solid var(--slate-700);
+            padding-bottom: 4px;
+        }
+
+        .dam-tag {
+            background: var(--slate-100);
+            border: 1px solid var(--border);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            color: var(--slate-700);
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 600;
+        }
+
+        /* PRINT STYLES FOR PDF PERFECTION */
+        @media print {
+            .top-nav, .tab-btn-group, .hero-actions, .copy-btn {
+                display: none !important;
+            }
+            .tab-pane {
+                display: block !important;
+                margin-bottom: 20px !important;
+            }
+            body {
+                background: white !important;
+                color: #0f172a !important;
+                font-size: 11px !important;
+            }
+            .container {
+                max-width: 100% !important;
+                padding: 0 !important;
+            }
+            .card {
+                box-shadow: none !important;
+                border: 1px solid #cbd5e1 !important;
+                padding: 16px !important;
+                page-break-inside: avoid !important;
+            }
+            .carousel-track {
+                display: grid !important;
+                grid-template-columns: repeat(4, 1fr) !important;
+                gap: 8px !important;
+            }
+            .carousel-slide {
+                flex: none !important;
+                height: 140px !important;
+            }
+            .footer-cta {
+                padding: 24px !important;
+                page-break-inside: avoid !important;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+            .pulsing-dot::after {
+                animation: none !important;
+                display: none !important;
+            }
+            .tab-pane {
+                animation: none !important;
+            }
+        }
+
+        /* EMBEDDED VIDEO VAULT (7 SPECIMENS) */
+        .video-vault-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        @media (min-width: 860px) {
+            .video-vault-grid {
+                grid-template-columns: 330px 1fr;
+            }
+        }
+        .player-wrapper {
+            background: #000;
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            aspect-ratio: 9/16;
+            max-height: 560px;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.18);
+            position: relative;
+        }
+        .player-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+        .playlist-container {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            max-height: 560px;
+            overflow-y: auto;
+            padding-right: 4px;
+        }
+        .video-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 11px 14px;
+            background: var(--slate-50);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            text-align: left;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .video-item:hover {
+            background: #f0f9ff;
+            border-color: #bae6fd;
+            transform: translateX(2px);
+        }
+        .video-item.active {
+            background: #f0f9ff;
+            border-color: var(--primary);
+            border-left: 4px solid var(--primary);
+        }
+        .video-num {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 800;
+            color: var(--primary);
+            background: #e0f2fe;
+            padding: 4px 8px;
+            border-radius: 4px;
+            flex-shrink: 0;
+        }
+        .video-info {
+            flex-grow: 1;
+            min-width: 0;
+        }
+        .video-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--slate-900);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .video-meta {
+            font-size: 11px;
+            color: var(--slate-600);
+            margin-top: 2px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+        .video-tag {
+            background: white;
+            border: 1px solid var(--border);
+            padding: 1px 6px;
+            border-radius: 3px;
+            font-size: 10px;
+            font-weight: 600;
+            color: var(--slate-700);
+        }
+        /* NOTION SIMULATION STYLES */
+        .notion-frame {
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            box-shadow: var(--shadow-card);
+        }
+        .notion-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 20px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid var(--border);
+        }
+        .notion-icon {
+            font-size: 28px;
+            background: var(--slate-100);
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .notion-callout {
+            background: #f8fafc;
+            border-left: 4px solid var(--primary);
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            padding: 14px 18px;
+            font-size: 13.5px;
+            color: var(--slate-700);
+            margin: 16px 0;
+        }
+        .notion-checklist {
+            list-style: none;
+            margin: 14px 0;
+            padding: 0;
+        }
+        .notion-checklist li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+            color: var(--slate-800);
+            padding: 8px 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        .notion-check-box {
+            width: 18px;
+            height: 18px;
+            border-radius: 4px;
+            border: 2px solid var(--emerald-500);
+            background: var(--emerald-50);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--emerald-600);
+            font-size: 12px;
+            font-weight: 800;
+            flex-shrink: 0;
+        }
+
+        /* SCHEDULER BATCH STYLES */
+        .scheduler-hero {
+            background: linear-gradient(135deg, var(--slate-900) 0%, #0369a1 100%);
+            color: white;
+            border-radius: var(--radius-md);
+            padding: 22px;
+            margin-bottom: 20px;
+        }
+        .scheduler-stats-strip {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 10px;
+            margin-top: 14px;
+        }
+        .scheduler-stat-pill {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: var(--radius-sm);
+            padding: 10px 14px;
+            text-align: center;
+        }
+        .scheduler-stat-val {
+            font-size: 20px;
+            font-weight: 800;
+            font-variant-numeric: tabular-nums;
+            color: #ffffff;
+        }
+        .scheduler-stat-lbl {
+            font-size: 11px;
+            font-weight: 600;
+            color: #e0f2fe;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .filter-btn-group {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin: 16px 0 12px;
+        }
+        .filter-btn {
+            background: white;
+            border: 1px solid var(--border);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--slate-700);
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- SKIP LINK (A11Y - VERCEL WEB INTERFACE GUIDELINES) -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- STICKY NAVIGATION BAR (UI/UX PRO MAX SPEC) -->
+    <nav class="top-nav" aria-label="Main Navigation">
+        <div class="nav-inner">
+            <a href="#" class="nav-brand">
+                <img src="jezreel-photo.jpg" alt="Jezreel Dave Leybag" class="nav-avatar-img" width="34" height="34">
+                <span>Jezreel Dave Leybag</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#flywheel">Flywheel</a></li>
+                <li><a href="#live-specimen">Live Specimen</a></li>
+                <li><a href="#operations-os">Operations OS</a></li>
+                <li><a href="#qc-standards">QC Standards</a></li>
+            </ul>
+            <a href="mailto:jezreelleybag.graphics@gmail.com" class="nav-cta">
+                <svg aria-hidden="true" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                Hire Operator
+            </a>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="hero">
+        <div class="container" style="padding-top: 0; padding-bottom: 0;">
+            <div class="status-pill">
+                <span class="pulsing-dot" aria-hidden="true"></span>
+                <span>Operations-First • Content Activation & High-Volume Syndication Engine</span>
+            </div>
+            <h1>Social Media & Content Syndication Specialist</h1>
+            <p class="subtitle">
+                Built for high-volume Personal Growth & Self-Help brands. I take your core creative assets—founder keynotes, YouTube scripts, and pillar recordings—and activate them into <strong>200+ monthly multi-platform publishing assets</strong> across YouTube, LinkedIn, Instagram, and X. Zero creative friction, 100% technical formatting accuracy, and disciplined distribution operations.
+            </p>
+
+            <div class="hero-actions">
+                <a href="#live-specimen" class="btn-primary">
+                    <svg aria-hidden="true" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                    Explore Live Specimen ➔
+                </a>
+                <a href="#operations-os" class="btn-secondary">
+                    <svg aria-hidden="true" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                    Master Schedule & Operations OS (200+ Posts/Mo) ➔
+                </a>
+            </div>
+
+            <div class="meta-strip">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <img src="jezreel-photo.jpg" alt="Jezreel Dave Leybag" class="meta-avatar-img" width="24" height="24">
+                    <span><strong>Operator:</strong> Jezreel Dave Leybag</span>
+                </div>
+                <div><strong>Role Target:</strong> Social Media / Syndication Specialist</div>
+                <div><strong>Reports To:</strong> Creative Director / Founder Ready</div>
+                <div><strong>Industry:</strong> Personal Growth & Self-Help</div>
+                <div><strong>Core Stack:</strong> Notion • Asana • Metricool • Buffer • Canva Pro • Premiere • CapCut</div>
+                <div><strong>Availability:</strong> Remote Full-Time (LATAM / South Africa / US Timezone Aligned)</div>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content" class="container" style="padding-top: 24px;">
+
+        <!-- BEFORE / AFTER TRANSFORMATION COMPARISON (UI/UX PRO MAX PATTERN) -->
+        <section id="comparison" aria-labelledby="transformation-heading">
+            <h3 id="transformation-heading" class="sr-only" style="display:none;">System Comparison</h3>
+            <div class="transformation-grid">
+                <div class="transform-box before">
+                    <div class="transform-title">
+                        <svg aria-hidden="true" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+                        Without Syndication Engine (Ad-Hoc Reposting)
+                    </div>
+                    <ul class="transform-list">
+                        <li><span class="transform-icon">❌</span> <div class="transform-text"><strong>SEO Cannibalization:</strong> Duplicate content indexed by Google, outranking root domain.</div></li>
+                        <li><span class="transform-icon">❌</span> <div class="transform-text"><strong>Founder Burnout:</strong> 15+ hours spent manually formatting social posts and video snippets.</div></li>
+                        <li><span class="transform-icon">❌</span> <div class="transform-text"><strong>Paid Ad Drain:</strong> ~$4,200/mo spent on native PPC (Taboola/Outbrain) with zero organic backlink equity.</div></li>
+                        <li><span class="transform-icon">❌</span> <div class="transform-text"><strong>Vanity Metrics:</strong> Zero UTM tracking or CRM attribution; unknown pipeline impact.</div></li>
+                    </ul>
+                </div>
+                <div class="transform-box after">
+                    <div class="transform-title">
+                        <svg aria-hidden="true" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                        With Jezreel's Syndication Engine (Automated Machine)
+                    </div>
+                    <ul class="transform-list">
+                        <li><span class="transform-icon">✓</span> <div class="transform-text"><strong>100% SEO Safety:</strong> Strict 14–21&nbsp;day indexing quarantine and verified <code style="font-family:'JetBrains Mono'; font-size:11px;">rel="canonical"</code> tags.</div></li>
+                        <li><span class="transform-icon">✓</span> <div class="transform-text"><strong>Zero Founder Friction:</strong> 1 single 8-min anchor generates 200+ multi-platform publishing assets.</div></li>
+                        <li><span class="transform-icon">✓</span> <div class="transform-text"><strong>Compounded Backlink Equity:</strong> 26+ monthly high-authority backlinks gained via embeddable visual kits.</div></li>
+                        <li><span class="transform-icon">✓</span> <div class="transform-text"><strong>Closed-Loop MQLs:</strong> Direct lead magnet handoffs tracked into CRM via verified UTM tokens.</div></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- PHILOSOPHY: PROCESS OVER PERSONALITY -->
+        <div class="card" style="border-left: 4px solid var(--primary);">
+            <div class="card-header" style="border-bottom: none; padding-bottom: 0; margin-bottom: 6px;">
+                <div class="card-title">The Philosophy: Process Over Personality (The Nuts & Bolts Engine)</div>
+                <div class="card-tag">
+                    <svg aria-hidden="true" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                    Operations-First Role
+                </div>
+            </div>
+            <p style="font-size: 14px; color: var(--slate-700); line-height: 1.65;">
+                “A great message is useless if it isn’t syndicated correctly. I am not an aspiring ‘creative’ looking to be the talent or use this as a stepping stone to an influencer career. My mission is to be the disciplined, repeatable execution engine behind the <strong>Creative Director and Founder</strong>. Content marketing creates the core message; content syndication activates it across platforms. I live for the nuts and bolts of distribution—taking core assets, formatting them with 100% technical accuracy, repurposing them into high-dwell derivatives, and maintaining a rigorous 200+ monthly calendar without missing a single beat.”
+            </p>
+        </div>
+
+        <!-- SECTION 1: CONTENT SYNDICATION & REPURPOSING ENGINE -->
+        <section id="flywheel" class="section-header">
+            <h2>
+                <svg aria-hidden="true" width="22" height="22" fill="none" stroke="var(--primary)" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                1. Content Syndication & Repurposing Engine
+            </h2>
+            <p>How 1 core creative asset is systematically activated into 200+ monthly multi-platform derivatives across YouTube, LinkedIn, Instagram, and X.</p>
+        </section>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">End-to-End Asset Slicing & Transformation Lifecycle</div>
+                <div class="card-tag">Format Conversion</div>
+            </div>
+            <p style="font-size: 13.5px; color: var(--slate-600); margin-bottom: 14px;">
+                How a single spoken YouTube script or founder keynote is repurposed into structured canonical articles, Notion resource toolkits, and high-velocity social cuts:
+            </p>
+            <div class="flywheel-grid">
+                <div class="flywheel-step">
+                    <span class="flywheel-step-badge">STAGE 01: CORE ASSET</span>
+                    <div class="flywheel-step-title">YouTube Script / Founder Keynote</div>
+                    <div class="flywheel-step-desc">10–12 min spoken narrative transcript (1,600+ words). Full of verbal frameworks, lessons, and personal growth advice.</div>
+                    <div class="flywheel-output-badge">📥 Input: 16:9 Video + Transcript</div>
+                </div>
+                <div class="flywheel-step">
+                    <span class="flywheel-step-badge" style="background: #ecfdf5; color: #059669;">STAGE 02: FORMAT CONVERSION #1</span>
+                    <div class="flywheel-step-title">Structured Canonical Article</div>
+                    <div class="flywheel-step-desc">Adapted into a scannable article on Medium/Substack with clear H2s, evergreen context (scrubbed of perishable dates), and active <code style="font-family:'JetBrains Mono'; font-size:11px;">rel="canonical"</code> tags.</div>
+                    <div class="flywheel-output-badge">📤 Output: Canonical SEO Article</div>
+                </div>
+                <div class="flywheel-step">
+                    <span class="flywheel-step-badge" style="background: #fdf2f8; color: #db2777;">STAGE 03: FORMAT CONVERSION #2</span>
+                    <div class="flywheel-step-title">Interactive Notion SOP Toolkit</div>
+                    <div class="flywheel-step-desc">The actionable framework codified into a 1-page Notion checklist / audit template with closed-loop UTM lead capture for audience conversion.</div>
+                    <div class="flywheel-output-badge">📤 Output: Downloadable Notion SOP</div>
+                </div>
+                <div class="flywheel-step">
+                    <span class="flywheel-step-badge" style="background: #f3e8ff; color: #7c3aed;">STAGE 04: FORMAT CONVERSION #3</span>
+                    <div class="flywheel-step-title">9:16 Shorts & 4:5 Carousels</div>
+                    <div class="flywheel-step-desc">Hook-first 45s vertical video script with burned-in subtitles + 7-slide Canva document carousel driving comments for the Notion link.</div>
+                    <div class="flywheel-output-badge">📤 Output: Reels, Shorts & Carousels</div>
+                </div>
+            </div>
+
+            <!-- LIVE VERIFICATION BANNER -->
+            <div style="margin-top: 18px; background: var(--emerald-50); border: 1px solid #a7f3d0; border-radius: var(--radius-sm); padding: 14px 18px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;">
+                <div>
+                    <div style="font-size: 11px; font-weight: 800; color: var(--emerald-600); text-transform: uppercase; letter-spacing: 0.5px; display: flex; align-items: center; gap: 6px;">
+                        <span style="display: inline-block; width: 7px; height: 7px; background: var(--emerald-500); border-radius: 50%;"></span>
+                        Live Published Specimen on Medium
+                    </div>
+                    <div style="font-size: 13.5px; font-weight: 700; color: var(--slate-900); margin-top: 2px;">
+                        The Frictionless Operator: How High Performers Eliminate Decision Fatigue
+                    </div>
+                    <div style="font-size: 12px; color: var(--slate-600); margin-top: 2px;">
+                        Inspect Page Source (<code style="font-family: 'JetBrains Mono'; font-size: 11px; color: var(--slate-800);">Ctrl + U</code>) on this live story to verify the active <code style="font-family: 'JetBrains Mono'; font-size: 11px; color: var(--primary-dark);">rel="canonical"</code> tag pointing back to root.
+                    </div>
+                </div>
+                <a href="https://medium.com/@jezreelleybag.graphics/the-frictionless-operator-how-high-performers-eliminate-decision-fatigue-2feada7f7678" target="_blank" class="nav-cta" style="background: var(--emerald-600); font-size: 12px;">
+                    Inspect Live Medium Story ↗
+                </a>
+            </div>
+        </div>
+
+        <!-- SECTION 2: LIVE CASE SPECIMEN (TABBED INTERACTIVE EXPERIENCE) -->
+        <section id="live-specimen" class="section-header">
+            <h2>
+                <svg aria-hidden="true" width="22" height="22" fill="none" stroke="var(--primary)" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                2. Live Case Specimen: Personal Growth & High-Performance
+            </h2>
+            <p>Subject: <em>“The Frictionless Operator: How High Performers Eliminate Decision Fatigue”</em></p>
+        </section>
+
+        <div class="card">
+            <div class="card-header">
+                <div>
+                    <div class="card-title">Live Published Case Specimen</div>
+                    <div style="font-size: 13px; color: var(--slate-600); margin-top: 2px;">Verified live in production across LinkedIn and Medium.</div>
+                </div>
+                <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                    <a href="https://www.linkedin.com/feed/update/urn:li:ugcPost:7510571956329459712/" target="_blank" class="nav-cta" style="background: #0284c7; font-size: 12px;">
+                        <svg aria-hidden="true" width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        View Live on LinkedIn ↗
+                    </a>
+                    <a href="https://medium.com/@jezreelleybag.graphics/the-frictionless-operator-how-high-performers-eliminate-decision-fatigue-2feada7f7678" target="_blank" class="nav-cta" style="background: var(--emerald-600); font-size: 12px;">
+                        <svg aria-hidden="true" width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
+                        View Live on Medium ↗
+                    </a>
+                    <a href="https://drive.google.com/drive/folders/1_cBN8MPPfaPkyvYzinhUuSuz0kexx1tx" target="_blank" class="nav-cta" style="background: #334155; font-size: 12px;">
+                        <svg aria-hidden="true" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                        Drive Video Vault (7 Cuts) ↗
+                    </a>
+                </div>
+            </div>
+
+            <!-- CORE ANCHOR EXCERPT -->
+            <div style="background: var(--slate-50); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 16px; font-style: italic; font-size: 13.5px; color: var(--slate-700); margin-bottom: 24px;">
+                <strong style="color: var(--slate-900); font-style: normal; display: block; margin-bottom: 4px;">Original Pillar Anchor Excerpt:</strong>
+                “Most people think burnout comes from working too hard. It doesn’t. Burnout comes from cognitive drag—holding 40 micro-decisions in your head before 10&nbsp;AM. If you want to scale your output without collapsing, you don’t need more time. You need standard operating procedures for your life: pre-deciding your morning, batching communication, and eliminating open mental loops…””
+            </div>
+
+            <!-- INTERACTIVE DERIVATIVE TAB SWITCHER (UI/UX PRO MAX + A11Y SPEC) -->
+            <div class="tab-btn-group" role="tablist" aria-label="Derivative Specimen Formats">
+                <button id="tab-linkedin" class="tab-btn active" role="tab" aria-selected="true" aria-controls="pane-linkedin" tabindex="0" onclick="switchSpecimenTab('linkedin', this)">
+                    Derivative #1: LinkedIn Long-Form
+                </button>
+                <button id="tab-carousel" class="tab-btn" role="tab" aria-selected="false" aria-controls="pane-carousel" tabindex="-1" onclick="switchSpecimenTab('carousel', this)">
+                    Derivative #2: 7-Slide Document Carousel
+                </button>
+                <button id="tab-video" class="tab-btn" role="tab" aria-selected="false" aria-controls="pane-video" tabindex="-1" onclick="switchSpecimenTab('video', this)">
+                    Derivative #3: Short-Form Video Vault (7 Embedded Cuts)
+                </button>
+                <button id="tab-notion" class="tab-btn" role="tab" aria-selected="false" aria-controls="pane-notion" tabindex="-1" onclick="switchSpecimenTab('notion', this)">
+                    Derivative #4: Notion SOP Resource
+                </button>
+                <button id="tab-scheduler" class="tab-btn" role="tab" aria-selected="false" aria-controls="pane-scheduler" tabindex="-1" onclick="switchSpecimenTab('scheduler', this)">
+                    Derivative #5: Metricool & Buffer Batch Engine (240 Posts)
+                </button>
+            </div>
+
+            <!-- TAB PANE 1: LINKEDIN LONG FORM -->
+            <div id="pane-linkedin" class="tab-pane active" role="tabpanel" aria-labelledby="tab-linkedin" tabindex="0">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                    <span style="font-size: 12px; font-weight: 700; color: var(--slate-600);">Engineered for Dwell-Time & Above-The-Fold Hook Truncation</span>
+                    <a href="https://www.linkedin.com/feed/update/urn:li:ugcPost:7510571956329459712/" target="_blank" style="font-size: 12px; font-weight: 700; color: var(--primary); text-decoration: none;">
+                        Open Live Post on LinkedIn ↗
+                    </a>
+                </div>
+                <div style="background: white; border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 20px; font-size: 13.5px; line-height: 1.6; white-space: pre-line;">
+<strong style="color: var(--slate-900); font-size: 14.5px;">Burnout isn't caused by working 12 hours a day.
+
+It's caused by making 40 micro-decisions before 10 AM.</strong>
+
+Most founders and operators obsess over time management. But time is flat—you get 24 hours whether you are energized or completely drained.
+
+What high performers actually manage is cognitive load.
+
+Here is the 3-step “Frictionless Operator” framework to kill decision fatigue (swipe through the slides below for the full breakdown):
+
+1. Pre-Decide the First 90 Minutes
+Never sit at your desk in the morning asking, “What should I work on today?” That single question burns 30% of your executive focus before noon. That decision belongs at 5 PM yesterday.
+
+2. Eliminate Open Mental Loops
+An uncompleted task or unanswered message doesn't just sit in your inbox—it rents space in your working memory. If it takes under 2 minutes, kill it immediately. If it takes longer, lock it into a calendar block.
+
+3. SOP Every Repeatable Task
+When routine work is documented into simple 3-step checklists, your brain operates on autopilot, preserving creative energy for strategic breakthroughs.
+
+Which of these 3 bottlenecks is currently eating your productive energy?
+
+(P.S. I put together our 1-page Daily Friction Audit & Shutdown SOP template in Notion. Dropped the free link in the first comment below 👇)
+                </div>
+            </div>
+
+            <!-- TAB PANE 2: CAROUSEL SLIDES -->
+            <div id="pane-carousel" class="tab-pane" role="tabpanel" aria-labelledby="tab-carousel" tabindex="0">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                    <span style="font-size: 12px; font-weight: 700; color: var(--slate-600);">1080x1350 4:5 Aspect Ratio — Native Document Carousel (Swipe below)</span>
+                    <a href="https://www.linkedin.com/feed/update/urn:li:ugcPost:7510571956329459712/" target="_blank" style="font-size: 12px; font-weight: 700; color: var(--primary); text-decoration: none;">
+                        Swipe Live Carousel on LinkedIn ↗
+                    </a>
+                </div>
+                <div class="carousel-track">
+                    <div class="carousel-slide">
+                        <div class="slide-num">SLIDE 01 / HOOK</div>
+                        <div class="slide-headline">The 3 Friction Traps Killing Your Output</div>
+                        <div class="slide-body">How elite operators eliminate cognitive drag in 15 minutes. ➔</div>
+                    </div>
+                    <div class="carousel-slide">
+                        <div class="slide-num">SLIDE 02 / PROBLEM</div>
+                        <div class="slide-headline">Trap 1: Morning Decision Spiral</div>
+                        <div class="slide-body">Asking “What next?” drains 30% of executive focus before noon.</div>
+                    </div>
+                    <div class="carousel-slide">
+                        <div class="slide-num">SLIDE 03 / SOLUTION</div>
+                        <div class="slide-headline">The 5 PM Shutdown Ritual</div>
+                        <div class="slide-body">Pre-commit your top 3 needle-moving priorities the evening before.</div>
+                    </div>
+                    <div class="carousel-slide">
+                        <div class="slide-num">SLIDE 04 / PROBLEM</div>
+                        <div class="slide-headline">Trap 2: Open Mental Tabs</div>
+                        <div class="slide-body">Leaving tasks partially finished causes constant subconscious leaks.</div>
+                    </div>
+                    <div class="carousel-slide">
+                        <div class="slide-num">SLIDE 05 / SOLUTION</div>
+                        <div class="slide-headline">The 2-Min Rule + Calendar Vault</div>
+                        <div class="slide-body">Kill it immediately or calendar block it. Never let a task sit in limbo.</div>
+                    </div>
+                    <div class="carousel-slide">
+                        <div class="slide-num">SLIDE 06 / FRAMEWORK</div>
+                        <div class="slide-headline">Trap 3: Reinventing Routines</div>
+                        <div class="slide-body">Turn repeatable tasks into 3-step checklists. Preserve executive fuel.</div>
+                    </div>
+                    <div class="carousel-slide" style="background: var(--primary-dark);">
+                        <div class="slide-num" style="color: white;">SLIDE 07 / RECAP</div>
+                        <div class="slide-headline">Eliminate Friction Today</div>
+                        <div class="slide-body">Save this post. Grab the Notion Audit Checklist in the comments.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB PANE 3: VIDEO SCRIPT -->
+            <div id="pane-video" class="tab-pane" role="tabpanel" aria-labelledby="tab-video" tabindex="0">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
+                    <div>
+                        <span style="font-size: 13.5px; font-weight: 700; color: var(--slate-900);">Short-Form Personal Growth & Mindset Video Vault</span>
+                        <div style="font-size: 12px; color: var(--slate-600); margin-top: 2px;">Direct 9:16 vertical cuts demonstrating hook pacing, dialogue cleanup, subtitle polish, and mobile safe zones.</div>
+                    </div>
+                    <a href="https://drive.google.com/drive/folders/1_cBN8MPPfaPkyvYzinhUuSuz0kexx1tx" target="_blank" style="font-size: 12px; font-weight: 700; color: var(--primary); text-decoration: none;">
+                        Open Full Google Drive Vault ↗
+                    </a>
+                </div>
+
+                <!-- INTERACTIVE EMBEDDED PLAYER & PLAYLIST SELECTOR -->
+                <div class="video-vault-grid">
+                    <div>
+                        <div class="player-wrapper">
+                            <iframe id="main-video-player" src="https://drive.google.com/file/d/1iPGHr0-PNFj7SGpUf-YWU5t5va4OyVB7/preview" allow="autoplay" title="Personal Growth Video Player"></iframe>
+                        </div>
+                        <div style="margin-top: 10px; font-size: 12px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 6px;">
+                            <div>
+                                <span style="color: var(--slate-500);">Playing:</span>
+                                <strong id="player-title" style="color: var(--slate-900); margin-left: 4px;">01. The Price of Success</strong>
+                            </div>
+                            <span id="player-tag" class="video-tag" style="background: #e0f2fe; color: #0369a1; border-color: #bae6fd;">Hook & Dynamic Pacing</span>
+                        </div>
+                    </div>
+
+                    <div class="playlist-container" role="list" aria-label="Curated Personal Growth Video Cuts">
+                        <div style="font-size: 11px; font-weight: 800; color: var(--slate-700); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; display: flex; justify-content: space-between; align-items: center;">
+                            <span>Select Cut to Play (7 Curated Specimens)</span>
+                            <span style="font-size: 10.5px; color: var(--slate-500); font-weight: 600;">Click to load</span>
+                        </div>
+
+                        <!-- 01 -->
+                        <button class="video-item active" onclick="loadVideo('1iPGHr0-PNFj7SGpUf-YWU5t5va4OyVB7', '01. The Price of Success', 'Hook & Dynamic Pacing', this)">
+                            <span class="video-num">01</span>
+                            <div class="video-info">
+                                <div class="video-title">The Price of Success</div>
+                                <div class="video-meta">
+                                    <span class="video-tag">9:16 Vertical</span>
+                                    <span>Hook & Dynamic Pacing</span>
+                                </div>
+                            </div>
+                            <span style="font-size: 13px; color: var(--primary); font-weight: 700;">▶</span>
+                        </button>
+
+                        <!-- 02 -->
+                        <button class="video-item" onclick="loadVideo('1P0yYBYkIsXr1rDqXnJJJ0Y-CRhSolGRs', '02. The Cinderella Story', 'Micro-Storytelling Arc', this)">
+                            <span class="video-num">02</span>
+                            <div class="video-info">
+                                <div class="video-title">The Cinderella Story</div>
+                                <div class="video-meta">
+                                    <span class="video-tag">9:16 Vertical</span>
+                                    <span>Micro-Storytelling Arc</span>
+                                </div>
+                            </div>
+                            <span style="font-size: 13px; color: #94a3b8; font-weight: 700;">▶</span>
+                        </button>
+
+                        <!-- 03 -->
+                        <button class="video-item" onclick="loadVideo('1P6RGcuuAnpdutqZ_Be-3_rkZFZpYpyb1', '03. The Four Pillars: Austerity', 'Atmospheric & Minimalist', this)">
+                            <span class="video-num">03</span>
+                            <div class="video-info">
+                                <div class="video-title">The Four Pillars: Austerity</div>
+                                <div class="video-meta">
+                                    <span class="video-tag">9:16 Vertical</span>
+                                    <span>Atmospheric & Minimalist</span>
+                                </div>
+                            </div>
+                            <span style="font-size: 13px; color: #94a3b8; font-weight: 700;">▶</span>
+                        </button>
+
+                        <!-- 04 -->
+                        <button class="video-item" onclick="loadVideo('1GWBnDgRmZ3x2rSMLtjVYRM1CxZMUENJi', '04. Movement & Discipline', 'Rhythm & Motion Sync', this)">
+                            <span class="video-num">04</span>
+                            <div class="video-info">
+                                <div class="video-title">Movement & Discipline</div>
+                                <div class="video-meta">
+                                    <span class="video-tag">9:16 Vertical</span>
+                                    <span>Rhythm & Motion Sync</span>
+                                </div>
+                            </div>
+                            <span style="font-size: 13px; color: #94a3b8; font-weight: 700;">▶</span>
+                        </button>
+
+                        <!-- 05 -->
+                        <button class="video-item" onclick="loadVideo('1xU2AVjjHeKoe_5XF-iPjIoj5ByIyOeyf', '05. World Health Day', 'Brand Message & Flow', this)">
+                            <span class="video-num">05</span>
+                            <div class="video-info">
+                                <div class="video-title">World Health Day Campaign</div>
+                                <div class="video-meta">
+                                    <span class="video-tag">Campaign</span>
+                                    <span>Brand Message & Visual Flow</span>
+                                </div>
+                            </div>
+                            <span style="font-size: 13px; color: #94a3b8; font-weight: 700;">▶</span>
+                        </button>
+
+                        <!-- 06 -->
+                        <button class="video-item" onclick="loadVideo('1EvaLBskE4s0IoHw0Fv9JewjPtd1YcZhp', '06. World Book Day', 'Typography & Subtitles', this)">
+                            <span class="video-num">06</span>
+                            <div class="video-info">
+                                <div class="video-title">World Book Day Campaign</div>
+                                <div class="video-meta">
+                                    <span class="video-tag">Editorial</span>
+                                    <span>Typography & Subtitle Polish</span>
+                                </div>
+                            </div>
+                            <span style="font-size: 13px; color: #94a3b8; font-weight: 700;">▶</span>
+                        </button>
+
+                        <!-- 07 -->
+                        <button class="video-item" onclick="loadVideo('1LvAtd5jCjjvMTb9zYnyMZ8iLKsHHztMD', '07. Morning Mindset & Routine', 'Pacing & Audio Cleanup', this)">
+                            <span class="video-num">07</span>
+                            <div class="video-info">
+                                <div class="video-title">Morning Mindset & Routine</div>
+                                <div class="video-meta">
+                                    <span class="video-tag">9:16 Vertical</span>
+                                    <span>Pacing & Audio Cleanup</span>
+                                </div>
+                            </div>
+                            <span style="font-size: 13px; color: #94a3b8; font-weight: 700;">▶</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- PACING SCRIPT DOCUMENTATION (SAMPLE EDITORIAL SCRIPT) -->
+                <div style="font-size: 12px; font-weight: 700; color: var(--slate-700); margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center;">
+                    <span>Underlying Short-Form Script Breakdown (Pacing, Cuts & Retention Strategy):</span>
+                    <span style="color: var(--slate-500); font-weight: 600;">9:16 Mobile Safe Margin Verified</span>
+                </div>
+                <div style="background: var(--slate-900); color: #e2e8f0; border-radius: var(--radius-sm); padding: 18px; font-family: 'JetBrains Mono', monospace; font-size: 11.5px; line-height: 1.6;">
+[0:00 - 0:03] HOOK (Visual: Fast cut to speaker facing camera. Text on screen: "STOP MANAGING TIME.")
+AUDIO: "If you're exhausted by 2 PM, you don't have a time management problem. You have a cognitive leak."
+
+[0:03 - 0:12] PACING CUT (Visual: B-roll of open browser with 50 tabs + pop-up notification graphic)
+AUDIO: "Every unanswered Slack, every unfiled document, and every task you haven't scheduled rents free space in your brain."
+
+[0:12 - 0:26] THE SOLUTION (Visual: Clean split-screen demonstrating the 5 PM shutdown checklist)
+AUDIO: "Here's the fix: before you close your laptop today, pre-decide tomorrow's first 90 minutes. When you sit down in the morning, do not open email. Execute that single task first."
+
+[0:26 - 0:38] THE RESULT (Visual: Green checkmark animation + high-contrast text: "PRESERVE DECISION POWER")
+AUDIO: "Preserve your decision-making battery for what actually grows the business. The rest is just noise."
+
+[0:38 - 0:45] CTA (Visual: Pointing to comment box graphic + follow button animation)
+AUDIO: "Drop a comment below with 'OPERATOR' and I'll send you our 1-page Daily Friction Audit."
+                </div>
+            </div>
+
+            <!-- TAB PANE 4: NOTION SOP RESOURCE (JOB DESCRIPTION MATCH) -->
+            <div id="pane-notion" class="tab-pane" role="tabpanel" aria-labelledby="tab-notion" tabindex="0">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; flex-wrap: wrap; gap: 10px;">
+                    <div>
+                        <span style="font-size: 13.5px; font-weight: 700; color: var(--slate-900);">Cloneable Notion SOP Resource: Daily Friction Audit Protocol</span>
+                        <div style="font-size: 12px; color: var(--slate-600); margin-top: 2px;">
+                            Direct implementation of the job requirement: <em>"turning a top-performing LinkedIn post into a Notion resource, then into a Reel/Shorts script."</em>
+                        </div>
+                    </div>
+                    <button class="nav-cta" style="background: var(--slate-900); font-size: 12px; border: none; display: flex; align-items: center; gap: 6px;" onclick="copyNotionMarkdown(this)">
+                        <svg aria-hidden="true" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+                        <span>Copy Notion SOP Markdown</span>
+                    </button>
+                </div>
+
+                <!-- NOTION PAGE SIMULATOR -->
+                <div class="notion-frame">
+                    <div class="notion-header">
+                        <div class="notion-icon">📋</div>
+                        <div>
+                            <div style="font-size: 11px; font-weight: 700; color: var(--slate-400); text-transform: uppercase; letter-spacing: 0.5px;">Personal Growth OS / High-Performance Protocols</div>
+                            <h3 style="font-size: 18px; font-weight: 800; color: var(--slate-900); margin-top: 2px;">SOP: The Daily Friction Audit & 5 PM Shutdown Ritual</h3>
+                            <div style="display: flex; gap: 10px; margin-top: 6px; flex-wrap: wrap; font-size: 11.5px; color: var(--slate-600);">
+                                <span><strong>Owner:</strong> High-Performance Operator</span>
+                                <span>•</span>
+                                <span><strong>Cadence:</strong> Daily at 4:45 PM</span>
+                                <span>•</span>
+                                <span class="badge-status status-published" style="padding: 2px 8px; font-size: 10.5px;">✓ Live Template Active</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="notion-callout">
+                        <strong>🎯 Target Metric:</strong> Eliminate cognitive drag before evening shutdown. Wake up with 0 deliberation and 100% pre-committed priority focus.
+                    </div>
+
+                    <h4 style="font-size: 14px; font-weight: 800; color: var(--slate-900); margin: 18px 0 8px;">
+                        1. The 5 PM Daily Shutdown Checklist
+                    </h4>
+                    <ul class="notion-checklist">
+                        <li>
+                            <div class="notion-check-box">✓</div>
+                            <span><strong>Inbox Zero Scrub:</strong> Apply 2-min rule. Any message requiring &gt;2 minutes gets scheduled or delegated.</span>
+                        </li>
+                        <li>
+                            <div class="notion-check-box">✓</div>
+                            <span><strong>Top-3 Priority Anchor:</strong> Pre-commit tomorrow's non-negotiable needle-movers (P1, P2, P3).</span>
+                        </li>
+                        <li>
+                            <div class="notion-check-box">✓</div>
+                            <span><strong>Calendar Deep Block:</strong> Reserve 08:30–10:00 AM as closed-door, notification-free deep execution.</span>
+                        </li>
+                        <li>
+                            <div class="notion-check-box">✓</div>
+                            <span><strong>Tab Purge:</strong> Close all browser windows except tomorrow's initial working document.</span>
+                        </li>
+                    </ul>
+
+                    <h4 style="font-size: 14px; font-weight: 800; color: var(--slate-900); margin: 20px 0 8px;">
+                        2. The Morning "No-Decision" Matrix
+                    </h4>
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Time Block</th>
+                                    <th>Mode</th>
+                                    <th>Execution Directive</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>08:00 - 08:30 AM</strong></td>
+                                    <td>Activation</td>
+                                    <td>Hydration, daylight exposure, zero notifications / Slack check.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>08:30 - 10:00 AM</strong></td>
+                                    <td>Deep Sprint #1</td>
+                                    <td>Execute Priority #1 immediately. No context switching.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>10:00 - 10:30 AM</strong></td>
+                                    <td>Batch Sync</td>
+                                    <td>Process incoming team messages and operational handoffs.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB PANE 5: METRICOOL & BUFFER BATCH DISTRIBUTION ENGINE -->
+            <div id="pane-scheduler" class="tab-pane" role="tabpanel" aria-labelledby="tab-scheduler" tabindex="0">
+                <div class="scheduler-hero">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 14px;">
+                        <div>
+                            <span style="font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.8px; color: #7dd3fc;">Operations-First Syndication Engine</span>
+                            <h3 style="font-size: 20px; font-weight: 800; margin: 4px 0 6px; color: #ffffff;">Metricool & Buffer High-Volume Bulk Scheduler</h3>
+                            <p style="font-size: 13px; color: #e0f2fe; max-width: 650px; line-height: 1.5;">
+                                High-volume publishing (200+ posts/mo) is impossible to execute manually without human error. This system uses our automated Python engine (<code>syndicate_engine.py</code>) to format, QC-verify, and stage 240+ multi-channel posts into a single 1-click import CSV.
+                            </p>
+                        </div>
+                        <a href="./metricool_buffer_batch_200_posts.csv" download="metricool_buffer_batch_200_posts.csv" class="nav-cta" style="background: #ffffff; color: var(--slate-950); font-weight: 800; font-size: 12.5px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); display: inline-flex; align-items: center; gap: 6px;">
+                            <svg aria-hidden="true" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                            <span>Download Metricool CSV (240 Posts)</span>
+                        </a>
+                    </div>
+
+                    <div class="scheduler-stats-strip">
+                        <div class="scheduler-stat-pill">
+                            <div class="scheduler-stat-val">240</div>
+                            <div class="scheduler-stat-lbl">Monthly Posts</div>
+                        </div>
+                        <div class="scheduler-stat-pill">
+                            <div class="scheduler-stat-val">60</div>
+                            <div class="scheduler-stat-lbl">LinkedIn (Carousels/Posts)</div>
+                        </div>
+                        <div class="scheduler-stat-pill">
+                            <div class="scheduler-stat-val">60</div>
+                            <div class="scheduler-stat-lbl">Instagram (Reels/4:5)</div>
+                        </div>
+                        <div class="scheduler-stat-pill">
+                            <div class="scheduler-stat-val">30</div>
+                            <div class="scheduler-stat-lbl">YouTube (Shorts/Pillars)</div>
+                        </div>
+                        <div class="scheduler-stat-pill">
+                            <div class="scheduler-stat-val">90</div>
+                            <div class="scheduler-stat-lbl">X / Twitter (Threads)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FILTER CONTROLS & TABLE PREVIEW -->
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+                    <div class="filter-btn-group" role="group" aria-label="Filter Scheduled Posts">
+                        <button class="filter-btn active" onclick="filterSchedulerTable('all', this)">All Networks (240)</button>
+                        <button class="filter-btn" onclick="filterSchedulerTable('LinkedIn', this)">LinkedIn (60)</button>
+                        <button class="filter-btn" onclick="filterSchedulerTable('Instagram', this)">Instagram (60)</button>
+                        <button class="filter-btn" onclick="filterSchedulerTable('YouTube', this)">YouTube (30)</button>
+                        <button class="filter-btn" onclick="filterSchedulerTable('X / Twitter', this)">X / Twitter (90)</button>
+                    </div>
+                    <div style="font-size: 11.5px; color: var(--slate-500); font-weight: 600;">
+                        Timezone: US EST (UTC-5) / SAST (UTC+2) Aligned
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <table id="scheduler-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Date & Slot</th>
+                                <th>Network</th>
+                                <th>Type</th>
+                                <th>Caption / Hook Preview</th>
+                                <th>First Comment (Routing)</th>
+                                <th>QC Verification</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr data-network="LinkedIn">
+                                <td><code>POST-0001</code></td>
+                                <td>Oct 1 • 08:15 AM</td>
+                                <td><span style="font-weight: 700; color: #0284c7;">LinkedIn</span></td>
+                                <td><span class="cadence-pill" style="font-size: 10px;">LONGFORM</span></td>
+                                <td>Burnout isn't caused by working 12 hours a day. It's caused by making 40 micro-decisions...</td>
+                                <td style="font-size: 11px; color: var(--slate-600);">Grab Notion SOP link: https://...</td>
+                                <td><span style="color: var(--emerald-600); font-weight: 700; font-size: 11px;">✓ Hook &lt;140c</span></td>
+                                <td><span class="badge-status status-scheduled">Scheduled</span></td>
+                            </tr>
+                            <tr data-network="LinkedIn">
+                                <td><code>POST-0002</code></td>
+                                <td>Oct 1 • 12:30 PM</td>
+                                <td><span style="font-weight: 700; color: #0284c7;">LinkedIn</span></td>
+                                <td><span class="cadence-pill" style="font-size: 10px; background: #e0f2fe; color: #0369a1;">CAROUSEL_4x5</span></td>
+                                <td>The 3 Friction Traps Killing Your Output (7-Slide Document Carousel)...</td>
+                                <td style="font-size: 11px; color: var(--slate-600);">Swipe slides 1-7 for protocol.</td>
+                                <td><span style="color: var(--emerald-600); font-weight: 700; font-size: 11px;">✓ Canva 4:5</span></td>
+                                <td><span class="badge-status status-scheduled">Scheduled</span></td>
+                            </tr>
+                            <tr data-network="Instagram">
+                                <td><code>POST-0003</code></td>
+                                <td>Oct 1 • 11:00 AM</td>
+                                <td><span style="font-weight: 700; color: #e1306c;">Instagram</span></td>
+                                <td><span class="cadence-pill" style="font-size: 10px; background: #fdf2f8; color: #db2777;">REEL_9x16</span></td>
+                                <td>The high-performer's secret to eliminating decision fatigue. Save this for your morning routine. ⚡</td>
+                                <td style="font-size: 11px; color: var(--slate-600);">Comment 'SOP' for direct link.</td>
+                                <td><span style="color: var(--emerald-600); font-weight: 700; font-size: 11px;">✓ Safe-Zone OK</span></td>
+                                <td><span class="badge-status status-scheduled">Scheduled</span></td>
+                            </tr>
+                            <tr data-network="YouTube">
+                                <td><code>POST-0004</code></td>
+                                <td>Oct 1 • 02:00 PM</td>
+                                <td><span style="font-weight: 700; color: #dc2626;">YouTube</span></td>
+                                <td><span class="cadence-pill" style="font-size: 10px; background: #fef2f2; color: #b91c1c;">SHORTS_9x16</span></td>
+                                <td>Stop Burning 30% of Your Focus Before Noon: The 5 PM Protocol.</td>
+                                <td style="font-size: 11px; color: var(--slate-600);">Pinned: Free Notion checklist.</td>
+                                <td><span style="color: var(--emerald-600); font-weight: 700; font-size: 11px;">✓ 0-3s Beat OK</span></td>
+                                <td><span class="badge-status status-scheduled">Scheduled</span></td>
+                            </tr>
+                            <tr data-network="X / Twitter">
+                                <td><code>POST-0005</code></td>
+                                <td>Oct 1 • 09:00 AM</td>
+                                <td><span style="font-weight: 700; color: var(--slate-900);">X / Twitter</span></td>
+                                <td><span class="cadence-pill" style="font-size: 10px; background: #f1f5f9; color: var(--slate-700);">THREAD</span></td>
+                                <td>If you sit at your desk at 9 AM and ask 'what should I work on today?' you've already lost. (1/6) 🧵</td>
+                                <td style="font-size: 11px; color: var(--slate-600);">Canonical Medium article link.</td>
+                                <td><span style="color: var(--emerald-600); font-weight: 700; font-size: 11px;">✓ &lt;280 chars</span></td>
+                                <td><span class="badge-status status-scheduled">Scheduled</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- AUTOMATION & WEBHOOK SPECIFICATION -->
+                <div style="margin-top: 18px; background: var(--slate-900); border-radius: var(--radius-sm); padding: 16px; color: #e2e8f0; font-size: 12px; font-family: 'JetBrains Mono', monospace; line-height: 1.5;">
+                    <div style="color: #38bdf8; font-weight: 700; margin-bottom: 6px;">// Notion-to-Metricool/Buffer Webhook Payload Architecture (Automated Push):</div>
+                    <span style="color: #94a3b8;">POST /api/v2/schedule/bulk_import</span><br>
+                    {<br>
+                    &nbsp;&nbsp;"trigger": "notion_status_changed_to_approved",<br>
+                    &nbsp;&nbsp;"campaign": "personal_growth_syndication_q4",<br>
+                    &nbsp;&nbsp;"batch_size": 240,<br>
+                    &nbsp;&nbsp;"target_schedulers": ["metricool", "buffer"],<br>
+                    &nbsp;&nbsp;"pre_flight_qc_verification": "100_percent_passed",<br>
+                    &nbsp;&nbsp;"csv_payload_source": "metricool_buffer_batch_200_posts.csv"<br>
+                    }
+                </div>
+            </div>
+        </div>
+<!-- SECTION 3: HIGH-VOLUME CONTENT OPERATIONS & DIGITAL ASSET MANAGEMENT -->
+        <section id="operations-os" class="section-header">
+            <h2>
+                <svg aria-hidden="true" width="22" height="22" fill="none" stroke="var(--primary)" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                3. High-Volume Content Operations & Digital Asset Management
+            </h2>
+            <p>How 200+ monthly assets across YouTube, LinkedIn, Instagram, and X are tracked, scheduled, and verified with zero operational drift.</p>
+        </section>
+
+        <!-- 200+ POSTS/MONTH CADENCE ARCHITECTURE (OPERATIONS FIRST) -->
+        <div id="cadence" class="card" style="margin-bottom: 24px;">
+            <div class="card-header">
+                <div class="card-title">The 200+ Monthly Publishing Cadence (Operational Math)</div>
+                <div class="card-tag">High-Volume Operations</div>
+            </div>
+            <p style="font-size: 13.5px; color: var(--slate-600); margin-bottom: 18px;">
+                Engineered to maintain a rigorous, high-volume master calendar handling 200+ pieces of content every month without missing a beat. Synchronized across YouTube, LinkedIn, Instagram, and X:
+            </p>
+            <div class="cadence-grid">
+                <div class="cadence-card">
+                    <div class="cadence-platform">
+                        <span>YouTube Channel</span>
+                        <span class="cadence-pill">20 Assets / Mo</span>
+                    </div>
+                    <div class="cadence-detail"><strong>4x</strong> 16:9 Long-Form Keynotes/Episodes</div>
+                    <div class="cadence-detail"><strong>16x</strong> 9:16 Shorts (4/week, hook-first)</div>
+                    <div class="cadence-spec">16:9 (1080p/4K) • 9:16 vertical • Chapters & Pinned UTMs</div>
+                </div>
+                <div class="cadence-card">
+                    <div class="cadence-platform">
+                        <span>LinkedIn Engine</span>
+                        <span class="cadence-pill">25 Assets / Mo</span>
+                    </div>
+                    <div class="cadence-detail"><strong>20x</strong> Structured Long-Form Dwell Posts</div>
+                    <div class="cadence-detail"><strong>4x</strong> 7-Slide PDF Document Carousels</div>
+                    <div class="cadence-detail"><strong>1x</strong> Monthly Executive Pulse Newsletter</div>
+                    <div class="cadence-spec">4:5 PDF • 1:1 graphics • 3-line hook truncation</div>
+                </div>
+                <div class="cadence-card">
+                    <div class="cadence-platform">
+                        <span>Instagram Growth</span>
+                        <span class="cadence-pill">44 Assets / Mo</span>
+                    </div>
+                    <div class="cadence-detail"><strong>16x</strong> 9:16 High-Dwell Video Reels</div>
+                    <div class="cadence-detail"><strong>12x</strong> 4:5 Swipeable Carousel Infographics</div>
+                    <div class="cadence-detail"><strong>16x</strong> Daily Interactive Story Touchpoints</div>
+                    <div class="cadence-spec">9:16 (1080×1920) • 4:5 (1080×1350) • Safe zones</div>
+                </div>
+                <div class="cadence-card">
+                    <div class="cadence-platform">
+                        <span>X / Twitter Takes</span>
+                        <span class="cadence-pill">60 Assets / Mo</span>
+                    </div>
+                    <div class="cadence-detail"><strong>12x</strong> 6-Post Deep-Dive Educational Threads</div>
+                    <div class="cadence-detail"><strong>48x</strong> Standalone Micro-Hooks & Quotes</div>
+                    <div class="cadence-spec">280-char hooks • 16:9 cards • 12-hr retweets</div>
+                </div>
+                <div class="cadence-card">
+                    <div class="cadence-platform">
+                        <span>Canonical Web</span>
+                        <span class="cadence-pill">8 Assets / Mo</span>
+                    </div>
+                    <div class="cadence-detail"><strong>4x</strong> Medium Canonical Republished Articles</div>
+                    <div class="cadence-detail"><strong>4x</strong> Substack / Syndication Partner Reposts</div>
+                    <div class="cadence-spec">rel="canonical" • 14-day quarantine hold</div>
+                </div>
+                <div class="cadence-card">
+                    <div class="cadence-platform">
+                        <span>Lead Hubs & Cuts</span>
+                        <span class="cadence-pill">50 Assets / Mo</span>
+                    </div>
+                    <div class="cadence-detail"><strong>4x</strong> Interactive Notion Resource SOPs</div>
+                    <div class="cadence-detail"><strong>46x</strong> Cross-Platform Short Derivatives</div>
+                    <div class="cadence-spec">Closed-loop GA4 & HubSpot UTM tracking</div>
+                </div>
+            </div>
+            <div class="cadence-summary-bar">
+                <div><strong>Total Monthly Cadence:</strong> <span style="color: var(--primary-dark); font-weight: 800;">207 Verified Assets / Month</span></div>
+                <div><strong>Pacing & Reliability:</strong> 7 Days/Week Scheduled • 0 Missed Deadlines • 100% QC Passed</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Live Pipeline Matrix (Notion / Asana Architecture)</div>
+                <div class="card-tag">Operational Control</div>
+            </div>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date / Slot</th>
+                            <th>Core Asset</th>
+                            <th>Destination</th>
+                            <th>Format & Specs</th>
+                            <th>Status</th>
+                            <th>QC & Verification</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Mon, Oct 5 • 8:00 AM EST</td>
+                            <td>Episode #42: Burnout Myths</td>
+                            <td>LinkedIn Feed</td>
+                            <td><a href="https://www.linkedin.com/feed/update/urn:li:ugcPost:7510571956329459712/" target="_blank" style="color: var(--primary); font-weight: 700; text-decoration: none;">Structured Long-Form + Carousel ↗</a></td>
+                            <td><span class="badge-status status-published">Published (Live)</span></td>
+                            <td><a href="https://www.linkedin.com/feed/update/urn:li:ugcPost:7510571956329459712/" target="_blank" style="color: var(--emerald-600); font-weight: 700; text-decoration: none;">✓ View Live Post ↗</a></td>
+                        </tr>
+                        <tr>
+                            <td>Mon, Oct 5 • 11:30 AM EST</td>
+                            <td>Episode #42: 3 Traps</td>
+                            <td>Instagram / TikTok</td>
+                            <td>9:16 Video Reel (42s, burned-in captions)</td>
+                            <td><span class="badge-status status-published">Published</span></td>
+                            <td>✓ Passed (100%)</td>
+                        </tr>
+                        <tr>
+                            <td>Tue, Oct 6 • 9:00 AM EST</td>
+                            <td>Framework: The Friction Audit</td>
+                            <td>LinkedIn / IG</td>
+                            <td><a href="https://www.linkedin.com/feed/update/urn:li:ugcPost:7510571956329459712/" target="_blank" style="color: var(--primary); font-weight: 700; text-decoration: none;">7-Slide Document Carousel (PDF) ↗</a></td>
+                            <td><span class="badge-status status-published">Published (Live)</span></td>
+                            <td><a href="https://www.linkedin.com/feed/update/urn:li:ugcPost:7510571956329459712/" target="_blank" style="color: var(--emerald-600); font-weight: 700; text-decoration: none;">✓ Swipe Live Carousel ↗</a></td>
+                        </tr>
+                        <tr>
+                            <td>Tue, Oct 6 • 2:00 PM EST</td>
+                            <td>Key Takeaways Thread</td>
+                            <td>X (Twitter)</td>
+                            <td>6-Post Thread + YouTube Backlink CTA</td>
+                            <td><span class="badge-status status-scheduled">Scheduled (Metricool)</span></td>
+                            <td>✓ Passed (100%)</td>
+                        </tr>
+                        <tr>
+                            <td>Wed, Oct 7 • 10:00 AM EST</td>
+                            <td>Episode #42: Full Article</td>
+                            <td>Medium / Publication</td>
+                            <td><a href="https://medium.com/@jezreelleybag.graphics/the-frictionless-operator-how-high-performers-eliminate-decision-fatigue-2feada7f7678" target="_blank" style="color: var(--slate-700); font-weight: 600; text-decoration: none;">Canonical Web Syndicate + Attribution ↗</a></td>
+                            <td><span class="badge-status status-published">Published (Live)</span></td>
+                            <td><a href="https://medium.com/@jezreelleybag.graphics/the-frictionless-operator-how-high-performers-eliminate-decision-fatigue-2feada7f7678" target="_blank" style="color: var(--emerald-600); font-weight: 700; text-decoration: none;">✓ Canonical Verified (Live) ↗</a></td>
+                        </tr>
+                        <tr>
+                            <td>Thu, Oct 8 • 11:00 AM EST</td>
+                            <td>Episode #43: High-Leverage Habits</td>
+                            <td>YouTube / Shorts</td>
+                            <td>16:9 Long-Form + 3x 9:16 Shorts</td>
+                            <td><span class="badge-status status-qc">In Final QC</span></td>
+                            <td>Pending Aspect Check</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- DIGITAL ASSET MANAGEMENT (DAM) & CONTENT LIBRARY ARCHITECTURE -->
+        <div class="card" style="margin-top: 24px;">
+            <div class="card-header">
+                <div class="card-title">Digital Asset Management (DAM) & Searchable Content Library</div>
+                <div class="card-tag">Asset Syndication</div>
+            </div>
+            <p style="font-size: 13.5px; color: var(--slate-600); margin-bottom: 16px;">
+                To ensure content is easily searchable, tagged, and ready for repurposing at a moment's notice, every asset adheres to a standardized cloud folder hierarchy and Notion Content Database schema:
+            </p>
+            <div class="dam-grid">
+                <div class="dam-box">
+                    <div class="dam-label">Master Cloud Folder Structure</div>
+📁 01_RAW_PILLARS/        (4K footage, master transcripts, audio stems)<br>
+📁 02_CANVA_TEMPLATES/    (Locked brand kits, carousel masters, fonts)<br>
+📁 03_DERIVATIVES/        (9:16 vertical cuts, burned-in subtitles)<br>
+📁 04_SCHEDULED_VAULT/    (Ready in Metricool/Buffer with UTMs)<br>
+📁 05_EVERGREEN_ARCHIVE/  (Searchable by topic/hook for re-runs)
+                </div>
+                <div class="dam-box">
+                    <div class="dam-label">Standardized File Naming Syntax</div>
+<span style="color: #38bdf8;">YYYY-MM-DD_[CHANNEL]_[CORE-ID]_[FORMAT]_[VERSION].[ext]</span><br><br>
+<span style="color: #94a3b8;">// Production Examples:</span><br>
+<span style="color: #34d399;">2026-10-05_LI_EP42_CAROUSEL-4x5_v2.pdf</span><br>
+<span style="color: #fbbf24;">2026-10-05_YT_EP42_SHORT-9x16_v1.mp4</span><br>
+<span style="color: #f472b6;">2026-10-06_IG_EP42_REEL-9x16_v1.mp4</span>
+                </div>
+            </div>
+            <div style="margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--border); display: flex; flex-wrap: wrap; gap: 8px; align-items: center;">
+                <span style="font-size: 11.5px; font-weight: 700; color: var(--slate-700);">Notion Content OS Properties:</span>
+                <span class="dam-tag">Pillar ID</span>
+                <span class="dam-tag">Destination Channel</span>
+                <span class="dam-tag">Aspect Ratio</span>
+                <span class="dam-tag">Hook Copy</span>
+                <span class="dam-tag">Canva Master Link</span>
+                <span class="dam-tag">Scheduled Slot</span>
+                <span class="dam-tag">Pre-Flight QC Verified</span>
+                <span class="dam-tag">GA4 UTM Token</span>
+            </div>
+        </div>
+
+        
+<!-- SECTION 4: PLATFORM-SPECIFIC FORMATTING & TECHNICAL QC STANDARDS -->
+        <section id="qc-standards" class="section-header">
+            <h2>
+                <svg aria-hidden="true" width="22" height="22" fill="none" stroke="var(--emerald-600)" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+                4. Platform-Specific Formatting & Technical QC Standards
+            </h2>
+            <p>The operational guidelines, platform aspect ratio nuances, and zero-defect quality control checklist applied to every asset before scheduling.</p>
+        </section>
+
+        
+        <div class="card">
+            <div class="card-header">
+                <div class="card-title">Platform-Specific Formatting & Technical Nuances (LI, IG, YT, X)</div>
+                <div class="card-tag">Technical Nuance</div>
+            </div>
+            <p style="font-size: 13.5px; color: var(--slate-600); margin-bottom: 16px;">
+                Deep familiarity with what makes content “look right” and perform technically across every major destination:
+            </p>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Platform</th>
+                            <th>Aspect Ratio & Specs</th>
+                            <th>Hook Truncation & Limits</th>
+                            <th>Safe Zones & Layout Hygiene</th>
+                            <th>Link & Distribution Strategy</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>LinkedIn</strong></td>
+                            <td>4:5 PDF Carousels (1080×1350); 1200×1200 image; 1:1 video</td>
+                            <td>Truncates at ~210 characters (3 lines). Hook must force the “…see more” click.</td>
+                            <td>Clean white/dark margins. High-contrast typography readable on mobile screens.</td>
+                            <td>External links placed in first comment or pinned profile section to protect algorithmic reach.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Instagram</strong></td>
+                            <td>9:16 Reels (1080×1920); 4:5 Feed Carousels (1080×1350)</td>
+                            <td>Truncates at 125 characters. Bold headline embedded on slide 1 / video cover.</td>
+                            <td><strong>UI Safe Margins:</strong> Top 15% (header) and bottom 20% (captions/audio) kept clear.</td>
+                            <td>3–5 curated niche hashtags; CTA directs audience to comment keyword for ManyChat DM routing.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>YouTube</strong></td>
+                            <td>16:9 Long-Form (4K/1080p); 9:16 Shorts (&lt;60s, 1080×1920)</td>
+                            <td>Titles &lt;60 characters for mobile display. Timestamps and chapters in description.</td>
+                            <td><strong>Shorts Safe Zone:</strong> Right edge (like/share buttons) and bottom-right (timestamp) kept clear.</td>
+                            <td>Pinned comment contains canonical UTM link; custom high-contrast thumbnail uploaded.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>X (Twitter)</strong></td>
+                            <td>16:9 Media Cards (1200×675); Single 1:1 graphics</td>
+                            <td>280 characters maximum. Concise punchy micro-hooks; 5–7 tweet threads.</td>
+                            <td>No border clutter. High-contrast single-point infographics.</td>
+                            <td>Thread links placed on tweet #1 or final CTA tweet. Scheduled auto-retweet at +12 hours for global reach.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+            <!-- PRE-FLIGHT TECHNICAL QC VERIFICATION STRIP -->
+            <div style="margin-top: 20px; background: var(--slate-50); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 18px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; flex-wrap: wrap; gap: 8px;">
+                    <span style="font-size: 12px; font-weight: 800; color: var(--slate-900); text-transform: uppercase; letter-spacing: 0.5px; display: flex; align-items: center; gap: 6px;">
+                        <svg aria-hidden="true" width="16" height="16" fill="none" stroke="var(--emerald-600)" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        Pre-Flight Technical QC Verification Strip (Mandatory Prior to Scheduling)
+                    </span>
+                    <span style="font-size: 11px; font-weight: 700; color: var(--emerald-700); background: #dcfce7; padding: 2px 8px; border-radius: 4px;">100% Zero-Defect Standard</span>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; font-size: 12px; color: var(--slate-700);">
+                    <div style="display: flex; gap: 8px; align-items: flex-start;">
+                        <span style="color: var(--emerald-600); font-weight: 800;">✓</span>
+                        <div><strong>Aspect Ratio & Safe Zones:</strong> 9:16 vertical text kept clear of UI headers/captions; 4:5 carousels centered for mobile screens.</div>
+                    </div>
+                    <div style="display: flex; gap: 8px; align-items: flex-start;">
+                        <span style="color: var(--emerald-600); font-weight: 800;">✓</span>
+                        <div><strong>Hook Truncation & Limits:</strong> Core hook placed above the 3-line / 210-character “…see more” fold on LinkedIn & 125-char fold on IG.</div>
+                    </div>
+                    <div style="display: flex; gap: 8px; align-items: flex-start;">
+                        <span style="color: var(--emerald-600); font-weight: 800;">✓</span>
+                        <div><strong>Evergreen Reference Scrubbing:</strong> Stripping perishable dates (*"yesterday"*, *"last week"*) so syndicated assets retain long-term value.</div>
+                    </div>
+                    <div style="display: flex; gap: 8px; align-items: flex-start;">
+                        <span style="color: var(--emerald-600); font-weight: 800;">✓</span>
+                        <div><strong>Audio & Subtitle Sync:</strong> Burned-in captions 100% synchronized with speech; zero clipping or typography bleed.</div>
+                    </div>
+                    <div style="display: flex; gap: 8px; align-items: flex-start;">
+                        <span style="color: var(--emerald-600); font-weight: 800;">✓</span>
+                        <div><strong>Destination Tagging & Hashtags:</strong> Platform-specific hashtags (3–5 niche tags for IG; 0–3 for LI) + comment-trigger keywords.</div>
+                    </div>
+                    <div style="display: flex; gap: 8px; align-items: flex-start;">
+                        <span style="color: var(--emerald-600); font-weight: 800;">✓</span>
+                        <div><strong>External Link Hygiene:</strong> Links routed via first comment or pinned profile to protect algorithmic reach.</div>
+                    </div>
+                    <div style="display: flex; gap: 8px; align-items: flex-start;">
+                        <span style="color: var(--emerald-600); font-weight: 800;">✓</span>
+                        <div><strong>Closed-Loop UTMs & Canonical Verification:</strong> Verified source/medium/campaign tracking tokens active; web articles verify <code>rel="canonical"</code>.</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        
+<!-- FOOTER CTA -->
+        <footer id="contact" class="footer-cta">
+            <h3>Ready to Power Your Content Distribution Engine</h3>
+            <p>Social Media / Syndication Specialist ready to take ownership of your 200+ monthly master schedule, handle multi-platform format conversions, and run zero-defect QC across YouTube, LinkedIn, Instagram, and X.</p>
+            <div style="display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;">
+                <a href="mailto:jezreelleybag.graphics@gmail.com" class="btn-primary" style="background: var(--primary); color: white; padding: 12px 28px;">
+                    <svg aria-hidden="true" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                    Email: jezreelleybag.graphics@gmail.com
+                </a>
+                <a href="https://www.linkedin.com/in/jezreel-dave-leybag-a01528152/" target="_blank" class="btn-secondary" style="background: #1e293b; color: white; border-color: #334155; padding: 12px 28px;">
+                    <svg aria-hidden="true" width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    LinkedIn Profile ↗
+                </a>
+            </div>
+        </footer>
+
+        <!-- ACCESSIBLE SCREEN-READER ANNOUNCER -->
+        <div id="a11y-announcer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
+    </main>
+
+    <!-- SCRIPT LOGIC (CALCULATOR, TABS, COPY CLIPS) -->
+    <script>
+
+        function switchSpecimenTab(tabId, btn) {
+            document.querySelectorAll('.tab-btn').forEach(function(b) {
+                b.classList.remove('active');
+                b.setAttribute('aria-selected', 'false');
+                b.setAttribute('tabindex', '-1');
+            });
+            document.querySelectorAll('.tab-pane').forEach(function(p) {
+                p.classList.remove('active');
+            });
+
+            btn.classList.add('active');
+            btn.setAttribute('aria-selected', 'true');
+            btn.setAttribute('tabindex', '0');
+            btn.focus();
+            document.getElementById('pane-' + tabId).classList.add('active');
+        }
+
+        // KEYBOARD ACCESSIBILITY FOR TABS (W3C WAI-ARIA SPEC)
+        document.addEventListener('DOMContentLoaded', function() {
+            var tabs = Array.from(document.querySelectorAll('.tab-btn'));
+            tabs.forEach(function(tab, index) {
+                tab.addEventListener('keydown', function(e) {
+                    var targetIndex = null;
+                    if (e.key === 'ArrowRight') {
+                        targetIndex = (index + 1) % tabs.length;
+                    } else if (e.key === 'ArrowLeft') {
+                        targetIndex = (index - 1 + tabs.length) % tabs.length;
+                    } else if (e.key === 'Home') {
+                        targetIndex = 0;
+                    } else if (e.key === 'End') {
+                        targetIndex = tabs.length - 1;
+                    }
+                    if (targetIndex !== null) {
+                        e.preventDefault();
+                        tabs[targetIndex].click();
+                    }
+                });
+            });
+        });
+
+        function copyCanonicalCode(btn) {
+            var code = '<link rel="canonical" href="https://content-syndication-portfolio.vercel.app/" />';
+            navigator.clipboard.writeText(code).then(function() {
+                btn.innerText = 'Copied!';
+                var announcer = document.getElementById('a11y-announcer');
+                if (announcer) announcer.innerText = 'Canonical link tag copied to clipboard';
+                setTimeout(function() { btn.innerText = 'Copy Tag'; }, 2000);
+            });
+        }
+
+        function copyUtm(btn) {
+            var utm = 'https://client.com/friction-audit?utm_source=medium_syndication&utm_medium=editorial_canonical&utm_campaign=burnout_q4&utm_content=notion_audit_cta';
+            navigator.clipboard.writeText(utm).then(function() {
+                btn.innerText = 'Copied!';
+                var announcer = document.getElementById('a11y-announcer');
+                if (announcer) announcer.innerText = 'UTM tracking link copied to clipboard';
+                setTimeout(function() { btn.innerText = 'Copy UTM'; }, 2000);
+            });
+        }
+
+        function loadVideo(id, title, tag, btn) {
+            var player = document.getElementById('main-video-player');
+            if (player) {
+                player.src = 'https://drive.google.com/file/d/' + id + '/preview';
+            }
+            var titleEl = document.getElementById('player-title');
+            if (titleEl) titleEl.innerText = title;
+            var tagEl = document.getElementById('player-tag');
+            if (tagEl) tagEl.innerText = tag;
+
+            document.querySelectorAll('.video-item').forEach(function(el) {
+                el.classList.remove('active');
+                var arrow = el.querySelector('span:last-child');
+                if (arrow) arrow.style.color = '#94a3b8';
+            });
+            btn.classList.add('active');
+            var activeArrow = btn.querySelector('span:last-child');
+            if (activeArrow) activeArrow.style.color = '#0284c7';
+        }
+
+        function copyNotionMarkdown(btn) {
+            var sopMarkdown = `# SOP: The Daily Friction Audit & Shutdown Protocol (High-Performance OS)\n**Owner:** High-Performance Operator\n**Review Cycle:** Weekly on Friday at 4:45 PM\n**Target Outcome:** 0 Open Cognitive Loops before 6:00 PM | 100% Pre-Decided Morning Priorities\n\n---\n\n## 🎯 1. The 5 PM Daily Shutdown Checklist\n- [ ] **Inbox Zero Scrub:** Process all unread emails. (2-min rule: Reply, Archive, or Delegate).\n- [ ] **Calendar Lock:** Block exactly two 90-minute Deep Work sprints for tomorrow.\n- [ ] **Top-3 Priority Anchor:**\n  1. Priority 1 (Non-Negotiable Needle-Mover)\n  2. Priority 2 (Key Strategic Deliverable)\n  3. Priority 3 (Operational Support)\n- [ ] **Close All Browser Tabs:** Keep maximum 3 active tabs upon computer sleep.\n- [ ] **Mental Handoff Verbal Cue:** "Work is complete. The morning is pre-decided."\n\n---\n\n## ⚡ 2. The Morning Execution Matrix (No Decision Zone)\n| Time Block | Protocol | Action Rules |\n| :--- | :--- | :--- |\n| **08:00 - 08:30 AM** | Activation | Hydrate, daylight exposure, zero notifications/Slack. |\n| **08:30 - 10:00 AM** | Deep Sprint #1 | Execute Priority #1. Email and messaging clients closed. |\n| **10:00 - 10:30 AM** | Asynchronous Sync | Batch respond to high-priority team messages. |\n| **10:30 - 12:00 PM** | Deep Sprint #2 | Execute Priority #2. |`;
+
+            navigator.clipboard.writeText(sopMarkdown).then(function() {
+                var oldHtml = btn.innerHTML;
+                btn.innerHTML = '<span>✓ Copied to Clipboard!</span>';
+                var announcer = document.getElementById('a11y-announcer');
+                if (announcer) announcer.innerText = 'Notion SOP markdown copied to clipboard';
+                setTimeout(function() { btn.innerHTML = oldHtml; }, 2500);
+            });
+        }
+
+        function filterSchedulerTable(network, btn) {
+            document.querySelectorAll('.filter-btn').forEach(function(b) {
+                b.classList.remove('active');
+            });
+            btn.classList.add('active');
+
+            var rows = document.querySelectorAll('#scheduler-table tbody tr');
+            rows.forEach(function(row) {
+                if (network === 'all' || row.getAttribute('data-network') === network) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>

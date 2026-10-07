@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jezreel Dave Leybag - Signage Estimator & Vendor Sourcing Specialist Resume</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap');
+        
+        * {
+            box-sizing: border-box;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        @page {
+            size: letter;
+            margin: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: #e2e8f0;
+            margin: 0;
+            padding: 20px 0;
+            color: #0f172a;
+            line-height: 1.32;
+        }
+
+        .resume-container {
+            width: 8.5in;
+            margin: 0 auto;
+        }
+
+        .page {
+            width: 8.5in;
+            height: 11in;
+            max-height: 11in;
+            padding: 26px 32px 22px 32px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* HEADER */
+        .header {
+            border-bottom: 2px solid #0f172a;
+            padding-bottom: 6px;
+            margin-bottom: 7px;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .name-title h1 {
+            margin: 0;
+            font-size: 22px;
+            font-weight: 800;
+            color: #0f172a;
+            letter-spacing: -0.3px;
+            line-height: 1.1;
+        }
+
+        .name-title h2 {
+            margin: 2px 0 0 0;
+            font-size: 11.5px;
+            font-weight: 700;
+            color: #0284c7;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+        }
+
+        .status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: #ecfdf5;
+            border: 1px solid #a7f3d0;
+            color: #065f46;
+            font-size: 9.5px;
+            font-weight: 700;
+            padding: 2.5px 7px;
+            border-radius: 9999px;
+            white-space: nowrap;
+        }
+
+        .status-dot {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: #10b981;
+        }
+
+        .contact-bar {
+            margin-top: 6px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 4px 14px;
+            font-size: 9.5px;
+            color: #475569;
+            background: #f8fafc;
+            padding: 4px 8px;
+            border-radius: 5px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .contact-item a {
+            color: #0284c7;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* SECTION STYLING */
+        .section {
+            margin-bottom: 7px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #cbd5e1;
+            padding-bottom: 2px;
+            margin-bottom: 4px;
+        }
+
+        .section-title {
+            font-size: 10px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.7px;
+            color: #0f172a;
+            margin: 0;
+        }
+
+        .section-tagline {
+            font-size: 8px;
+            font-weight: 600;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+        }
+
+        /* SUMMARY */
+        .summary-text {
+            font-size: 9px;
+            color: #334155;
+            line-height: 1.36;
+            margin: 0;
+            text-align: justify;
+        }
+
+        .summary-text strong {
+            color: #0f172a;
+        }
+
+        /* CORE COMPETENCIES COMPACT GRID */
+        .competencies-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 4px 7px;
+        }
+
+        .competency-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 4px;
+            padding: 3.5px 6px;
+        }
+
+        .competency-card h3 {
+            margin: 0 0 1.5px 0;
+            font-size: 8.5px;
+            font-weight: 700;
+            color: #0284c7;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .competency-card p {
+            margin: 0;
+            font-size: 8px;
+            color: #475569;
+            line-height: 1.25;
+        }
+
+        .competency-card strong {
+            color: #0f172a;
+        }
+
+        /* EXPERIENCE */
+        .experience-item {
+            margin-bottom: 5px;
+        }
+
+        .experience-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 1.5px;
+        }
+
+        .exp-role {
+            font-size: 9.5px;
+            font-weight: 700;
+            color: #0f172a;
+        }
+
+        .exp-company {
+            font-size: 9.5px;
+            font-weight: 600;
+            color: #0284c7;
+        }
+
+        .exp-date {
+            font-size: 8.5px;
+            font-weight: 600;
+            color: #64748b;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .exp-bullets {
+            margin: 0;
+            padding-left: 13px;
+            font-size: 8.5px;
+            color: #334155;
+            line-height: 1.3;
+        }
+
+        .exp-bullets li {
+            margin-bottom: 1.5px;
+        }
+
+        .exp-bullets li strong {
+            color: #0f172a;
+        }
+
+        /* HIGHLIGHT CALLOUT */
+        .tech-highlight {
+            background: #fffbeb;
+            border-left: 2.5px solid #f59e0b;
+            padding: 2.5px 6px;
+            margin-top: 2px;
+            border-radius: 0 3px 3px 0;
+            font-size: 8px;
+            color: #92400e;
+            line-height: 1.25;
+        }
+
+        /* 2-COLUMN LOWER SECTION (TOOLS + CERTS/REMOTE) */
+        .lower-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 7px;
+        }
+
+        .card-box {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 4px;
+            padding: 4px 6px;
+        }
+
+        .card-box h4 {
+            margin: 0 0 2px 0;
+            font-size: 8.5px;
+            font-weight: 700;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .cert-badge {
+            font-size: 7.5px;
+            font-weight: 700;
+            color: #065f46;
+            background: #d1fae5;
+            padding: 1px 4px;
+            border-radius: 2px;
+        }
+
+        .box-desc {
+            font-size: 8px;
+            color: #475569;
+            line-height: 1.25;
+            margin: 0;
+        }
+
+        .box-desc strong {
+            color: #0f172a;
+        }
+
+        /* PRINT STYLES */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .resume-container {
+                box-shadow: none;
+                margin: 0;
+                width: 8.5in;
+            }
+            .page {
+                box-shadow: none;
+                margin: 0;
+                padding: 22px 28px 18px 28px;
+                width: 8.5in;
+                height: 11in;
+                page-break-after: avoid;
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="resume-container">
+    
+    <!-- SINGLE PAGE ATS RESUME -->
+    <div class="page">
+        
+        <!-- HEADER -->
+        <header class="header">
+            <div class="header-top">
+                <div class="name-title">
+                    <h1>JEZREEL DAVE LEYBAG</h1>
+                    <h2>Signage Estimator &amp; Vendor Sourcing Specialist</h2>
+                </div>
+                <div class="status-pill">
+                    <span class="status-dot"></span>
+                    <span>100% Remote • Full-Time U.S. EST Schedule Ready</span>
+                </div>
+            </div>
+
+            <div class="contact-bar">
+                <div class="contact-item">
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; color:#0284c7;"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                    <a href="mailto:jezreelleybag.graphics@gmail.com">jezreelleybag.graphics@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; color:#0284c7;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    <span>+63 939-399-1289 (WhatsApp / Mobile)</span>
+                </div>
+                <div class="contact-item">
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; color:#0284c7;"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                    <span>Philippines (Quiet Dedicated Home Office)</span>
+                </div>
+                <div class="contact-item">
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; color:#0284c7;"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+                    <a href="https://linkedin.com/in/jezreel-dave-leybag-a01528152/" target="_blank">LinkedIn Profile</a>
+                </div>
+                <div class="contact-item">
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; color:#0284c7;"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></svg>
+                    <a href="https://signquote-studio.vercel.app/" target="_blank">signquote-studio.vercel.app ↗</a>
+                </div>
+            </div>
+        </header>
+
+        <!-- EXECUTIVE PROFILE -->
+        <section class="section">
+            <div class="section-header">
+                <h3 class="section-title">Executive Profile</h3>
+                <span class="section-tagline">Commercial Signage Estimation &amp; Operational Management</span>
+            </div>
+            <p class="summary-text">
+                <strong>Signage Estimator &amp; Technical Sourcing Specialist</strong> with a proven foundation as a business co-owner and 4+ years of disciplined international remote delivery. Grounded in commercial operations, vendor purchasing, budget discipline, and <strong>sign estimating mathematics</strong> aligned with <strong>CoreBridge</strong> workflows. Rigorously enforces <strong>mathematical 50% gross margin defense</strong> (<code>COGS / (1 - GM%)</code>) to prevent markup profit leakage, proven through the architecture of <strong>SignQuote Studio</strong> (<a href="https://signquote-studio.vercel.app/" target="_blank" style="color: #0284c7; text-decoration: underline;">signquote-studio.vercel.app</a>), an interactive commercial sign estimating workbench. Deep construction knowledge spanning rigid substrates (cast acrylic, ACM, HDU, PVC), channel letters, raceways, and UL 48 / NEC Article 600 safety rules. <strong>Google Certified AI Specialist (100% Score — Google for Education &amp; MIT RAISE)</strong>: builds custom Gemini prompt workflows to parse raw contractor RFPs into submittal-ready Bills of Materials in under 8 minutes. Full-time U.S. EST schedule ready.
+            </p>
+        </section>
+
+        <!-- CORE COMPETENCIES MATRIX (6 HIGH-DENSITY TILES) -->
+        <section class="section">
+            <div class="section-header">
+                <h3 class="section-title">Core Competencies &amp; Technical Capabilities</h3>
+                <span class="section-tagline">Fastsigns &amp; Sign Franchise Workflow Alignment</span>
+            </div>
+            <div class="competencies-grid">
+                <div class="competency-card">
+                    <h3>Estimating Math &amp; Logic</h3>
+                    <p>Assembly modeling aligned with <strong>CoreBridge</strong>; raw material yield nesting; machine run times; router hours; fabrication labor; <strong>50% Gross Margin formula defense</strong>.</p>
+                </div>
+                <div class="competency-card">
+                    <h3>Substrates &amp; Fabrication</h3>
+                    <p>Cast Acrylic (#7328 / #2447), ACM (Aluminum Composite 3mm/4mm), Polycarbonate (Lexan), HDU Precision Board, PVC Sintra, .063/.080 aluminum returns, trim cap, stud mounting.</p>
+                </div>
+                <div class="competency-card">
+                    <h3>UL 48 &amp; Illumination Specs</h3>
+                    <p>Front-lit &amp; reverse halo channel letters; IP67 LED layouts; <strong>NEC Article 600 80% driver headroom rule</strong> (48W max on 60W Class 2 power supply); weep holes &amp; raceways.</p>
+                </div>
+                <div class="competency-card">
+                    <h3>Strategic Wholesale Sourcing</h3>
+                    <p>Wholesale vendor capability evaluation, price tier negotiations, proof reviews, and standardized RFQ drafting (1:1 paper pattern, UL specs, crating, liftgate delivery).</p>
+                </div>
+                <div class="competency-card">
+                    <h3>Gemini AI Takeoff Automation</h3>
+                    <p>Google Gemini custom Gems for scraping corporate vendor portals, parsing contractor RFP emails into structured engineering BOMs, and evaluating fabricator quotes in minutes.</p>
+                </div>
+                <div class="competency-card">
+                    <h3>Proof Verification &amp; Handoff</h3>
+                    <p>Full sales-to-production lifecycle: Lead Inquiry → Technical Estimate → Customer Proof Verification → Vendor Sourcing → Production Release; Adobe Acrobat Pro PDF markup.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FEATURED TECHNICAL PROJECT / BENCHMARK WORKBENCH -->
+        <section class="section">
+            <div class="section-header">
+                <h3 class="section-title">Featured Technical Project &amp; Estimating Benchmark</h3>
+                <span class="section-tagline">Interactive Proof-of-Work Portfolio</span>
+            </div>
+
+            <div class="experience-item">
+                <div class="exp-header">
+                    <div>
+                        <span class="exp-role">SignQuote Studio — Commercial Signage Estimating Workbench</span>
+                        <span style="font-size: 8.5px; color: #0284c7; font-weight: 600;">(Independent Technical Project • <a href="https://signquote-studio.vercel.app/" target="_blank" style="color: #0284c7; text-decoration: underline;">https://signquote-studio.vercel.app/</a>)</span>
+                    </div>
+                    <span class="exp-date">2024</span>
+                </div>
+                <ul class="exp-bullets">
+                    <li><strong>Operational Estimating Platform:</strong> Architected a production-grade commercial sign estimating workbench demonstrating U.S. franchise workflows, assembly takeoff, and <strong>mathematical 50% gross margin defense</strong> (<code>COGS / (1 - GM%)</code>) across four contract archetypes.</li>
+                    <li><strong>Gemini AI Unstructured Takeoff:</strong> Engineered custom Gemini AI prompt workflows that ingest raw contractor email RFPs and architectural specs, generating structured engineering Bills of Materials (BOM) in &lt; 8 minutes (75% faster than manual takeoff).</li>
+                    <li><strong>Standardized Wholesale RFQ Dispatch:</strong> Automated vendor RFQ generators for North American wholesale fabricators (DSW, Gemini, QM) ensuring mandatory 1:1 paper patterns, UL specs, crating, and liftgate delivery requirements.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- PROFESSIONAL EXPERIENCE -->
+        <section class="section">
+            <div class="section-header">
+                <h3 class="section-title">Professional Experience</h3>
+                <span class="section-tagline">Business Operations, Purchasing &amp; International Delivery</span>
+            </div>
+
+            <!-- ROLE 1: BUSINESS CO-OWNER -->
+            <div class="experience-item">
+                <div class="exp-header">
+                    <div>
+                        <span class="exp-role">Business Co-Owner &amp; Operations / Marketing Lead</span> — 
+                        <span class="exp-company">Morpho Cafe and Studio</span>
+                    </div>
+                    <span class="exp-date">2024 – PRESENT</span>
+                </div>
+                <ul class="exp-bullets">
+                    <li><strong>Business Operations &amp; Margin Discipline:</strong> Co-own and lead daily business operations, operational budget allocation, inventory control, and operating margins; enforce strict cost discipline across food, packaging, and supply procurement.</li>
+                    <li><strong>Vendor Sourcing &amp; Price Negotiations:</strong> Sourced commercial equipment, supplies, and raw materials; negotiated volume pricing tiers, delivery lead times, and credit terms with local and regional commercial suppliers.</li>
+                    <li><strong>Digital Growth &amp; Community Outreach:</strong> Developed and executed the complete digital brand strategy, visual assets, and local community outreach, driving a 30% increase in digital footprint and delivery volume.</li>
+                    <li><strong>Standard Operating Procedures (SOPs):</strong> Authored repeatable operational SOPs for inventory tracking, staff execution, and end-of-day reconciliation, ensuring consistent operational quality and zero supply stockouts.</li>
+                </ul>
+            </div>
+
+            <!-- ROLE 2: INTERNATIONAL REMOTE SPECIALIST -->
+            <div class="experience-item">
+                <div class="exp-header">
+                    <div>
+                        <span class="exp-role">International Remote Production &amp; Digital Asset Specialist</span> — 
+                        <span class="exp-company">Independent Commercial Clients (Canada, UAE, Italy)</span>
+                    </div>
+                    <span class="exp-date">2021 – PRESENT</span>
+                </div>
+                <ul class="exp-bullets">
+                    <li><strong>4+ Years of Disciplined International Remote Delivery:</strong> Delivered branded graphics, digital proofs, and visual assets for corporate and commercial clients across Canada, the UAE, and Italy.</li>
+                    <li><strong>Direct Account &amp; Client Communication:</strong> Maintained proactive, daily written and verbal English communication with business owners, marketing managers, and creative directors; clarified complex technical project requirements with zero miscommunication.</li>
+                    <li><strong>Strict Revision &amp; Turnaround Deadlines:</strong> Operated in fast-turnaround remote environments with strict deadline commitments, consistently achieving 100% on-time project releases with meticulous quality control.</li>
+                </ul>
+            </div>
+
+        </section>
+
+        <!-- LOWER SECTION: SOFTWARE & TOOLS + VERIFIED CERTS & REMOTE SETUP -->
+        <div class="lower-grid">
+            
+            <!-- LEFT BOX: WORKFLOW SYSTEMS & TOOLS -->
+            <div class="card-box">
+                <h4>
+                    <span>Workflow Tools &amp; Systems</span>
+                    <span class="cert-badge" style="background:#e0f2fe; color:#0369a1;">Core Stack</span>
+                </h4>
+                <p class="box-desc">
+                    • <strong>Estimating &amp; Pricing Logic:</strong> Commercial Sign Takeoff Formulas, Substrate Yield Nesting, Labor Hour Calculations, 50% Gross Margin Defense (<code>COGS / (1 - GM%)</code>); CoreBridge Architecture.<br>
+                    • <strong>AI &amp; Automation:</strong> Google Gemini (Custom Gems, RFP Parsing, Automated BOM Extraction, Vendor Scraping); ChatGPT; Claude.<br>
+                    • <strong>Proof Review &amp; Graphics:</strong> Adobe Acrobat Pro (Technical PDF Proof Markup, Dimensioning, Callout Verification); Canva &amp; Graphic Asset Preparation.<br>
+                    • <strong>Collaboration &amp; Vendor Ops:</strong> Google Workspace (Gmail, Meet, Sheets, Drive); Asana; Wholesale RFQ Dispatch &amp; Vendor Order Tracking.
+                </p>
+            </div>
+
+            <!-- RIGHT BOX: VERIFIED GOOGLE CERTS & ZERO-DOWNTIME INFRASTRUCTURE -->
+            <div class="card-box">
+                <h4>
+                    <span>Verified Credentials &amp; Remote Setup</span>
+                    <span class="cert-badge">Score: 100%</span>
+                </h4>
+                <p class="box-desc">
+                    • <strong>Google for Education &amp; MIT RAISE:</strong> Generative AI with Gemini (ID: <code>475981211</code> • Verified Aug 2026 • 100% Score).<br>
+                    • <strong>Google Education:</strong> Gemini Certified Specialist (Assessment Score: 86%).<br>
+                    • <strong>Connectivity:</strong> Dedicated 300 Mbps high-speed fiber internet + 4G/LTE mobile hotspot failover.<br>
+                    • <strong>Power &amp; Schedule:</strong> Dual UPS battery backup systems for zero downtime; 100% committed to full-time U.S. Eastern Standard Time (EST) schedule overlap.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
