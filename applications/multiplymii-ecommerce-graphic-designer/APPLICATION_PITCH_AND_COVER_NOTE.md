@@ -36,7 +36,8 @@ Tailored TCG Concept Prototypes (featured in my portfolio):
 I work from a dedicated home office equipped with a high-performance Windows 11 creator workstation, 300 Mbps high-speed fiber internet, and dual UPS battery backups. I am eager and 100% prepared to work the required 5:00 AM PHT start time to ensure seamless daily overlap with the Canadian team.
 
 My design portfolio is available for review here:
-https://drive.google.com/drive/folders/1_cBN8MPPfaPkyvYzinhUuSuz0kexx1tx
+Live Interactive Website: https://jezreel-portfolio-brown.vercel.app
+Drive Vault (Full-Res): https://drive.google.com/drive/folders/1_cBN8MPPfaPkyvYzinhUuSuz0kexx1tx
 
 I look forward to discussing how I can immediately elevate your storefront and marketing visuals!
 
@@ -46,7 +47,8 @@ Jezreel Dave Leybag
 Email: jezreelleybag.graphics@gmail.com
 Phone / WhatsApp: +63 939-399-1289
 LinkedIn: https://www.linkedin.com/in/jezreel-dave-leybag-a01528152
-Portfolio: https://drive.google.com/drive/folders/1_cBN8MPPfaPkyvYzinhUuSuz0kexx1tx
+Portfolio: https://jezreel-portfolio-brown.vercel.app
+Drive Vault: https://drive.google.com/drive/folders/1_cBN8MPPfaPkyvYzinhUuSuz0kexx1tx
 ```
 
 ---
@@ -76,7 +78,7 @@ Portfolio: https://drive.google.com/drive/folders/1_cBN8MPPfaPkyvYzinhUuSuz0kexx
 * **Select:** **`Yes`**
 
 ### Q8: Link to your Portfolio / Website
-* **Enter:** `https://drive.google.com/drive/folders/1_cBN8MPPfaPkyvYzinhUuSuz0kexx1tx`
+* **Enter:** `https://jezreel-portfolio-brown.vercel.app` *(or include both: `https://jezreel-portfolio-brown.vercel.app | Drive Vault: https://drive.google.com/drive/folders/1_cBN8MPPfaPkyvYzinhUuSuz0kexx1tx`)*
 
 ---
 

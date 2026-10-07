@@ -93,14 +93,16 @@ def create_ecommerce_resume():
     links_p.paragraph_format.space_after = Pt(2.5)
     
     links = [
-        ("Design Portfolio: ", True, COLOR_ACCENT),
+        ("Live Portfolio: ", True, COLOR_ACCENT),
+        ("https://jezreel-portfolio-brown.vercel.app  |  ", False, COLOR_TEXT),
+        ("Drive Vault: ", True, COLOR_PRIMARY),
         ("drive.google.com/drive/folders/1_cBN8MPPfaPkyvYzinhUuSuz0kexx1tx  |  ", False, COLOR_TEXT),
         ("LinkedIn: ", True, COLOR_PRIMARY),
         ("linkedin.com/in/jezreel-dave-leybag-a01528152", False, COLOR_TEXT)
     ]
     for l_txt, l_bld, l_col in links:
         r = links_p.add_run(l_txt)
-        set_font(r, size_pt=8.0, bold=l_bld, color=l_col)
+        set_font(r, size_pt=7.8, bold=l_bld, color=l_col)
 
     pPr = links_p._p.get_or_add_pPr()
     pBdr = parse_xml(f'<w:pBdr {nsdecls("w")}><w:bottom w:val="single" w:sz="8" w:space="2" w:color="0F172A"/></w:pBdr>')
