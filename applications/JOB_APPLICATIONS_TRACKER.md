@@ -56,10 +56,10 @@
 ### 3. E-commerce Graphic Designer @ MultiplyMii
 - **Company / Client:** MultiplyMii (Client: Canada-based hobby & Trading Card Game / TCG retailer: Pokémon, MTG, One Piece, collectibles)
 - **Platform:** Direct Ashby Application
-- **Date Applied:** October 7, 2026 (Ready to Submit)
-- **Status:** 🟢 **Application Ready to Submit**
+- **Date Applied:** October 7, 2026
+- **Status:** 🟢 **Applied — Success Confirmed (In Recruiter Screening)**
 - **Schedule:** Monday–Friday, 5:00 AM PHT start time (Eastern Time overlap with Canadian team)
-- **Target Salary:** **₱55,000 – ₱60,000 PHP / month**
+- **Client Compensation Band:** **₱70,000 – ₱90,000 PHP / month** *(Submitted: ₱55,000 – ₱60,000 PHP)*
 - **Target URL:** [Ashby Application Link](https://jobs.ashbyhq.com/multiplymii/d87c8790-2e7c-4544-8bd1-1a163a6c5f2a)
 - **Dedicated Folder:** [`applications/multiplymii-ecommerce-graphic-designer/`](file:///d:/Jezreel%20Dave%20-%20Personal%20Branding/my-personal-website/applications/multiplymii-ecommerce-graphic-designer)
 - **Tailored Resume:** [`Jezreel_Dave_Leybag_Ecommerce_Graphic_Designer.pdf`](file:///d:/Jezreel%20Dave%20-%20Personal%20Branding/my-personal-website/applications/multiplymii-ecommerce-graphic-designer/Jezreel_Dave_Leybag_Ecommerce_Graphic_Designer.pdf)
