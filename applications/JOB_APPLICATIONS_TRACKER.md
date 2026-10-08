@@ -2,7 +2,7 @@
 
 **Candidate:** Jezreel Dave Leybag  
 **Primary Contact:** jezreelleybag.graphics@gmail.com | +63 939-399-1289  
-**Last Updated:** October 7, 2026 (Live Status & Multi-Role Pipeline)  
+**Last Updated:** October 8, 2026 (Live Status & Multi-Role Pipeline)  
 
 ---
 
@@ -10,16 +10,16 @@
 
 | Metric | Count | Details |
 | :--- | :---: | :--- |
-| **Total Active Applications** | **7** | 1 Offer Probe, 2 MultiplyMii, 3 Fresh Prints/Frontier, 1 OrcaVX |
-| **Immediate Offer Stage** | **1** | **Fastsigns International** (Client interview completed with Russell Jonas) |
+| **Total Active Applications** | **7** | 1 Pre-Offer Stage, 2 MultiplyMii, 3 Fresh Prints/Frontier, 1 OrcaVX |
+| **Pre-Offer Due Diligence Stage** | **1** | **Fastsigns International** (References, NBI, TOR & Docs Submitted to Somewhere.com) |
 | **Recruiter Screening / In Queue** | **5** | MultiplyMii (Signage + E-commerce Design), 3 Fresh Prints / Frontier |
 | **Pending Review** | **1** | OrcaVX Media (Wellfound) |
 | **Target Monthly Income** | **₱70,000 – ₱85,000+ PHP** | ($1,250 – $1,500+ USD) |
-| **Immediate Next Action** | **Oct 8 – 9, 2026** | Await update from Alena (Somewhere.com) regarding Fastsigns offer |
+| **Immediate Next Action** | **Oct 9 – 10, 2026** | Await reference verification clearance & formal offer letter from Somewhere.com / Russell Jonas |
 
 ---
 
-## 🏆 PRIORITY #1: FINAL STAGE / OFFER PROBE
+## 🏆 PRIORITY #1: PRE-OFFER STAGE & DUE DILIGENCE
 
 ### 1. Signage Estimator & Vendor Sourcing Specialist @ Fastsigns International
 - **Company / Client:** **Fastsigns International** ([fastsigns.com](https://www.fastsigns.com)) — Connecticut Franchise
@@ -27,13 +27,18 @@
 - **Key Contacts:**
   - Client / Hiring Manager: **Russell Jonas** (Fastsigns Connecticut)
   - Recruiter / Talent Lead: **Alena Govender** (`alena@somewhere.com`)
-- **Interview Completed:** October 6, 2026 (~40 minutes via video)
+  - People Operations / Support: **Vanessa Quezon** (`vanessa@somewhere.com`) & **Mary Cabarcas** (`mcberdugo@somewhere.com`)
+- **Interview Completed:** October 6, 2026 (~40 minutes via video with Russell Jonas)
 - **Fathom Video Recording & Notes:** [Fathom Call Summary](https://fathom.video/share/SWzCDzR5AUDa6z2sP8T7goQeMkj5mTs2?tab=summary&timestamp=2306.0&utm_campaign=postmeetingsummary&utm_content=summary_item&utm_medium=email)
-- **Current Status:** 🟣 **Stage 4: Post-Client Interview — Probing for Immediate Offer**
-- **Inside Intel:** Jezreel was the **sole candidate** who advanced to the client interview.
+- **Current Status:** 🟢 **Stage 5: Pre-Offer Due Diligence & Character References Submitted**
+- **Milestone History:**
+  - *Oct 6:* Sole candidate advanced to client interview; Alena probed Russell for immediate offer.
+  - *Oct 8 (12:50 AM):* Somewhere.com People Operations initiated reference & credential verification.
+  - *Oct 8 (8:21 PM):* Mary Cabarcas followed up to expedite due diligence.
+  - *Oct 8 (11:14 PM):* Form completed & submitted with 3 references, clean NBI clearance, Gov't ID, TOR, and COE. Confirmed via email to Mary Cabarcas.
 - **Dedicated Folder:** [`applications/fastsigns-signage-estimator/`](file:///d:/Jezreel%20Dave%20-%20Personal%20Branding/my-personal-website/applications/fastsigns-signage-estimator)
-- **Resume Used:** [`Jezreel_Dave_Resume_Signage_Estimator.pdf`](file:///d:/Jezreel%20Dave%20-%20Personal%20Branding/my-personal-website/applications/fastsigns-signage-estimator/Jezreel_Dave_Resume_Signage_Estimator.pdf)
-- **Next Follow-up:** Friday morning (Oct 9) if no word from Alena.
+- **Credentials Vault:** [`applications/identity-and-credentials/`](file:///d:/Jezreel%20Dave%20-%20Personal%20Branding/my-personal-website/applications/identity-and-credentials)
+- **Next Follow-up:** Await reference verification clearance and formal offer release (Oct 9–10, 2026).
 
 ---
 
