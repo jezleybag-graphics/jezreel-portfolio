@@ -31,15 +31,16 @@
   - People Operations / Support: **Vanessa Quezon** (`vanessa@somewhere.com`) & **Mary Cabarcas** (`mcberdugo@somewhere.com`)
 - **Interview Completed:** October 6, 2026 (~40 minutes via video with Russell Jonas)
 - **Fathom Video Recording & Notes:** [Fathom Call Summary](https://fathom.video/share/SWzCDzR5AUDa6z2sP8T7goQeMkj5mTs2?tab=summary&timestamp=2306.0&utm_campaign=postmeetingsummary&utm_content=summary_item&utm_medium=email)
-- **Current Status:** 🟢 **Stage 5: Pre-Offer Due Diligence & Character References Submitted**
+- **Current Status:** 🟢 **Stage 5: References Cleared — Awaiting Formal Offer Release**
 - **Milestone History:**
   - *Oct 6:* Sole candidate advanced to client interview; Alena probed Russell for immediate offer.
   - *Oct 8 (12:50 AM):* Somewhere.com People Operations initiated reference & credential verification.
   - *Oct 8 (8:21 PM):* Mary Cabarcas followed up to expedite due diligence.
-  - *Oct 8 (11:14 PM):* Form completed & submitted with 3 references, clean NBI clearance, Gov't ID, TOR, and COE. Confirmed via email to Mary Cabarcas.
+  - *Oct 8 (11:14 PM):* Form completed & submitted with clean NBI clearance, Gov't ID, TOR, and COE. Confirmed via email to Mary Cabarcas.
+  - *Oct 13:* All character references (Myka, James, Paul, Danna, Gabriel) confirmed completion of verification questionnaires. Due diligence 100% complete.
 - **Dedicated Folder:** [`applications/fastsigns-signage-estimator/`](file:///d:/Jezreel%20Dave%20-%20Personal%20Branding/my-personal-website/applications/fastsigns-signage-estimator)
 - **Credentials Vault:** [`applications/identity-and-credentials/`](file:///d:/Jezreel%20Dave%20-%20Personal%20Branding/my-personal-website/applications/identity-and-credentials)
-- **Next Follow-up:** Await reference verification clearance and formal offer release (Oct 9–10, 2026).
+- **Next Follow-up:** Await formal offer letter package & contract from Somewhere.com / Russell Jonas.
 
 ---
 
