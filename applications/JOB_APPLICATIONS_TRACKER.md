@@ -10,12 +10,13 @@
 
 | Metric | Count | Details |
 | :--- | :---: | :--- |
-| **Total Active Applications** | **7** | 1 Pre-Offer Stage, 2 MultiplyMii, 3 Fresh Prints/Frontier, 1 OrcaVX |
+| **Total Active Applications** | **7** | 1 Pre-Offer Stage, 1 Recruiter Interview, 1 Screening, 3 Fresh Prints, 1 OrcaVX |
 | **Pre-Offer Due Diligence Stage** | **1** | **Fastsigns International** (References, NBI, TOR & Docs Submitted to Somewhere.com) |
-| **Recruiter Screening / In Queue** | **5** | MultiplyMii (Signage + E-commerce Design), 3 Fresh Prints / Frontier |
+| **Recruiter Interview Stage** | **1** | **MultiplyMii E-commerce Designer** (Thu, Oct 15 @ 8:30 PM with Carmyle Jo Catipay) |
+| **Recruiter Screening / In Queue** | **4** | MultiplyMii Signage Coordinator, 3 Fresh Prints / Frontier |
 | **Pending Review** | **1** | OrcaVX Media (Wellfound) |
 | **Target Monthly Income** | **₱70,000 – ₱85,000+ PHP** | ($1,250 – $1,500+ USD) |
-| **Immediate Next Action** | **Oct 9 – 10, 2026** | Await reference verification clearance & formal offer letter from Somewhere.com / Russell Jonas |
+| **Immediate Next Action** | **Oct 15, 2026 (8:30 PM)** | MultiplyMii Initial Online Interview via Google Meet |
 
 ---
 
@@ -42,33 +43,38 @@
 
 ---
 
+## 🎨 PRIORITY #2: LIVE INTERVIEW STAGE
+
+### 2. E-commerce Graphic Designer @ MultiplyMii
+- **Company / Client:** MultiplyMii (Client: Canada-based hobby & Trading Card Game / TCG retailer: Pokémon, MTG, One Piece, collectibles)
+- **Platform:** Direct Ashby Application &amp; Google Meet
+- **Date Applied:** October 7, 2026
+- **Interview Scheduled:** **Thursday, October 15, 2026 • 8:30 PM – 9:00 PM PHT**
+- **Dedicated Recruiter:** **Carmyle Jo Catipay** (`ccatipay@multiplymii.com`)
+- **Current Status:** 🔵 **Stage 2: Initial Online Interview Confirmed**
+- **Meeting Link:** [Ashby Meeting Booking](https://you.ashbyhq.com/meeting/ec2486f1-cc4c-4866-99f5-dd45838fdefa/)
+- **Schedule Requirement:** Monday–Friday, 5:00 AM PHT start time (Eastern Time overlap with Canadian team)
+- **Client Compensation Band:** **₱70,000 – ₱90,000 PHP / month** *(Submitted: ₱55,000 – ₱60,000 PHP)*
+- **Target URL:** [Ashby Application Link](https://jobs.ashbyhq.com/multiplymii/d87c8790-2e7c-4544-8bd1-1a163a6c5f2a)
+- **Dedicated Folder:** [`applications/multiplymii-ecommerce-graphic-designer/`](file:///d:/Jezreel%20Dave%20-%20Personal%20Branding/my-personal-website/applications/multiplymii-ecommerce-graphic-designer)
+- **Live Portfolio:** [https://jezreel-portfolio-brown.vercel.app#work](https://jezreel-portfolio-brown.vercel.app#work)
+- **Tailored Resume:** [`Jezreel_Dave_Leybag_Ecommerce_Graphic_Designer.pdf`](file:///d:/Jezreel%20Dave%20-%20Personal%20Branding/my-personal-website/applications/multiplymii-ecommerce-graphic-designer/Jezreel_Dave_Leybag_Ecommerce_Graphic_Designer.pdf)
+- **Interview Prep & Pitch:** [`APPLICATION_PITCH_AND_COVER_NOTE.md`](file:///d:/Jezreel%20Dave%20-%20Personal%20Branding/my-personal-website/applications/multiplymii-ecommerce-graphic-designer/APPLICATION_PITCH_AND_COVER_NOTE.md) &amp; [`INTERVIEW_AND_PRACTICAL_TEST_PLAYBOOK.md`](file:///d:/Jezreel%20Dave%20-%20Personal%20Branding/my-personal-website/applications/multiplymii-ecommerce-graphic-designer/INTERVIEW_AND_PRACTICAL_TEST_PLAYBOOK.md)
+
+---
+
 ## 🎯 ACTIVE APPLICATIONS (Screening & Review Stage)
 
-### 2. Signage Project Coordinator @ MultiplyMii
+### 3. Signage Project Coordinator @ MultiplyMii
 - **Company / Client:** MultiplyMii (Client: US provider of exterior illuminated signage for national retail/restaurant brands)
 - **Platform:** Direct Ashby Application
 - **Date Applied:** October 7, 2026
-- **Status:** 🟢 **Applied — Success Confirmed (In Recruiter Screening)**
+- **Status:** 🟢 **Applied — In Recruiter Screening**
 - **Schedule:** 8:00 AM – 5:00 PM CST (Monday – Friday)
 - **Salary Band:** ₱65,000 – ₱75,000 PHP/month (Submitted: **₱70,000 PHP**)
 - **Target URL:** [Ashby Application Link](https://jobs.ashbyhq.com/multiplymii/a75ca0d3-d5e4-4bc8-a3f9-585d89b2e0b9)
 - **Dedicated Folder:** [`applications/multiplymii-signage-project-coordinator/`](file:///d:/Jezreel%20Dave%20-%20Personal%20Branding/my-personal-website/applications/multiplymii-signage-project-coordinator)
 - **Tailored Resume:** [`Jezreel_Dave_Leybag_Signage_Project_Coordinator.pdf`](file:///d:/Jezreel%20Dave%20-%20Personal%20Branding/my-personal-website/applications/multiplymii-signage-project-coordinator/Jezreel_Dave_Leybag_Signage_Project_Coordinator.pdf)
-- **Next Follow-up:** October 14, 2026
-
----
-
-### 3. E-commerce Graphic Designer @ MultiplyMii
-- **Company / Client:** MultiplyMii (Client: Canada-based hobby & Trading Card Game / TCG retailer: Pokémon, MTG, One Piece, collectibles)
-- **Platform:** Direct Ashby Application
-- **Date Applied:** October 7, 2026
-- **Status:** 🟢 **Applied — Success Confirmed (In Recruiter Screening)**
-- **Schedule:** Monday–Friday, 5:00 AM PHT start time (Eastern Time overlap with Canadian team)
-- **Client Compensation Band:** **₱70,000 – ₱90,000 PHP / month** *(Submitted: ₱55,000 – ₱60,000 PHP)*
-- **Target URL:** [Ashby Application Link](https://jobs.ashbyhq.com/multiplymii/d87c8790-2e7c-4544-8bd1-1a163a6c5f2a)
-- **Dedicated Folder:** [`applications/multiplymii-ecommerce-graphic-designer/`](file:///d:/Jezreel%20Dave%20-%20Personal%20Branding/my-personal-website/applications/multiplymii-ecommerce-graphic-designer)
-- **Tailored Resume:** [`Jezreel_Dave_Leybag_Ecommerce_Graphic_Designer.pdf`](file:///d:/Jezreel%20Dave%20-%20Personal%20Branding/my-personal-website/applications/multiplymii-ecommerce-graphic-designer/Jezreel_Dave_Leybag_Ecommerce_Graphic_Designer.pdf)
-- **Interview Prep & Pitch:** [`APPLICATION_PITCH_AND_COVER_NOTE.md`](file:///d:/Jezreel%20Dave%20-%20Personal%20Branding/my-personal-website/applications/multiplymii-ecommerce-graphic-designer/APPLICATION_PITCH_AND_COVER_NOTE.md)
 - **Next Follow-up:** October 14, 2026
 
 ---
