@@ -3,7 +3,7 @@
 
 - **Position Type:** Full-Time (with Canadian Eastern Time morning overlap)
 - **Schedule:** Monday–Friday, **5:00 AM – 2:00 PM PHT** (strong overlap with Canadian team)
-- **Target Compensation:** **₱55,000 – ₱60,000 PHP per month** (sweet spot for mid-level e-commerce designer)
+- **Target Compensation:** **₱65,000 – ₱75,000 PHP per month** (competitive rate for dual E-Comm Visual Designer + Video Editor)
 - **Core Franchises:** Pokémon TCG, Magic: The Gathering (MTG), One Piece Card Game, League of Legends / Lorcana, sports cards, model kits (Gunpla), hobby supplies (VaultX / Ultimate Guard / Dragon Shield style).
 - **Your Live Portfolio Showcase:** [`index.html#work`](file:///d:/Jezreel%20Dave%20-%20Personal%20Branding/my-personal-website/index.html#work) (Filter: **TCG & Pop Culture**)
 
@@ -15,8 +15,8 @@
 flowchart TD
     A["Stage 1: Application Review (Ashby)"] --> B["Stage 2: Recruiter Screening (MultiplyMii)"]
     B --> C["Stage 3: Practical Design Test / Assessment"]
+    D --> E["Job Offer & Onboarding (₱65k–₱75k)"]
     C --> D["Stage 4: Client Interview (Canadian TCG Owner)"]
-    D --> E["Job Offer & Onboarding (₱55k–₱60k)"]
 
     style A fill:#0f172a,stroke:#38bdf8,stroke-width:2px,color:#fff
     style B fill:#0369a1,stroke:#38bdf8,stroke-width:2px,color:#fff
@@ -34,7 +34,7 @@ flowchart TD
 **Recruiter's Primary Agenda:**
 1. Verify spoken English clarity, professionalism, and communication confidence.
 2. Confirm 100% agreement with the **5:00 AM PHT start time**.
-3. Verify salary alignment (**₱55,000 – ₱60,000 PHP**).
+3. Verify salary alignment (**₱65,000 – ₱75,000 PHP**).
 4. Verify home office equipment (PC workstation, fiber internet, backup power).
 5. Gauge authentic interest and understanding of the trading card game and pop culture space.
 
@@ -72,9 +72,9 @@ flowchart TD
 
 #### Q4: "What are your salary expectations for this role?"
 > **Your Script:**  
-> *"Based on my 4+ years of specialized e-commerce design experience, my proficiency across the Adobe Creative Suite, CapCut, and Shopify, and the full-time Canadian schedule overlap, my target salary is **₱55,000 to ₱60,000 PHP per month**.  
+> *"Based on my 4+ years of specialized e-commerce design experience, my proficiency across the Adobe Creative Suite, CapCut, and Shopify, and the full-time Canadian schedule overlap, my target salary is **₱65,000 to ₱75,000 PHP per month**.  
 >  
-> I am confident that my ability to step in on Day 1, take ownership of storefront visuals, and produce community-aligned TCG assets without creative friction will provide immediate return on investment for the client."*
+> Because I provide end-to-end coverage across both high-converting commercial storefront visuals and viral short-form video without requiring onboarding downtime or TCG product training, I deliver immediate, measurable ROI for the Canadian business."*
 
 ---
 
@@ -192,5 +192,5 @@ At the end of the interview when they ask *"Do you have any questions for us?"*,
 - [x] **Ashby Application Submitted** with tailored cover letter and portfolio link.
 - [x] **Portfolio Synced** with 4 dedicated TCG deliverables at [`index.html#work`](file:///d:/Jezreel%20Dave%20-%20Personal%20Branding/my-personal-website/index.html#work).
 - [x] **Word & PDF Resumes Ready:** [`Jezreel_Dave_Leybag_Ecommerce_Graphic_Designer.pdf`](file:///d:/Jezreel%20Dave%20-%20Personal%20Branding/my-personal-website/applications/multiplymii-ecommerce-graphic-designer/Jezreel_Dave_Leybag_Ecommerce_Graphic_Designer.pdf).
-- [x] **Interview Scripts Reviewed:** Memorized talking points for 5:00 AM PHT schedule, ₱55k–₱60k salary, and TCG franchise fluency.
+- [x] **Interview Scripts Reviewed:** Memorized talking points for 5:00 AM PHT schedule, ₱65k–₱75k salary, and TCG franchise fluency.
 - [x] **Practical Test Arsenal Ready:** Prepared to produce mobile + desktop banners, layered PSDs, and design rationale decks on demand.

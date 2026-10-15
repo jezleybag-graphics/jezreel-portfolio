@@ -4,7 +4,7 @@
 - **Client Profile:** Canada-based hobby & Trading Card Game (TCG) retailer serving collectors, players, and hobbyists (Pokémon, Magic: The Gathering, One Piece, League of Legends, sports cards, model kits, hobby supplies).
 - **Application Link:** [https://jobs.ashbyhq.com/multiplymii/d87c8790-2e7c-4544-8bd1-1a163a6c5f2a](https://jobs.ashbyhq.com/multiplymii/d87c8790-2e7c-4544-8bd1-1a163a6c5f2a)
 - **Schedule:** Monday–Friday, 5:00 AM – 2:00 PM PHT (provides direct morning overlap with Canadian Eastern Time business hours)
-- **Recommended Expected Salary:** **₱55,000 – ₱60,000 PHP per month**
+- **Recommended Expected Salary:** **₱65,000 – ₱75,000 PHP per month**
 - **Resume Files:**
   - `Jezreel_Dave_Leybag_Ecommerce_Graphic_Designer.pdf`
   - `Jezreel_Dave_Leybag_Ecommerce_Graphic_Designer.docx`
@@ -65,8 +65,8 @@ Drive Vault: https://drive.google.com/drive/folders/1_cBN8MPPfaPkyvYzinhUuSuz0ke
 * **Select:** **Immediately** (or choose today's / tomorrow's date).
 
 ### Q4: Expected Salary\* (Expected Salary in PHP)
-* **Enter:** **`55000`** *(or `60000`)*.  
-  *(For remote mid-level graphic designers supporting Canadian/US retail, ₱55k–₱60k is an attractive, highly competitive sweet spot that fits client budgets smoothly).*
+* **Enter:** **`65000`** *(or `70000`–`75000`)*.  
+  *(For a dual E-Commerce Visual Designer + High-Retention Video Editor with authentic TCG fluency, ₱65k–₱75k reflects high ROI and immediate zero-downtime execution).*
 
 ### Q5: How did you first hear about MultiplyMii?\*
 * **Select:** **`MultiplyMii Website`** *(or `LinkedIn`)*.
