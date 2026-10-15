@@ -12,6 +12,9 @@ applications/identity-and-credentials/
 *TOR*
 *NBI*
 Jezreel_Family_Financial_Command_Center.xlsx
+sync_financial_command_center.py
+*.mp4
+applications/8*.jpg
 
 # OS generated files
 Thumbs.db

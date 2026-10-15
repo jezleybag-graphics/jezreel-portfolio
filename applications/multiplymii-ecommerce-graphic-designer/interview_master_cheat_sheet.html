@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MultiplyMii Teleprompter - Jezreel Dave</title>
+  <style>
+    :root {
+      --bg: #070B12;
+      --card-bg: #0F1726;
+      --card-inner: #0A101C;
+      --text: #F8FAFC;
+      --text-dim: #CBD5E1;
+      --muted: #8492A6;
+      --accent: #F59E0B;
+      --accent-light: #FEF3C7;
+      --green: #10B981;
+      --red: #EF4444;
+      --blue: #38BDF8;
+      --purple: #A855F7;
+      --indigo: #6366F1;
+      --border: #1C283E;
+      --border-light: #253552;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    
+    /* STRICT 440PX COLUMN FOR DOCKING DIRECTLY BESIDE WEBCAM / ZERO LATERAL EYE MOVEMENT */
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.42;
+      padding: 10px 10px 85px 10px;
+      max-width: 440px;
+      margin: 0 auto;
+    }
+
+    /* TOP HEADER */
+    .top-header {
+      padding: 6px 4px 10px 4px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 12px;
+    }
+    .header-title {
+      font-size: 16px;
+      font-weight: 800;
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+    }
+    .status-badge {
+      font-size: 10px;
+      background: rgba(16, 185, 129, 0.18);
+      color: #6EE7B7;
+      padding: 2px 7px;
+      border-radius: 4px;
+      font-weight: 700;
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      animation: pulseBadge 2s infinite;
+    }
+    @keyframes pulseBadge {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+    .header-sub {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 4px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* SEARCH INPUT */
+    .search-wrap {
+      margin-top: 8px;
+      position: relative;
+    }
+    .search-input {
+      width: 100%;
+      background: #0E1524;
+      border: 1px solid var(--border-light);
+      border-radius: 6px;
+      padding: 7px 10px;
+      color: #FFFFFF;
+      font-size: 12.5px;
+      outline: none;
+      transition: all 0.2s;
+    }
+    .search-input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.25);
+    }
+
+    /* CARDS */
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 14px;
+      margin-bottom: 12px;
+      scroll-margin-top: 14px;
+      transition: box-shadow 0.25s, border-color 0.25s;
+    }
+    .card-title {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--accent);
+      font-weight: 800;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* QUESTION TELEPROMPTER BOXES */
+    .q-box {
+      background: var(--card-bg);
+      border-left: 3.5px solid var(--accent);
+      border-radius: 0 8px 8px 0;
+      padding: 12px 14px;
+      margin-bottom: 12px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+      border-top: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      scroll-margin-top: 14px;
+      transition: all 0.25s;
+    }
+    .q-box.spotlight {
+      border-left: 3.5px solid #10B981;
+      background: #0C1A2B;
+      border-top-color: var(--border-light);
+      border-right-color: var(--border-light);
+      border-bottom-color: var(--border-light);
+    }
+    .q-box.highlight-pulse {
+      box-shadow: 0 0 0 3px #F59E0B, 0 4px 16px rgba(245, 158, 11, 0.4);
+      transform: translateY(-2px);
+    }
+    .q-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 4px;
+    }
+    .q-num {
+      color: var(--accent);
+      font-weight: 800;
+      font-size: 10.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .q-num.green { color: #34D399; }
+    .q-num.purple { color: #C084FC; }
+    .q-num.blue { color: #38BDF8; }
+
+    .kbd-tag {
+      font-size: 9.5px;
+      background: #070D18;
+      color: #64748B;
+      padding: 1px 5px;
+      border-radius: 3px;
+      border: 1px solid #1B263B;
+      font-family: monospace;
+    }
+    .q-text {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin-bottom: 8px;
+      line-height: 1.35;
+    }
+    
+    .a-list { list-style: none; }
+    .a-list li {
+      font-size: 12.5px;
+      color: var(--text-dim);
+      margin-bottom: 6px;
+      position: relative;
+      padding-left: 14px;
+      line-height: 1.4;
+    }
+    .a-list li:last-child { margin-bottom: 0; }
+    .a-list li::before {
+      content: "•";
+      position: absolute;
+      left: 2px;
+      color: var(--accent);
+      font-weight: bold;
+      font-size: 14px;
+    }
+    .q-box.spotlight .a-list li::before { color: #34D399; }
+    
+    strong { color: #FDE047; font-weight: 700; }
+    em { color: #A5B4FC; font-style: normal; font-weight: 600; }
+
+    /* VERBATIM SPOKEN SCRIPT BOX */
+    .spoken-script {
+      background: #060B14;
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      border-left: 3px solid #38BDF8;
+      padding: 8px 10px;
+      border-radius: 5px;
+      margin: 7px 0;
+      font-size: 12.5px;
+      color: #E2E8F0;
+      line-height: 1.42;
+    }
+    .spoken-label {
+      font-size: 9.5px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #38BDF8;
+      margin-bottom: 3px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* RED FLAG / PITFALL WARNING BOX */
+    .pitfall-box {
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      border-left: 3px solid #EF4444;
+      padding: 6px 9px;
+      border-radius: 4px;
+      margin-top: 6px;
+      font-size: 11.5px;
+      color: #FCA5A5;
+      line-height: 1.35;
+    }
+    .pitfall-label {
+      font-size: 9px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #F87171;
+      margin-bottom: 2px;
+    }
+
+    /* METRIC CHIP */
+    .metric-chip {
+      font-family: monospace;
+      background: #04070F;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 11.5px;
+      color: #34D399;
+      display: inline-block;
+      margin: 1px 2px;
+      border: 1px solid #152238;
+      font-weight: 700;
+    }
+
+    /* RELATED TOPICS TAGS */
+    .related-tags {
+      margin-top: 8px;
+      padding-top: 6px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      display: flex;
+      gap: 5px;
+      flex-wrap: wrap;
+      align-items: center;
+      font-size: 10.5px;
+    }
+    .related-label { color: #64748B; font-size: 10px; }
+    .tag-link {
+      background: #080E1A;
+      color: #38BDF8;
+      border: 1px solid #19263A;
+      padding: 1px 6px;
+      border-radius: 3px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: 0.15s;
+    }
+    .tag-link:hover {
+      background: #142236;
+      border-color: #38BDF8;
+      color: #FFFFFF;
+    }
+
+    /* SECTION HEADER */
+    .section-title {
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin: 14px 0 8px 0;
+      color: #94A3B8;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .section-title.green { color: #34D399; }
+    .section-title.purple { color: #C084FC; }
+
+    /* SHIELD STYLING */
+    .shield-item {
+      background: #08101E;
+      padding: 8px 10px;
+      border-radius: 6px;
+      margin-bottom: 7px;
+      border: 1px solid var(--border);
+      transition: all 0.2s;
+    }
+    .shield-item:hover {
+      border-color: var(--border-light);
+      background: #0A1426;
+    }
+    .shield-header {
+      font-size: 10.5px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 3px;
+    }
+    .shield-text {
+      font-size: 12px;
+      color: #E2E8F0;
+      line-height: 1.36;
+    }
+
+    /* FLOATING BOTTOM QUICK-JUMP DOCK */
+    .bottom-dock {
+      position: fixed;
+      bottom: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: calc(100% - 20px);
+      max-width: 440px;
+      background: rgba(11, 17, 28, 0.96);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--border-light);
+      border-radius: 10px;
+      padding: 5px 6px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+      z-index: 200;
+      overflow-x: auto;
+    }
+    .dock-btn {
+      flex: 1;
+      min-width: 22px;
+      height: 26px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #131E31;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: #CBD5E1;
+      font-size: 10.5px;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.15s;
+      user-select: none;
+    }
+    .dock-btn:hover { background: #223452; color: #FFFFFF; border-color: #38BDF8; }
+    .dock-btn.red { background: rgba(239, 68, 68, 0.25); color: #FCA5A5; border-color: rgba(239, 68, 68, 0.4); }
+    .dock-btn.green { background: rgba(16, 185, 129, 0.22); color: #6EE7B7; border-color: rgba(16, 185, 129, 0.4); }
+    .dock-btn.amber { background: rgba(245, 158, 11, 0.22); color: #FCD34D; border-color: rgba(245, 158, 11, 0.4); }
+    .dock-btn.purple { background: rgba(168, 85, 247, 0.22); color: #D8B4FE; border-color: rgba(168, 85, 247, 0.4); }
+    .dock-sep { width: 1px; height: 16px; background: #1C2B42; margin: 0 1px; }
+  </style>
+</head>
+<body>
+
+  <!-- TOP HEADER -->
+  <div class="top-header">
+    <div class="header-title">
+      <span>🃏 MultiplyMii Teleprompter</span>
+      <span class="status-badge">8:30 PM TONIGHT</span>
+    </div>
+    <div class="header-sub">
+      <span>Recruiter: Carmyle Jo Catipay</span>
+      <span>Press 1-9, C, H, S, T, W to Jump</span>
+    </div>
+
+    <!-- QUICK SEARCH BAR -->
+    <div class="search-wrap">
+      <input 
+        type="text" 
+        id="quickSearch" 
+        class="search-input" 
+        placeholder="🔍 Type keyword (Shopify, 5 AM, salary, CapCut, Pokémon)..."
+        autocomplete="off"
+      />
+    </div>
+  </div>
+
+  <!-- 3 CRITICAL PILLAR CARDS -->
+  
+  <!-- PILLAR 1: SCHEDULE OVERLAP (5:00 AM PHT) -->
+  <div id="shift-card" class="card" style="border-left: 3.5px solid var(--green);">
+    <div class="card-title" style="color: var(--green);">
+      <span>⏰ 1. SCHEDULE & SHIFT COMMITMENT</span>
+      <span class="kbd-tag">Key: H</span>
+    </div>
+    <p style="font-size: 11.5px; color: #CBD5E1; margin-bottom: 4px;">
+      <strong>Required:</strong> Mon–Fri, 5:00 AM – 2:00 PM PHT (Eastern Time overlap with Canadian team).
+    </p>
+    <div style="background: #060A13; padding: 6px 9px; border-radius: 5px; font-size: 12px; color: #A7F3D0; font-style: italic; border: 1px solid rgba(16, 185, 129, 0.3);">
+      "I am 100% committed and eager to work the 5:00 AM PHT start time. I have 4+ years of remote experience aligning with North American hours. My workstation, fiber internet, and dual UPS backups are built for early-morning zero-interruption execution."
+    </div>
+  </div>
+
+  <!-- PILLAR 2: SALARY ANCHOR & STRATEGY -->
+  <div id="salary-card" class="card" style="border-left: 3.5px solid var(--accent);">
+    <div class="card-title" style="color: var(--accent);">
+      <span>💰 2. SALARY DEFENSE (₱55K–₱60K SWEET SPOT)</span>
+      <span class="kbd-tag">Key: S</span>
+    </div>
+    <p style="font-size: 11.5px; color: #CBD5E1; margin-bottom: 4px;">
+      <strong>Ashby Submitted:</strong> ₱55,000 – ₱60,000 PHP/month (Competitive win rate).
+    </p>
+    <div style="background: #060A13; padding: 6px 9px; border-radius: 5px; font-size: 12px; color: #FEF3C7; font-style: italic; border: 1px solid rgba(245, 158, 11, 0.3);">
+      "My target is <strong>₱55,000 to ₱60,000 PHP/month</strong>. Because I combine Shopify e-commerce design, short-form video in CapCut, and authentic TCG franchise knowledge, I can step in Day 1 without creative friction or training downtime."
+    </div>
+  </div>
+
+  <!-- PILLAR 3: TCG & HOBBY AUTHENTICITY -->
+  <div id="tcg-card" class="card" style="border-left: 3.5px solid var(--purple);">
+    <div class="card-title" style="color: var(--purple);">
+      <span>⚡ 3. TCG COMMUNITY FLUENCY (THE TRIFECTA)</span>
+      <span class="kbd-tag">Key: T</span>
+    </div>
+    <p style="font-size: 11.5px; color: #E2E8F0; margin-bottom: 2px;">
+      • <strong>Pokémon:</strong> Chase card hype, Alt Arts, Illustration Rares, PSA 10 gem mints, Obsidian Flames, Prismatic Evolutions.
+    </p>
+    <p style="font-size: 11.5px; color: #E2E8F0; margin-bottom: 2px;">
+      • <strong>One Piece TCG:</strong> Manga Alt Arts, Leader card framing, tournament winner promos, Romance Dawn aesthetics.
+    </p>
+    <p style="font-size: 11.5px; color: #E2E8F0; margin-bottom: 2px;">
+      • <strong>Magic: The Gathering:</strong> Mana color identities, foil-etched finishes, Collector Boosters, Duskmourn / Bloomburrow sets.
+    </p>
+    <p style="font-size: 11.5px; color: #E2E8F0;">
+      • <strong>Upper Deck NHL Hockey:</strong> Exclusive NHL license, "Young Guns" rookie cards (Connor Bedard / Celebrini), Tim Hortons fall card drops & trade nights!
+    </p>
+  </div>
+
+  <!-- PILLAR 4: CANADIAN RETAIL & DISTRIBUTOR REALITIES -->
+  <div id="canada-card" class="card" style="border-left: 3.5px solid var(--blue);" data-keywords="canada canadian retail 401 games hobbiesville zephyr epic face to face universal distribution grosnor shipping 175 cad duties customs young guns hockey tim hortons ksa mnt">
+    <div class="card-title" style="color: var(--blue);">
+      <span>🍁 4. CANADIAN RETAIL & DISTRIBUTOR INSIDER</span>
+      <span class="kbd-tag">Key: C</span>
+    </div>
+    <p style="font-size: 11.5px; color: #E2E8F0; margin-bottom: 3px;">
+      • <strong>Top Canadian Retailers:</strong> <em>401 Games</em> (Toronto/Vaughan), <em>Hobbiesville</em> (Ottawa/Toronto - modern Gen Z & Whatnot breaks), <em>Zephyr Epic</em> (Surrey, BC - $50 CAD free shipping), <em>Face to Face Games</em> (Montreal/Toronto - MTG authority).
+    </p>
+    <p style="font-size: 11.5px; color: #E2E8F0; margin-bottom: 3px;">
+      • <strong>Major Canadian Distributors:</strong> <em>Universal Distribution (UDI)</em> (Montreal/Brampton/Richmond - Pokémon, Bandai One Piece, MTG, Lorcana, Dragon Shield) & <em>Grosnor Distribution</em> (Brampton - Exclusive Upper Deck NHL hockey & Ultra PRO).
+    </p>
+    <p style="font-size: 11.5px; color: #E2E8F0; margin-bottom: 3px;">
+      • <strong>The $175 CAD Free Shipping Anchor:</strong> High cross-provincial courier rates mean $175 CAD is the industry free-shipping anchor (401 Games / Hobbiesville). We design cart-upsell banner cues: <em>"Add $25 CAD of sleeves to unlock Free Tracked Canadian Shipping!"</em>
+    </p>
+    <p style="font-size: 11.5px; color: #E2E8F0;">
+      • <strong>The "No Customs / No Duties" Win:</strong> Canadian collectors hate buying from US TCGplayer/eBay due to 3.5% FX fees and surprise CBSA/brokerage fees at the door. High-converting trust badge: <em>"Prices in CAD — No Hidden Duties, No Customs, Fast Domestic Tracked Delivery."</em>
+    </p>
+  </div>
+
+  <!-- SECTION: RECRUITER TOP 3 PRIORITY SPOTLIGHTS -->
+  <div class="section-title green">🌟 Top 3 Recruiter Priorities (Carmyle Screening)</div>
+
+  <!-- QUESTION 1: ELEVATOR PITCH -->
+  <div id="q1" class="q-box spotlight" data-keywords="elevator pitch tell me about yourself background experience introduction carmyle multiplymii">
+    <div class="q-header-row">
+      <span class="q-num green">P1 • Elevator Pitch & Story</span>
+      <span class="kbd-tag">Key: 1</span>
+    </div>
+    <div class="q-text">"Tell me about yourself and your background as a Graphic Designer."</div>
+    <div class="spoken-script">
+      <div class="spoken-label">🎙️ SAY THIS EXACTLY:</div>
+      "Hi Carmyle! I’m an E-commerce Visual Designer and Video Editor with over <strong>4 years of hands-on experience</strong> creating high-converting storefront graphics, social ads, and marketing visuals for international brands across North America, Europe, and Asia.<br><br>
+      Most recently, I managed the digital storefront and promotional creatives at Morpho Studio, where our redesigned hero banners and campaign visuals drove a <span class='metric-chip'>+30% bump</span> in digital orders within 30 days. I also worked with Canadian e-commerce clients like TrendNSave, designing marketplace listing composites, lifestyle renders, and packaging assets.<br><br>
+      What really excites me about this role with MultiplyMii is that it brings together my two biggest strengths: <strong>e-commerce visual conversion</strong> and my <strong>genuine personal passion for trading card games</strong> like Pokémon, One Piece, and Magic: The Gathering. I’m thrilled to support your Canadian client!"
+    </div>
+    <ul class="a-list">
+      <li><strong>Delivery Tone:</strong> Upbeat, articulate, warm, and natural English cadence.</li>
+      <li><strong>Hook:</strong> Immediately mention Canada e-commerce experience (TrendNSave) and passion for TCG.</li>
+    </ul>
+    <div class="pitfall-box">
+      <div class="pitfall-label">⚠️ DO NOT SAY:</div>
+      Do not say "I am just a graphic designer who uses Canva." Highlight Adobe Creative Suite, Shopify ownership, and short-form video.
+    </div>
+    <div class="related-tags">
+      <span class="related-label">Related:</span>
+      <a href="#q2" class="tag-link" onclick="pulseCard('q2')">Q2 TCG Knowledge</a>
+      <a href="#shift-card" class="tag-link" onclick="pulseCard('shift-card')">5 AM Shift</a>
+      <a href="#portfolio-card" class="tag-link" onclick="pulseCard('portfolio-card')">Portfolio</a>
+    </div>
+  </div>
+
+  <!-- QUESTION 2: TCG & POP CULTURE FAMILIARITY -->
+  <div id="q2" class="q-box spotlight" data-keywords="tcg trading card games pokemon mtg magic the gathering one piece anime pop culture collector chase card upper deck hockey young guns tim hortons gunpla ksa mnt psa">
+    <div class="q-header-row">
+      <span class="q-num green">P2 • TCG & Pop Culture Fluency</span>
+      <span class="kbd-tag">Key: 2</span>
+    </div>
+    <div class="q-text">"The client emphasized familiarity with Pokémon, MTG, One Piece, etc. How familiar are you with the TCG and hobby community?"</div>
+    <div class="spoken-script">
+      <div class="spoken-label">🎙️ SAY THIS EXACTLY:</div>
+      "I’m deeply familiar with and genuinely passionate about the TCG and hobby ecosystem. I understand the collector mindset, the hype cycle of set releases, and what makes Canadian collectors click.<br><br>
+      • <strong>Pokémon:</strong> I know how critical chase card hype is—whether it's an alternate art Charizard ex, an Illustration Rare, or sets like Prismatic Evolutions. I also know the demand for Japanese booster boxes with guaranteed secret rares and factory pull-tabs.<br>
+      • <strong>One Piece TCG:</strong> The community goes crazy for Manga Alternate Arts, Leader card framing, and tournament promos with tight distributor allocations from Universal.<br>
+      • <strong>Magic: The Gathering:</strong> I understand the shift to Play Boosters vs. Collector Boosters, Commander precons, and massive Universes Beyond crossovers.<br>
+      • <strong>Upper Deck NHL Hockey:</strong> I know that in Canada, hockey cards are royalty! The 'Young Guns' rookie card chase (like Connor Bedard or Macklin Celebrini) drives huge store volume, along with the annual Tim Hortons fall card frenzy and Trade Nights.<br>
+      • <strong>Grading & Protection:</strong> Beyond PSA and BGS, I'm familiar with Canadian grading like KSA and MNT, plus protective supplies from Dragon Shield, Ultimate Guard, and Ultra PRO One-Touch magnetic cases.<br><br>
+      Because I speak this visual language naturally, the Canadian client won't have to waste time explaining what makes an asset valuable or how card art should be framed."
+    </div>
+    <ul class="a-list">
+      <li><strong>Canadian Insider Signals:</strong> Citing Upper Deck 'Young Guns', Tim Hortons trade nights, and KSA/MNT grading will immediately set you apart as a top 1% candidate.</li>
+      <li><strong>Commercial Edge:</strong> Emphasize that your designs drive pre-orders before physical inventory arrives in warehouse.</li>
+    </ul>
+    <div class="pitfall-box">
+      <div class="pitfall-label">⚠️ DO NOT SAY:</div>
+      Do not say "I don't play cards, but I can Google them." Frame yourself as someone who naturally understands collector psychology.
+    </div>
+    <div class="related-tags">
+      <span class="related-label">Related:</span>
+      <a href="#tcg-card" class="tag-link" onclick="pulseCard('tcg-card')">TCG Trifecta</a>
+      <a href="#canada-card" class="tag-link" onclick="pulseCard('canada-card')">Canadian Retail</a>
+      <a href="#q7" class="tag-link" onclick="pulseCard('q7')">Q7 Packaging</a>
+    </div>
+  </div>
+
+  <!-- QUESTION 3: 5:00 AM PHT SCHEDULE -->
+  <div id="q3" class="q-box spotlight" data-keywords="schedule shift hours 5 am 5:00 pht eastern time canadian morning timezone overlap attendance">
+    <div class="q-header-row">
+      <span class="q-num green">P3 • 5:00 AM PHT Schedule Overlap</span>
+      <span class="kbd-tag">Key: 3</span>
+    </div>
+    <div class="q-text">"This role requires starting at 5:00 AM Philippine Time for Canadian Eastern Time overlap. Are you comfortable with this schedule?"</div>
+    <div class="spoken-script">
+      <div class="spoken-label">🎙️ SAY THIS EXACTLY:</div>
+      "I am <strong>100% prepared, eager, and accustomed to a 5:00 AM PHT start time</strong>.<br><br>
+      Throughout my 4+ years of remote design work, I’ve regularly synchronized my mornings with North American Eastern and Central time zones. Starting at 5:00 AM PHT gives me direct overlap with the Canadian team's morning standups, real-time Slack coordination, and same-day turnaround on promotional drops.<br><br>
+      I work from a quiet, dedicated home studio with high-speed fiber internet and dual power backups. You can count on me logged in, alert, and designing every morning at 5:00 AM sharp."
+    </div>
+    <ul class="a-list">
+      <li><strong>Daily Rhythm:</strong> 5:00 AM PHT = 4:00 PM or 5:00 PM Eastern Time prior day / Canadian morning overlap.</li>
+      <li><strong>Track Record:</strong> Highlight zero attendance issues across 4 years of North American client work.</li>
+    </ul>
+    <div class="related-tags">
+      <span class="related-label">Related:</span>
+      <a href="#shift-card" class="tag-link" onclick="pulseCard('shift-card')">Shift Card</a>
+      <a href="#q11" class="tag-link" onclick="pulseCard('q11')">Q11 Hardware</a>
+    </div>
+  </div>
+
+  <!-- SECTION: CORE INTERVIEW & OPERATIONAL QUESTIONS -->
+  <div class="section-title">📋 Core Operational & Design Questions</div>
+
+  <!-- QUESTION 4: SALARY EXPECTATIONS -->
+  <div id="q4" class="q-box" data-keywords="salary compensation pay rate expectation 55000 60000 70000 budget php carmyle">
+    <div class="q-header-row">
+      <span class="q-num">Q4 • Salary Expectations & Defense</span>
+      <span class="kbd-tag">Key: 4</span>
+    </div>
+    <div class="q-text">"What are your salary expectations for this E-commerce Graphic Designer role?"</div>
+    <div class="spoken-script">
+      <div class="spoken-label">🎙️ SAY THIS EXACTLY:</div>
+      "My target compensation is <strong>₱55,000 to ₱60,000 PHP per month</strong>.<br><br>
+      This is based on my 4+ years of specialized e-commerce visual design experience, full proficiency across Adobe Photoshop, Illustrator, Premiere Pro, and CapCut, my direct experience managing Shopify storefront visuals, and my authentic fluency in the TCG industry.<br><br>
+      Because I can hit the ground running without needing a learning curve on TCG products or e-commerce workflows, I know I will deliver immediate, measurable ROI for the Canadian client."
+    </div>
+    <p style="font-size: 11.5px; color: var(--muted); margin-top: 4px;">
+      <em>Note:</em> If Carmyle mentions the client has a higher budget (₱70k–₱90k), reply: <em>"I'm very open to discussing higher responsibility or leadership tiers within that band!"</em>
+    </p>
+    <div class="related-tags">
+      <span class="related-label">Related:</span>
+      <a href="#salary-card" class="tag-link" onclick="pulseCard('salary-card')">Salary Card</a>
+    </div>
+  </div>
+
+  <!-- QUESTION 5: SHOPIFY & STOREFRONT OWNERSHIP -->
+  <div id="q5" class="q-box" data-keywords="shopify storefront banners collection hero drop conversion mobile responsive desktop e-commerce 175 cad shipping duties cancellation pre-order">
+    <div class="q-header-row">
+      <span class="q-num">Q5 • Shopify Storefront & Visual Ownership</span>
+      <span class="kbd-tag">Key: 5</span>
+    </div>
+    <div class="q-text">"How do you approach managing and designing visual assets for a Shopify storefront?"</div>
+    <div class="spoken-script">
+      <div class="spoken-label">🎙️ SAY THIS EXACTLY:</div>
+      "I treat a Shopify store as a high-conversion sales engine tailored to collectors. My framework centers on three rules:<br><br>
+      <strong>1. Mobile-First (The 80% Rule):</strong> Over 80% of TCG hype drops happen on mobile when Discord or Twitter/X alerts go off. Desktop 1920×600 banners fail on mobile if scaled down. I design dedicated 1:1 (1080×1080) mobile assets where the booster box hero occupies 45%+ of the screen with bold, condensed typography that reads instantly.<br><br>
+      <strong>2. Canadian E-Commerce Trust Signals:</strong> I always incorporate localized conversion cues—like the standard <span class='metric-chip'>$175 CAD Free Shipping</span> threshold, cart-upsell cues (<em>'Add $25 CAD in sleeves to unlock Free Tracked Delivery'</em>), and <em>'Prices in CAD — No Hidden US Duties or Customs'</em>.<br><br>
+      <strong>3. Slashing Support Inquiries via Visual Clarity:</strong> Customer support teams get flooded with questions on drop days. I design clear PDP badges for <em>'Limit 2 Per Customer'</em>, <em>'Estimated Ship Date: [Date]'</em>, and visual tooltips explaining the 10% pre-order cancellation policy and <em>'Orders ship when the latest pre-order releases'</em>."
+    </div>
+    <div class="related-tags">
+      <span class="related-label">Related:</span>
+      <a href="#canada-card" class="tag-link" onclick="pulseCard('canada-card')">Canadian Retail</a>
+      <a href="#q8" class="tag-link" onclick="pulseCard('q8')">Q8 Workflows</a>
+    </div>
+  </div>
+
+  <!-- QUESTION 6: SHORT-FORM VIDEO & MOTION -->
+  <div id="q6" class="q-box" data-keywords="video editing capcut premiere after effects pack break reels shorts tiktok unboxing foley audio motion">
+    <div class="q-header-row">
+      <span class="q-num">Q6 • Short-Form Video & Motion Pacing</span>
+      <span class="kbd-tag">Key: 6</span>
+    </div>
+    <div class="q-text">"Can you edit short-form videos? How would you make our social media videos and pack breaks stand out?"</div>
+    <div class="spoken-script">
+      <div class="spoken-label">🎙️ SAY THIS EXACTLY:</div>
+      "Yes, I actively edit short-form content using <strong>CapCut and Adobe Premiere Pro</strong>. For trading card games and collectibles, video success hinges on the first 3 seconds:<br><br>
+      • <strong>The Visual Hook:</strong> Start right at the moment of the pack tear, a mystery card silhouette, or a bold hook question like 'Did we just pull the $500 Alt Art?'.<br>
+      • <strong>Pacing & Micro-Cuts:</strong> Cut rapid-fire through common cards (sub-1 second flashes) to build tension, then slow-mo punch in when hitting the secret rare or holographic foil.<br>
+      • <strong>Sonic Design:</strong> Layer tactile card-sliding Foley sounds and a deep bass drop when the foil hits the studio lights.<br>
+      • <strong>Kinetic Captions:</strong> Use bold animated captions with brand-colored highlighted keywords so viewers watching on mute on TikTok or Instagram Reels are immediately hooked."
+    </div>
+    <div class="related-tags">
+      <span class="related-label">Related:</span>
+      <a href="#q10" class="tag-link" onclick="pulseCard('q10')">Q10 Streaming</a>
+    </div>
+  </div>
+
+  <!-- QUESTION 7: PRIVATE LABEL & PACKAGING -->
+  <div id="q7" class="q-box" data-keywords="private label packaging apex guard titan vault deck box sleeves playmat print ready dieline cmyk vector">
+    <div class="q-header-row">
+      <span class="q-num">Q7 • Private Label Packaging & Merchandise</span>
+      <span class="kbd-tag">Key: 7</span>
+    </div>
+    <div class="q-text">"The client has private label products like deck boxes, sleeves, and supplies. What is your experience with packaging and merchandise?"</div>
+    <div class="spoken-script">
+      <div class="spoken-label">🎙️ SAY THIS EXACTLY:</div>
+      "I have direct experience designing physical merchandise and retail packaging with strict print-ready specs in Adobe Illustrator and Photoshop.<br><br>
+      In my portfolio, I created the <strong>Apex Guard 'Titan Vault'</strong> luxury deck box concept. I designed the dieline packaging with embossed metallic gold foil stamping against matte black leatherette, incorporating collector specs like '100+ Double Sleeved Cards' and 'Archival Safe & Acid Free'.<br><br>
+      I understand bleed margins, dielines, spot colors, CMYK vs RGB conversions, and working with manufacturer print templates so files go to production with zero pre-press errors."
+    </div>
+    <div class="related-tags">
+      <span class="related-label">Related:</span>
+      <a href="#portfolio-card" class="tag-link" onclick="pulseCard('portfolio-card')">Portfolio</a>
+      <a href="#tcg-card" class="tag-link" onclick="pulseCard('tcg-card')">TCG Trifecta</a>
+    </div>
+  </div>
+
+  <!-- QUESTION 8: HIGH-VOLUME RELEASES & TURNAROUND -->
+  <div id="q8" class="q-box" data-keywords="high volume turnaround deadline fast batch release drop templates rush workload speed universal grosnor distributor sell sheet low res mockup">
+    <div class="q-header-row">
+      <span class="q-num">Q8 • Handling Fast Drops & Low-Res Sell Sheets</span>
+      <span class="kbd-tag">Key: 8</span>
+    </div>
+    <div class="q-text">"TCG releases happen every 2–3 weeks, often with low-res distributor teasers. How do you handle rapid turnaround?"</div>
+    <div class="spoken-script">
+      <div class="spoken-label">🎙️ SAY THIS EXACTLY:</div>
+      "I solve this with two core systems:<br><br>
+      <strong>1. Overcoming Low-Res Distributor Art:</strong> When distributors like Universal or Grosnor send 400×400px low-res sell sheets, I don't wait for official marketing kits. I use AI upscaling and Photoshop neural filters to enhance pack textures, vectorize logos, and wrap the 2D art onto my pre-built 3D booster box mockup with realistic shrink-wrap gloss. We can launch pre-orders hours before competitors with 100% factory-sealed polish.<br><br>
+      <strong>2. Modular Master Templates:</strong> I maintain master Smart Object templates in Photoshop and Illustrator. When an allocation drops, I swap in the assets, set-themed atmospheric textures, and export desktop hero, mobile 1:1, IG stories, and email banners in under 30 minutes.<br><br>
+      This cut campaign turnaround times by <strong>50%</strong> at Morpho Studio while keeping brand standards spotless."
+    </div>
+    <div class="related-tags">
+      <span class="related-label">Related:</span>
+      <a href="#q5" class="tag-link" onclick="pulseCard('q5')">Q5 Shopify</a>
+      <a href="#canada-card" class="tag-link" onclick="pulseCard('canada-card')">Canadian Retail</a>
+    </div>
+  </div>
+
+  <!-- QUESTION 9: FEEDBACK & REVISIONS -->
+  <div id="q9" class="q-box" data-keywords="feedback revisions critique pushback stakeholder collaboration client changes">
+    <div class="q-header-row">
+      <span class="q-num">Q9 • Feedback, Revisions & Stakeholder Alignment</span>
+      <span class="kbd-tag">Key: 9</span>
+    </div>
+    <div class="q-text">"How do you handle subjective creative feedback or multiple revision requests from client stakeholders?"</div>
+    <div class="spoken-script">
+      <div class="spoken-label">🎙️ SAY THIS EXACTLY:</div>
+      "I maintain a <strong>zero-ego, collaborative mindset</strong>. Design in e-commerce is about conversion and community connection, not personal art.<br><br>
+      When feedback comes in, I first clarify the underlying objective—whether the goal is increasing legibility, creating more urgency, or matching franchise brand guidelines. Then, I quickly provide 2 distinct variations addressing the feedback so the client can compare side-by-side.<br><br>
+      I also keep layered, labeled PSD/AI files organized so any revision takes minutes instead of hours."
+    </div>
+  </div>
+
+  <!-- QUESTION 10: STREAM OVERLAYS & LIVE COMMERCE -->
+  <div id="q10" class="q-box" data-keywords="streaming stream overlays twitch youtube whatnot box breaks live commerce obs streamlabs ticker hit board tiktok live">
+    <div class="q-header-row">
+      <span class="q-num">Q10 • Stream Overlays & Live Box Breaks (Whatnot/Twitch)</span>
+      <span class="kbd-tag">Key: 0</span>
+    </div>
+    <div class="q-text">"Have you designed stream overlays or graphics for live box-break streams on Whatnot, YouTube, or Twitch?"</div>
+    <div class="spoken-script">
+      <div class="spoken-label">🎙️ SAY THIS EXACTLY:</div>
+      "Yes! In the Canadian collectibles space, live commerce on Whatnot, YouTube, and TikTok Live is exploding for box breaks and mystery packs.<br><br>
+      In my portfolio, I built a complete <strong>Live Box-Break Stream Overlay Package</strong>. It includes:<br>
+      • A top-down macro camera frame for card reveals with clean card-slot guidelines.<br>
+      • A host webcam frame with sponsor badges and live chat integration.<br>
+      • A dynamic 'Recent Hits' ticker and giveaway/mystery bounty screen overlays.<br><br>
+      I export these as clean transparent PNGs and OBS/Streamlabs scene assets optimized for both vertical 9:16 mobile streaming and 16:9 desktop broadcasts."
+    </div>
+    <div class="related-tags">
+      <span class="related-label">Related:</span>
+      <a href="#q6" class="tag-link" onclick="pulseCard('q6')">Q6 Video</a>
+    </div>
+  </div>
+
+  <!-- QUESTION 11: TECHNICAL HARDWARE & RELIABILITY -->
+  <div id="q11" class="q-box" data-keywords="hardware pc specs workstation internet speed fiber speedtest backup ups ram gpu acer nitro">
+    <div class="q-header-row">
+      <span class="q-num green">Q11 • Hardware & Internet Redundancy</span>
+      <span class="kbd-tag">Key: W</span>
+    </div>
+    <div class="q-text">"Can you confirm your computer specifications and internet reliability for remote work?"</div>
+    <div class="spoken-script">
+      <div class="spoken-label">🎙️ SAY THIS EXACTLY:</div>
+      "Yes, my setup exceeds all MultiplyMii requirements:<br><br>
+      • <strong>PC Workstation:</strong> Intel Core i5-9300H high-performance creator machine, 16GB DDR4 RAM, NVIDIA GeForce GTX 1650 dedicated GPU, and dual high-speed NVMe SSD + HDD storage.<br>
+      • <strong>Primary Internet:</strong> High-speed Fiber connection running at <span class='metric-chip'>249 Mbps</span> download and upload with sub-10ms ping.<br>
+      • <strong>Power & Backup Redundancy:</strong> Dual uninterruptible power supply (UPS) units to protect against power blips, plus a dedicated 4G LTE mobile hotspot backup.<br><br>
+      I have a dedicated, distraction-free home office setup ready for immediate full-time work."
+    </div>
+    <ul class="a-list">
+      <li><strong>Pre-Verified:</strong> System specs and Speedtest screenshots are already stored and submitted.</li>
+    </ul>
+  </div>
+
+  <!-- QUESTION 12: PRACTICAL TEST READINESS -->
+  <div id="q12" class="q-box" data-keywords="practical test design assessment next steps submission psd mobile desktop rationale">
+    <div class="q-header-row">
+      <span class="q-num blue">Q12 • Practical Design Test Preparedness</span>
+      <span class="kbd-tag">Key: D</span>
+    </div>
+    <div class="q-text">"MultiplyMii typically administers a practical design test before client interview. Are you ready for this?"</div>
+    <div class="spoken-script">
+      <div class="spoken-label">🎙️ SAY THIS EXACTLY:</div>
+      "I am 100% ready for the practical test! In fact, I welcome it.<br><br>
+      Whenever I complete a design test, I don't just deliver a flat image. I submit:<br>
+      1. High-resolution exports optimized for web (WebP/PNG).<br>
+      2. Both desktop and mobile responsive crops.<br>
+      3. Fully organized, layered source files in PSD or AI.<br>
+      4. A brief 1-page Design Rationale outlining my visual hierarchy, community hooks, and e-commerce conversion triggers.<br><br>
+      I'm ready to receive the brief as soon as you're ready to send it!"
+    </div>
+  </div>
+
+  <!-- SECTION: PORTFOLIO SHOWCASE WALKTHROUGH -->
+  <div id="portfolio-card" class="card" style="border-left: 3.5px solid var(--blue);">
+    <div class="card-title" style="color: var(--blue);">
+      <span>🎨 LIVE PORTFOLIO WALKTHROUGH (HIGHLIGHTS)</span>
+      <span class="kbd-tag">Key: V</span>
+    </div>
+    <p style="font-size: 11px; color: var(--muted); margin-bottom: 6px;">
+      Live Link: <code>jezreel-portfolio-brown.vercel.app#work</code> (Filter: TCG & Pop Culture)
+    </p>
+    <div class="shield-item">
+      <div class="shield-header" style="color: #38BDF8;">1. Shopify Expansion Drop Hero Banner</div>
+      <p class="shield-text">
+        High-impact Pokémon & One Piece expansion drop prototype featuring dynamic card bursts, 3D booster box depth, and Canadian $150 CAD shipping threshold banner.
+      </p>
+    </div>
+    <div class="shield-item">
+      <div class="shield-header" style="color: #A855F7;">2. Apex Guard "Titan Vault" Deck Box</div>
+      <p class="shield-text">
+        Luxury matte leatherette deck box with embossed metallic gold foil heraldic lion, archival-safe specs, and Canadian maple leaf branding.
+      </p>
+    </div>
+    <div class="shield-item">
+      <div class="shield-header" style="color: #F59E0B;">3. Chase Card Paid Social Ad (1080×1350)</div>
+      <p class="shield-text">
+        High-CTR Instagram/Meta ad featuring PSA 10 gem mint holographic slab, 'PULL15' discount code, and limited-allocation drop timer.
+      </p>
+    </div>
+    <div class="shield-item">
+      <div class="shield-header" style="color: #10B981;">4. Live Box-Break Stream Overlay</div>
+      <p class="shield-text">
+        Twitch/YouTube stream package with top-down card reveal camera, host frame, live pull ticker, and chat integrations for Whatnot-style breaks.
+      </p>
+    </div>
+  </div>
+
+  <!-- SECTION: EMERGENCY DEFENSE SHIELDS -->
+  <div id="shield-card" class="card" style="border-left: 3.5px solid var(--red);">
+    <div class="card-title" style="color: #F87171;">
+      <span>🛡️ EMERGENCY PIVOT SHIELDS (FAST DEFENSE)</span>
+      <span class="kbd-tag">Key: P</span>
+    </div>
+
+    <!-- SHIELD 1: UNKNOWN TCG FRANCHISE -->
+    <div class="shield-item" data-keywords="unknown franchise game lorcana gundam sports cards obscure">
+      <div class="shield-header" style="color: #FBBF24;">1. Obscure TCG / Franchise You Don't Know Well</div>
+      <p class="shield-text">
+        "While my primary TCG focus has been Pokémon, One Piece, and Magic, my research methodology is rapid. I immediately review official distributor assets, Reddit collector discussions, and top retail sites to identify the set's key chase cards, character hierarchy, and aesthetic motifs before designing."
+      </p>
+    </div>
+
+    <!-- SHIELD 2: 3D SOFTWARE (BLENDER / CINEMA 4D) -->
+    <div class="shield-item" data-keywords="3d software blender cinema 4d renders cgi">
+      <div class="shield-header" style="color: #38BDF8;">2. "Do You Do 3D Modeling (Blender / C4D)?"</div>
+      <p class="shield-text">
+        "I specialize in creating hyper-realistic 3D product composites and mockups directly inside Photoshop and Illustrator using smart object packaging dielines, custom lighting, and metallic foil shaders. This produces commercial-grade retail renders in hours without heavy 3D rendering overhead."
+      </p>
+    </div>
+
+    <!-- SHIELD 3: SHOPIFY BACKEND / LIQUID CODE -->
+    <div class="shield-item" data-keywords="shopify code liquid html css developer backend theme">
+      <div class="shield-header" style="color: #34D399;">3. "Do You Write Shopify Code / Liquid?"</div>
+      <p class="shield-text">
+        "My role focuses on storefront visual design and UI assets—banners, product cards, badging, and page layouts. While I understand basic HTML/CSS and work seamlessly within Shopify's theme customizer and section builder, I specialize in the creative visual side that drives customer conversion."
+      </p>
+    </div>
+
+    <!-- SHIELD 4: CURRENT STATUS / WHY LEAVING -->
+    <div class="shield-item" data-keywords="current job why leaving availability immediately notice period">
+      <div class="shield-header" style="color: #A855F7;">4. "Why Are You Looking to Move On / Available Now?"</div>
+      <p class="shield-text">
+        "I'm looking for a dedicated, long-term full-time home where I can combine my e-commerce visual design skills with my authentic passion for trading cards and pop culture. This opportunity with MultiplyMii is the exact sweet spot I’ve been aiming for, and I can start immediately."
+      </p>
+    </div>
+
+    <!-- 5-SEC UNIVERSAL SHORTCUT -->
+    <div style="background: rgba(16, 185, 129, 0.12); padding: 7px 9px; border-radius: 5px; border: 1px solid rgba(16, 185, 129, 0.3); margin-top: 6px;">
+      <div style="font-size: 9.5px; color: #34D399; font-weight: 800; text-transform: uppercase; margin-bottom: 2px;">
+        ⚡ 5-Sec Universal Pivot:
+      </div>
+      <p style="font-size: 11.5px; color: #A7F3D0; font-weight: 600; line-height: 1.35;">
+        "My philosophy is always: design for the collector's eyes, optimize for mobile e-commerce conversion, and deliver clean, modular templates so the brand scales seamlessly."
+      </p>
+    </div>
+  </div>
+
+  <!-- SECTION: REVERSE QUESTIONS FOR CARMYLE -->
+  <div id="questions-card" class="card" style="border: 1px solid rgba(245, 158, 11, 0.4);">
+    <div class="card-title">🎁 3 Smart Questions for YOU to Ask Carmyle</div>
+    <div style="margin-bottom: 6px;">
+      <p style="font-size: 12px; color: #FEF3C7; line-height: 1.35;">
+        <strong>1. Team Dynamics:</strong> <em>"Will I be collaborating directly with the Canadian founder and store manager, or is there an existing marketing lead on the client’s team?"</em>
+      </p>
+    </div>
+    <div style="margin-bottom: 6px;">
+      <p style="font-size: 12px; color: #FEF3C7; line-height: 1.35;">
+        <strong>2. Drops & Design Systems:</strong> <em>"When rapid allocations drop from Universal or Grosnor Distribution, do they currently have an established design system, or would they like me to build a modular master template library to slash drop turnaround times?"</em>
+      </p>
+    </div>
+    <div style="margin-bottom: 6px;">
+      <p style="font-size: 12px; color: #FEF3C7; line-height: 1.35;">
+        <strong>3. Live Breaks & Social:</strong> <em>"Does the store currently run live box breaks on Whatnot, YouTube, or TikTok Live, and what stream overlays or motion graphics do they need?"</em>
+      </p>
+    </div>
+    <div>
+      <p style="font-size: 12px; color: #FEF3C7; line-height: 1.35;">
+        <strong>4. Next Steps:</strong> <em>"What does the timeline look like between this screening, the practical test, and the client interview?"</em>
+      </p>
+    </div>
+  </div>
+
+  <!-- FLOATING BOTTOM QUICK-JUMP DOCK -->
+  <div class="bottom-dock">
+    <button class="dock-btn green" onclick="pulseCard('shift-card')" title="5 AM Shift [H]">H</button>
+    <button class="dock-btn amber" onclick="pulseCard('salary-card')" title="Salary [S]">S</button>
+    <button class="dock-btn purple" onclick="pulseCard('tcg-card')" title="TCG Trifecta [T]">T</button>
+    <button class="dock-btn blue" onclick="pulseCard('canada-card')" title="Canadian Retail [C]">C</button>
+    <div class="dock-sep"></div>
+    <button class="dock-btn amber" onclick="pulseCard('q1')" title="Q1 Elevator Pitch [1]">1</button>
+    <button class="dock-btn amber" onclick="pulseCard('q2')" title="Q2 TCG Knowledge [2]">2</button>
+    <button class="dock-btn amber" onclick="pulseCard('q3')" title="Q3 5 AM Shift [3]">3</button>
+    <button class="dock-btn" onclick="pulseCard('q4')" title="Q4 Salary [4]">4</button>
+    <button class="dock-btn" onclick="pulseCard('q5')" title="Q5 Shopify [5]">5</button>
+    <button class="dock-btn" onclick="pulseCard('q6')" title="Q6 Video [6]">6</button>
+    <button class="dock-btn" onclick="pulseCard('q7')" title="Q7 Packaging [7]">7</button>
+    <button class="dock-btn" onclick="pulseCard('q8')" title="Q8 Workflows [8]">8</button>
+    <button class="dock-btn" onclick="pulseCard('q11')" title="Q11 Hardware [W]">W</button>
+    <div class="dock-sep"></div>
+    <button class="dock-btn blue" onclick="pulseCard('portfolio-card')" title="Portfolio [V]">V</button>
+    <button class="dock-btn red" onclick="pulseCard('shield-card')" title="Pivot Shields [P]">P</button>
+    <button class="dock-btn amber" onclick="pulseCard('questions-card')" title="Ask Carmyle [Q]">Q</button>
+  </div>
+
+  <!-- JAVASCRIPT FOR KEYBOARD SHORTCUTS & LIVE SEARCH -->
+  <script>
+    function pulseCard(id) {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        el.classList.remove('highlight-pulse');
+        void el.offsetWidth;
+        el.classList.add('highlight-pulse');
+        setTimeout(() => {
+          el.classList.remove('highlight-pulse');
+        }, 1600);
+      }
+    }
+
+    // Keyboard Shortcuts (Press 1-9, 0, H, S, T, C, W, D, V, P, Q)
+    document.addEventListener('keydown', (e) => {
+      if (document.activeElement.tagName === 'INPUT') return;
+
+      const key = e.key.toUpperCase();
+      const keyMap = {
+        '1': 'q1',
+        '2': 'q2',
+        '3': 'q3',
+        '4': 'q4',
+        '5': 'q5',
+        '6': 'q6',
+        '7': 'q7',
+        '8': 'q8',
+        '9': 'q9',
+        '0': 'q10',
+        'H': 'shift-card',
+        'S': 'salary-card',
+        'T': 'tcg-card',
+        'C': 'canada-card',
+        'W': 'q11',
+        'D': 'q12',
+        'V': 'portfolio-card',
+        'P': 'shield-card',
+        'Q': 'questions-card'
+      };
+
+      if (keyMap[key]) {
+        e.preventDefault();
+        pulseCard(keyMap[key]);
+      }
+    });
+
+    // Real-Time Live Search Filter
+    const searchInput = document.getElementById('quickSearch');
+    const qBoxes = document.querySelectorAll('.q-box, .card, .shield-item');
+
+    searchInput.addEventListener('input', (e) => {
+      const query = e.target.value.toLowerCase().trim();
+      if (!query) {
+        qBoxes.forEach(box => {
+          box.style.display = '';
+          box.classList.remove('highlight-pulse');
+        });
+        return;
+      }
+
+      let firstMatch = null;
+      qBoxes.forEach(box => {
+        const text = (box.innerText + ' ' + (box.dataset.keywords || '')).toLowerCase();
+        if (text.includes(query)) {
+          box.style.display = '';
+          if (!firstMatch && box.classList.contains('q-box')) {
+            firstMatch = box;
+          }
+        } else {
+          // Keep main pillar cards or hide
+          if (box.classList.contains('q-box') || box.classList.contains('shield-item')) {
+            box.style.display = 'none';
+          }
+        }
+      });
+
+      if (firstMatch) {
+        firstMatch.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  </script>
+
+</body>
+</html>
